@@ -118,6 +118,13 @@
       color: #ad1457;
       margin-left: 800px;
     }
+    #footer {
+    background: #ad1457;
+    height: 60px;
+    font-family: 'Verdana', sans-serif;
+    color: #FFFFFF;
+    padding: 20px;
+}
   </style>
 </head>
 <body>
@@ -136,12 +143,20 @@
   </div>
   <div id="nav-main">
     <ul>
-      <li class="current" onclick="myfunction1()" id="home"><a href="#">HOME</a></li>
+      <li class="current" onclick="myfunction1()" id="home"><a href="index.html">HOME</a></li>
       <li onclick="myfunction2()" id="aboutus" class=""><a href="#">ABOUT US</a></li>
-      <li onclick="myfunction3()" id="faq" class=""><a href="#">FAQs</a></li>
+      <li onclick="myfunction3()" id="faq" class=""><a href="faq.html">FAQs</a></li>
       <li onclick="myfunction4()" id="contact" class=""><a href="#">CONTACT US</a></li>
     </ul>
   </div>
+  
+  <!--footer-->
+  <footer id="footer">
+    <span class="pull-right"><strong>Version</strong> 1.0.0</span>
+    <p><b>Copyright&nbsp;</b>&copy; DharVirPa | Design and Development. All Rights Reserved.</p>
+  </footer>
+  <!--footer ends-->
+  
   <script type="text/javascript">
     function myfunction1()
     {
