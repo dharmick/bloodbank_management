@@ -3,8 +3,10 @@
 <head>
   <title>Blood Bank </title>
   <meta charset="utf-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1">  
   <!-- Latest compiled and minified CSS -->
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
   <!-- jQuery library -->
@@ -13,7 +15,7 @@
   <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-  <link rel="shortcut icon" href="./images/drop.jpeg">
+  <link rel="shortcut icon" href="./images/favicon.png">
   <style type="text/css">
     .color
     {
@@ -23,7 +25,6 @@
     }
     body
     {
-      background-color: #F5F5F5;
       font-family:'Open-Sans', sans-serif;
       font-size: 14px;
       line-height: 22px;
@@ -32,93 +33,6 @@
     {
       margin-top: 20px;
       margin-bottom: 10px;
-    }
-    #nav-main {
-    width: 100%;
-    display: block;
-    margin: 0px auto;
-    background: #fff;
-    border-top: 1.5px solid #e9e9e9;
-    border-bottom: 3.5px solid #ddd;
-    }
-    #nav-main ul li a {
-    padding: 5px 10px 6px 10px;
-    display: inline;
-    line-height: 46px;
-    margin: 0px auto;
-    } 
-    #nav-main a {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
-    text-decoration: none;
-    font-weight: 700;
-    text-align: center;
-    color: #333333;
-    }
-    #nav-main ul {
-    width: 560px;
-    display: block;
-    overflow: hidden;
-    text-align: center;
-    margin: 0 auto;
-    margin-left: 0px;
-    padding: 0;
-    }
-    #nav-main ul li {
-    list-style: none;
-    display: inline;
-    position: relative;
-    padding: 0 1px;
-    }
-    #nav-main ul li a {
-    padding: 5px 10px 6px 10px;
-    display: inline;
-    line-height: 46px;
-    margin: 0px auto;
-    }
-    #nav-main ul li a:hover {
-    color:white;
-    background-color: #ad1457;
-    border-radius: 3px;
-    box-shadow: inset 0 0px 3px #608a0f;
-    }
-    ul li.current > a {
-    color: white !important;
-    background: #ad1457;
-    border-radius: 3px;
-    box-shadow: inset 0 0px 3px #608a0f;
-    }
-    .btn
-    {
-      font-family: 'Open Sans', sans-serif;
-      color:white;
-      background-color: #ad1457;
-      width: 85px;
-      margin-top: -5px;
-     
-    }
-    .btn:hover
-    {
-      font-family: 'Open Sans', sans-serif;
-      color:white;
-      background-color: #ad1457 !important;
-    }
-    .inpt
-    {
-      border-radius: 2px;
-      box-shadow: inset 0 0px 3px #909299;
-      height : 35px;
-    }
-    .login
-    {
-      margin-top: -50px;
-      margin-bottom: 4px;
-    }
-    div.reset > a
-    {
-      font-family: 'Open Sans', sans-serif;
-      color: #ad1457;
-      margin-left: 800px;
     }
     #footer {
     background: #ad1457;
@@ -130,7 +44,6 @@
 	#bradcrumb
 	{
  		font-family: 'Verdana', sans-serif;
- 		
  		margin-top: 5px;
  		height :45px; 
  		border-top: 1px solid #ccccc0;
@@ -149,34 +62,17 @@
 		height:20px;
 		width: 20px;
 	}
+  .breadcrumb {
+    background-color: transparent;
+  }
 </style>
 </head>
 <body>
-  <div class="container">
-    <img src="./images/ibb-logo.png" alt="Blood Bank">
-  </div>
-  <div class="login">
-    <form role="form" action="" method="POST">
-      <input style="margin-left: 800px;" type="email" name="email" placeholder="  Username" class="inpt">
-      <input style="margin-left: 5px;" type="password" name="passwd" placeholder="  Password" class="inpt">
-      <button type="submit" name="login" class="btn btn-default"><strong>Login</strong></button>
-    </form>
-  </div>
-  <div class="reset" style="margin-bottom:2px;">
-    <a href="#"><strong><u>Reset Password</u></strong></a>
-  </div>
-  <div id="nav-main">
-    <ul>
-      <li onclick="myfunction1()" id="home"><a href="index.html">HOME</a></li>
-      <li onclick="myfunction2()" id="aboutus" class=""><a href="#">ABOUT US</a></li>
-      <li class="current" onclick="myfunction3()" id="faq" class=""><a href="#">FAQs</a></li>
-      <li onclick="myfunction4()" id="contact" class=""><a href="#">CONTACT US</a></li>
-    </ul>
-  </div>
+ <?php include_once ("navbar.php")?>
   <!--breadcrumb-->
   <div class="container" id="bradcrumb">
 	  <ol class="breadcrumb">
-	    <li><a href="index.html" id="home" style="color: black;">Home</a></li>
+	    <li><a href="index.php" id="home" style="color: black;">Home</a></li>
 	    <li class="active">FAQs</li>
 	  </ol>
   </div>
@@ -237,7 +133,7 @@
 	<br><img class="bullet" src="./images/download.jpeg">If you feel dizzy, lie down and raise your feet until the feeling passes.
 	<br><br><br>
   </div>
-
+  <!--FAQ content ends-->
 
 
 
