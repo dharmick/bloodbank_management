@@ -15,8 +15,18 @@
   <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+  <link rel="stylesheet" type="text/css" href="./css/navbar_style.css">
+
   <link rel="shortcut icon" href="./images/favicon.png">
   <style type="text/css">
+     #nav-main {
+        background-color: transparent; 
+        width: 100%;
+        display: block;
+        margin: 0px auto;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
     .color
     {
       background-color: #ffffff;
@@ -68,7 +78,17 @@
 </style>
 </head>
 <body>
- <?php include_once ("navbar.php")?>
+  <div id="nav-main">
+    <img src="./images/logo.png" alt="Blood Bank" height="75" style="margin-left: 5px;">
+    <ul>
+      <li  class = "tab" ><a href="index.php">HOME</a></li>
+      <li  class = "tab"><a href="#">ABOUT US</a></li>
+      <li  class = "tab current"><a href="faq.php">FAQs</a></li>
+      <li  class = "tab"><a href="contactus.php">CONTACT US</a></li>
+      <li  class = "tab"><a href="login.php">LOGIN</a></li>
+    </ul>
+  </div>
+ <!-- <?php include_once ("navbar.php")?> -->
   <!--breadcrumb-->
   <div class="container" id="bradcrumb">
 	  <ol class="breadcrumb">
@@ -162,35 +182,17 @@
     <span class="pull-right"><strong>Version</strong> 1.0.0</span>
     <p><b>Copyright&nbsp;</b>&copy; DharVirPa | Design and Development. All Rights Reserved.</p>
   </footer>
-  <script type="text/javascript">
-    function myfunction1()
-    {
-      document.getElementById("home").classList.add("current");
-      document.getElementById("aboutus").classList.remove("current");
-      document.getElementById("faq").classList.remove("current");
-      document.getElementById("contact").classList.remove("current");
-    }
-    function myfunction2()
-    {
-      document.getElementById("aboutus").classList.add("current");
-      document.getElementById("home").classList.remove("current");
-      document.getElementById("faq").classList.remove("current");
-      document.getElementById("contact").classList.remove("current");
-    }
-    function myfunction3()
-    {
-      document.getElementById("faq").classList.add("current");
-      document.getElementById("home").classList.remove("current");
-      document.getElementById("aboutus").classList.remove("current");
-      document.getElementById("contact").classList.remove("current");
-    }
-    function myfunction4()
-    {
-      document.getElementById("contact").classList.add("current");
-      document.getElementById("home").classList.remove("current");
-      document.getElementById("aboutus").classList.remove("current");
-      document.getElementById("faq").classList.remove("current");
-    }
+   <script type="text/javascript">
+    var header = document.getElementById("nav-main");
+    var btns = header.getElementsByClassName("tab");
+    console.log(btns);
+    for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("current");
+    current[0].className = current[0].className.replace("current", "");
+    this.className += " current";
+    });
+  }
   </script>
 
 </body>

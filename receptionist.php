@@ -16,63 +16,7 @@
   <link rel="shortcut icon" href="./images/favicon.png">
 
 
-  <style type="text/css">
-  	 #nav-main {
-    background-color: transparent; 
-    width: 100%;
-    display: block;
-    margin: 0px auto;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    }
-    #nav-main ul li a {
-    padding: 5px 10px 6px 10px;
-    display: inline;
-    line-height: 46px;
-    margin: 0px auto;
-    } 
-    #nav-main a {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
-    text-decoration: none;
-    font-weight: 700;
-    text-align: center;
-    color: #333333;
-    }
-    #nav-main ul {
-    width: 560px;
-    float: right;
-    display: block;
-    overflow: hidden;
-    text-align: center;
-    margin: 0 auto;
-    margin-left: 0px;
-    padding: 0;
-    }
-    #nav-main:after
-    {
-      content: '';
-      display: block;
-      clear:both;
-    }
-    #nav-main ul li {
-    list-style: none;
-    display: inline;
-    position: relative;
-    padding: 0 1px;
-    }
-    #nav-main ul li a:hover {
-    color:white;
-    background-color: #ad1457;
-    border-radius: 3px;
-    box-shadow: inset 0 0px 3px #608a0f;
-    }
-    ul li.current > a {
-    color: white !important;
-    background: #ad1457;
-    border-radius: 3px;
-    box-shadow: inset 0 0px 3px #608a0f;
-    }
+  <style type="text/css"> 
     #footer {
     background: #ad1457;
     height: 60px;
@@ -83,7 +27,7 @@
     .tab {
       height:80vh;
       margin:10vh;
-      box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+      box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
       margin-top: 0px;
       padding: 15px;
       border-radius: 5px;
@@ -99,29 +43,65 @@
     }
   </style>
 </head>
-  <div id="nav-main">
-    <img src="./images/logo.png" alt="Blood Bank" height="75" style="margin-left: 5px;">
-    <ul>
-      <li class="current" onclick="myfunction2()" id="dashboard" class=""><a href="#">View Donor Status</a></li>
-      <li onclick="myfunction1()" id="donate"><a href="#">Donation form</a></li>
-      <li onclick="myfunction3()" id="logout" class=""><a href="#">LOGOUT</a></li>
-    </ul>
-  </div>
-
+<?php include_once("navbar.php") ?>
   <div class="container tab">
     <table class="table table-striped table-bordered table-hover">
       <tr>
         <th>Name <i class="glyphicon glyphicon-sort"></i></th>
-        <th>Contact</th>
-        <th>Gender</th>
-        <th>Email Id</th>
-        <th>Age</th>
-        <th>Weight</th>
-        <th>Blood Group</th>
-        <th>Date</th>
-        <th>Status</th>
+        <th>Contact <i class="glyphicon glyphicon-sort"></i></th>
+        <th>Gender <i class="glyphicon glyphicon-sort"></i></th>
+        <th>Email Id <i class="glyphicon glyphicon-sort"></i></th>
+        <th>Age <i class="glyphicon glyphicon-sort"></i></th>
+        <th>Weight <i class="glyphicon glyphicon-sort"></i></th>
+        <th>Blood Group <i class="glyphicon glyphicon-sort"></i></th>
+        <th>Date <i class="glyphicon glyphicon-sort"></i></th>
+        <th>Status <i class="glyphicon glyphicon-sort"></i></th>
       </tr>
        <tr>
+        <td>Parth</td>
+        <td>7977263730</td>
+        <td>Male</td>
+        <td>parth.js@somaiya.edu</td>
+        <td>20</td>
+        <td>65</td>
+        <td>O+</td>
+        <td>15/08/2018</td>
+        <td>Accepted</td>
+      </tr>
+      <tr>
+        <td>Parth</td>
+        <td>7977263730</td>
+        <td>Male</td>
+        <td>parth.js@somaiya.edu</td>
+        <td>20</td>
+        <td>65</td>
+        <td>O+</td>
+        <td>15/08/2018</td>
+        <td>Accepted</td>
+      </tr>
+      <tr>
+        <td>Parth</td>
+        <td>7977263730</td>
+        <td>Male</td>
+        <td>parth.js@somaiya.edu</td>
+        <td>20</td>
+        <td>65</td>
+        <td>O+</td>
+        <td>15/08/2018</td>
+        <td>Accepted</td>
+      </tr>
+      <tr>
+        <td>Parth</td>
+        <td>7977263730</td>
+        <td>Male</td>
+        <td>parth.js@somaiya.edu</td>
+        <td>20</td>
+        <td>65</td>
+        <td>O+</td>
+        <td>15/08/2018</td>
+        <td>Accepted</td>
+      </tr>
+      <tr>
         <td>Parth</td>
         <td>7977263730</td>
         <td>Male</td>

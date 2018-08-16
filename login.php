@@ -67,6 +67,11 @@
 			font-weight: bold;
 			font-size: 15px;
 		}
+		.login button[type="submit"]:hover {
+			background-color: #a01150;
+			color: white;
+      		box-shadow: 0 0 10px 0 #d32e77;
+		}
 		.login h2 {
 			font-size: 45px;
 			margin-bottom: 30px;
@@ -78,7 +83,7 @@
 		.login input:focus {
 			outline: 0 none !important;
 			box-shadow: 0 0px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(173, 20, 87,0.6);
-			 border-color:  rgba(173, 20, 87,0.6);
+			border-color:  rgba(173, 20, 87,0.6);
 		} 
 	</style>
 </head>

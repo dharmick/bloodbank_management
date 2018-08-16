@@ -1,0 +1,64 @@
+<style type="text/css">
+  	#nav-main {
+    background-color: transparent; 
+    width: 100%;
+    display: block;
+    margin: 0px auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    }
+    #nav-main ul li a {
+    padding: 5px 10px 6px 10px;
+    display: inline;
+    line-height: 46px;
+    margin: 0px auto;
+    } 
+    #nav-main a {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: 700;
+    text-align: center;
+    color: #333333;
+    }
+    #nav-main ul {
+    width: 560px;
+    float: right;
+    display: block;
+    overflow: hidden;
+    text-align: center;
+    margin: 0 auto;
+    margin-left: 0px;
+    padding: 0;
+    }
+    #nav-main:after
+    {
+      content: '';
+      display: block;
+      clear:both;
+    }
+    #nav-main ul li {
+    list-style: none;
+    display: inline;
+    position: relative;
+    padding: 0 1px;
+    }
+    #nav-main ul li a:hover {
+    color:white;
+    background-color: #ad1457;
+    border-radius: 3px;
+    box-shadow: inset 0 0px 3px #608a0f;
+    }
+    ul li.current > a {
+    color: white !important;
+    background: #ad1457;
+    border-radius: 3px;
+    box-shadow: inset 0 0px 3px #608a0f;
+    }
+    ul li.nav-first > a {
+    color: white !important;
+    background: #ad1457;
+    border-radius: 3px;
+    box-shadow: inset 0 0px 3px #608a0f;
+    }
+  </style>
