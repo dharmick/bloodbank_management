@@ -48,9 +48,11 @@
       display: flex;
       align-items: center;
     }
-    .content
+    .content p
     {
       margin-top: ;
+      font-family: 'Verdana', serif;
+      font-size: 15px;
     }
     .btn {
       background-color: #ad1457;
@@ -60,11 +62,16 @@
       margin-top: 25px;
       font-family: 'Verdana', sans-serif;
       margin-right: 15px;
+      
     }
     .btn:hover {
       background-color: #a01150;
       color: white;
       box-shadow: 0 0 10px 0 #d32e77;
+      transform: scale(1.05);
+    }
+    h1 {
+      text-shadow: 1px 2px 3px #e899bb;
     }
   </style>
 </head>
@@ -74,7 +81,7 @@
   <!--content-->
   <div class="container valign">
     <div class="content">
-    <h2>Blood is meant to circulate.<br>Pass it around.</h2>
+    <h1>Blood is meant to circulate.<br>Pass it around.</h1>
     <br><br><p>Their are number of countries who don't have adequate number<br>of blood suppliers and face the challenge of blood supply.We are<br>trying to make available adequate blood to needy patients all<br>over the world.</p>
     <a href="" class="btn">Donate Blood</a>
     <a href="" class="btn">Request Blood</a>

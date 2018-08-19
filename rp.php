@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title> Blood Bank </title>
+	<title>Blood Bank</title>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">  
   <!-- Latest compiled and minified CSS -->
@@ -13,10 +14,19 @@
   <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+  <link rel="stylesheet" type="text/css" href="./css/navbar_style.css">
+
   <link rel="shortcut icon" href="./images/favicon.png">
 
-
-  <style type="text/css"> 
+  <style type="text/css">
+  	#nav-main {
+    background-color: transparent; 
+    width: 100%;
+    display: block;
+    margin: 0px auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    }
     #footer {
     background: #ad1457;
     height: 60px;
@@ -24,28 +34,47 @@
     color: #FFFFFF;
     padding: 20px;
     }
-    .tab {
+    .box {
       height:80vh;
       margin:10vh;
-      box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+      box-shadow: 0 0 10px 0 rgba(0,0,0,0.3);
       margin-top: 0px;
       padding: 15px;
       border-radius: 5px;
     }
-    table{
-      border-style: solid;
-      border-radius: 15px;
-      font-family: 'verdana', sans-serif;
+    table {
+    	border: 2px solid #ad1457 !important;
+    	font-family: 'Verdana', sans-serif;
     }
-    table th{
-      font-size: 15px;
-       
+    th {
+    	background-color: #ad1457;
+    	color: white;
+    }
+    th, td {
+
+    	padding: 12px !important;
+    }
+    tr:nth-child(even) {
+    	background-color: #f2f2f2;
+    }
+    tr:hover
+    {
+    	background-color: #efe8eb;
+    	color: #ad1457;
     }
   </style>
 </head>
-<?php include_once("navbar.php") ?>
-  <div class="container tab">
-    <table class="table table-striped table-bordered table-hover">
+<body>
+	<div id="nav-main">
+    <img src="./images/logo.png" alt="Blood Bank" height="75" style="margin-left: 5px;">
+    <ul>
+      <li  class = "tab current"><a href="rp.php">View Donor Status</a></li>
+      <li  class = "tab"><a href="#">Donation Form</a></li>
+      <li  class = "tab"><a href="#">LOGOUT</a></li>
+    </ul>
+  </div>
+   <div class="container box" style="overflow-y: auto;">
+    <table class="table table-bordered ">
       <tr>
         <th>Name <i class="glyphicon glyphicon-sort"></i></th>
         <th>Contact <i class="glyphicon glyphicon-sort"></i></th>
@@ -56,6 +85,61 @@
         <th>Blood Group <i class="glyphicon glyphicon-sort"></i></th>
         <th>Date <i class="glyphicon glyphicon-sort"></i></th>
         <th>Status <i class="glyphicon glyphicon-sort"></i></th>
+      </tr>
+       <tr>
+        <td>Parth</td>
+        <td>7977263730</td>
+        <td>Male</td>
+        <td>parth.js@somaiya.edu</td>
+        <td>20</td>
+        <td>65</td>
+        <td>O+</td>
+        <td>15/08/2018</td>
+        <td>Accepted</td>
+      </tr>
+       <tr>
+        <td>Parth</td>
+        <td>7977263730</td>
+        <td>Male</td>
+        <td>parth.js@somaiya.edu</td>
+        <td>20</td>
+        <td>65</td>
+        <td>O+</td>
+        <td>15/08/2018</td>
+        <td>Accepted</td>
+      </tr>
+       <tr>
+        <td>Parth</td>
+        <td>7977263730</td>
+        <td>Male</td>
+        <td>parth.js@somaiya.edu</td>
+        <td>20</td>
+        <td>65</td>
+        <td>O+</td>
+        <td>15/08/2018</td>
+        <td>Accepted</td>
+      </tr>
+       <tr>
+        <td>Parth</td>
+        <td>7977263730</td>
+        <td>Male</td>
+        <td>parth.js@somaiya.edu</td>
+        <td>20</td>
+        <td>65</td>
+        <td>O+</td>
+        <td>15/08/2018</td>
+        <td>Accepted</td>
+      </tr>
+       <tr>
+        <td>Parth</td>
+        <td>7977263730</td>
+        <td>Male</td>
+        <td>parth.js@somaiya.edu</td>
+        <td>20</td>
+        <td>65</td>
+        <td>O+</td>
+        <td>15/08/2018</td>
+        <td>Accepted</td>
       </tr>
        <tr>
         <td>Parth</td>
@@ -122,44 +206,16 @@
   </footer>
   <!--footer ends-->
   <script type="text/javascript">
-    function myfunction1()
-    {
-      document.getElementById("home").classList.add("current");
-      document.getElementById("aboutus").classList.remove("current");
-      document.getElementById("faq").classList.remove("current");
-      document.getElementById("contact").classList.remove("current");
-      document.getElementById("login").classList.remove("current");
-    }
-    function myfunction2()
-    {
-      document.getElementById("aboutus").classList.add("current");
-      document.getElementById("home").classList.remove("current");
-      document.getElementById("faq").classList.remove("current");
-      document.getElementById("contact").classList.remove("current");
-      document.getElementById("login").classList.remove("current");
-    }
-    function myfunction3()
-    {
-      document.getElementById("faq").classList.add("current");
-      document.getElementById("home").classList.remove("current");
-      document.getElementById("aboutus").classList.remove("current");
-      document.getElementById("contact").classList.remove("current");
-      document.getElementById("login").classList.remove("current");
-    }
-    function myfunction4()
-    {
-      document.getElementById("contact").classList.add("current");
-      document.getElementById("home").classList.remove("current");
-      document.getElementById("aboutus").classList.remove("current");
-      document.getElementById("faq").classList.remove("current");
-      document.getElementById("login").classList.remove("current");
-    }
-     function myfunction5()
-    {
-      document.getElementById("login").classList.add("current");
-      document.getElementById("home").classList.remove("current");
-      document.getElementById("aboutus").classList.remove("current");
-      document.getElementById("faq").classList.remove("current");
-      document.getElementById("contact").classList.remove("current");
-    }
+    var header = document.getElementById("nav-main");
+    var btns = header.getElementsByClassName("tab");
+    console.log(btns);
+    for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("current");
+    current[0].className = current[0].className.replace("current", "");
+    this.className += " current";
+    });
+  }
   </script>
+</body>
+</html>

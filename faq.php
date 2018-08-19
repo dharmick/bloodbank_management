@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1">  
-  <!-- Latest compiled and minified CSS -->
 
+  <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
   <!-- jQuery library -->
@@ -19,14 +19,6 @@
 
   <link rel="shortcut icon" href="./images/favicon.png">
   <style type="text/css">
-     #nav-main {
-        background-color: transparent; 
-        width: 100%;
-        display: block;
-        margin: 0px auto;
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
     .color
     {
       background-color: #ffffff;
@@ -44,13 +36,6 @@
       margin-top: 20px;
       margin-bottom: 10px;
     }
-    #footer {
-    background: #ad1457;
-    height: 60px;
-    font-family: 'Verdana', sans-serif;
-    color: #FFFFFF;
-    padding: 20px;
-}
 	#bradcrumb
 	{
  		font-family: 'Verdana', sans-serif;
@@ -74,6 +59,21 @@
 	}
   .breadcrumb {
     background-color: transparent;
+  }
+   #nav-main {
+        background-color: transparent; 
+        width: 100%;
+        display: block;
+        margin: 0px auto;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+     #footer {
+    background: #ad1457;
+    height: 60px;
+    font-family: 'Verdana', sans-serif;
+    color: #FFFFFF;
+    padding: 20px;
   }
 </style>
 </head>
@@ -155,29 +155,7 @@
   </div>
   <!--FAQ content ends-->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <!--footer-->
   <footer id="footer">
     <span class="pull-right"><strong>Version</strong> 1.0.0</span>
     <p><b>Copyright&nbsp;</b>&copy; DharVirPa | Design and Development. All Rights Reserved.</p>
