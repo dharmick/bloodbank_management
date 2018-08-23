@@ -108,7 +108,16 @@
 	<br><img class="bullet" src="./images/download.jpeg">1unit of blood can save up to 3 lives.
 	<br><img class="bullet" src="./images/download.jpeg">From natural disasters to chronic diseases, the demand for blood is constant.
 
-	<br><br><br><strong style="font-size:20px;">WHO CAN DONATE BLOOD?</strong>
+	<br><br><br><strong style="font-size:20px;">I WANT TO DONATE BLOOD</strong>
+	<br><img class="bullet" src="./images/download.jpeg">We don't have any online registration facility, so you will need to visit our nearest branch.
+    <br><img class="bullet" src="./images/download.jpeg">Make sure you carry your photo ID and other medical reports.
+	<br><img class="bullet" src="./images/download.jpeg">On your visit, head to receptionist who will fill out your Registration form.
+	<br><img class="bullet" src="./images/download.jpeg">If all your screening meets requirements, you will be directed for further process.
+	<br><img class="bullet" src="./images/download.jpeg">On our website you will find Blood Centre branch or mobile blood drive near you and the operating hours. 
+	<br><img class="bullet" src="./images/download.jpeg">Call us on xxxxxxxxxx for any queries.
+	
+
+    <br><br><br><strong style="font-size:20px;">WHO CAN DONATE BLOOD?</strong>
 	<br><img class="bullet" src="./images/download.jpeg">Someone who meets the following criteria:
 	<br><img class="bullet" src="./images/download.jpeg">A person in good health in the age bracket of 18years to 60 years.
 	<br><img class="bullet" src="./images/download.jpeg">Weighs at least 45 Kgs.
