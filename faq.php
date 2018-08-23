@@ -16,6 +16,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
   <link rel="stylesheet" type="text/css" href="./css/navbar_style.css">
+  <link rel="stylesheet" type="text/css" href="./css/main.css">
 
   <link rel="shortcut icon" href="./images/favicon.png">
   <style type="text/css">
@@ -68,13 +69,6 @@
         padding-top: 10px;
         padding-bottom: 10px;
     }
-     #footer {
-    background: #ad1457;
-    height: 60px;
-    font-family: 'Verdana', sans-serif;
-    color: #FFFFFF;
-    padding: 20px;
-  }
 </style>
 </head>
 <body>
@@ -156,10 +150,8 @@
   <!--FAQ content ends-->
 
   <!--footer-->
-  <footer id="footer">
-    <span class="pull-right"><strong>Version</strong> 1.0.0</span>
-    <p><b>Copyright&nbsp;</b>&copy; DharVirPa | Design and Development. All Rights Reserved.</p>
-  </footer>
+<?php include_once("footer.php") ?> 
+
    <script type="text/javascript">
     var header = document.getElementById("nav-main");
     var btns = header.getElementsByClassName("tab");

@@ -57,6 +57,7 @@
 		}
 		.login input {
 			padding: 20px;
+			border-radius: 20px;
 		}
 		.login button[type="submit"] {
 			background-color: #ad1457;
@@ -68,10 +69,11 @@
 			font-weight: bold;
 			font-size: 15px;
 		}
-		.login button[type="submit"]:hover {
+		.login button[type="submit"]:hover, .login button[type="submit"]:active{
 			background-color: #a01150;
 			color: white;
       		box-shadow: 0 0 10px 0 #d32e77;
+      		outline: 0 none !important;
 		}
 		.login h2 {
 			font-size: 45px;
@@ -81,7 +83,7 @@
 			text-transform: uppercase;
 			font-family: Lato;
 		}
-		.login input:focus {
+		.login input:focus{
 			outline: 0 none !important;
 			box-shadow: 0 0px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(173, 20, 87,0.6);
 			border-color:  rgba(173, 20, 87,0.6);

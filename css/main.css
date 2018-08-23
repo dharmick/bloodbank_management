@@ -1,1 +1,24 @@
-test
+ body {
+    padding-bottom: 60px;
+ }
+
+
+
+ /* SCROLLBAR */
+    /* Let's get this party started */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #e8dae1;
+        /*border: 4px solid transparent;*/
+        background-clip: content-box;   /* THIS IS IMPORTANT */
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #ad1457;
+        border-radius: 5px;
+    }
+

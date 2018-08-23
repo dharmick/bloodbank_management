@@ -35,14 +35,7 @@
         padding-top: 10px;
         padding-bottom: 10px;
     }
-    #footer {
-    background: #ad1457;
-    height: 60px;
-    font-family: 'Verdana', sans-serif;
-    color: #FFFFFF;
-    padding: 20px;
-	}
-	#bradcrumb
+   	#bradcrumb
 	{
  		font-family: 'Verdana', sans-serif;
  		margin-top: 5px;
@@ -108,10 +101,7 @@
   </section>
 
 
-  <footer id="footer" style="margin-top: 5px;">
-    <span class="pull-right"><strong>Version</strong> 1.0.0</span>
-    <p><b>Copyright&nbsp;</b>&copy; DharVirPa | Design and Development. All Rights Reserved.</p>
-  </footer>
+ <?php include_once("footer.php") ?>
 
    <script type="text/javascript">
     var header = document.getElementById("nav-main");

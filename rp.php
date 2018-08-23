@@ -27,16 +27,7 @@
     padding-top: 10px;
     padding-bottom: 10px;
     }
-    #footer {
-    background: #ad1457;
-    height: 60px;
-    font-family: 'Verdana', sans-serif;
-    color: #FFFFFF;
-    padding: 20px;
-    }
     .box {
-      height:80vh;
-      margin:10vh;
       box-shadow: 0 0 10px 0 rgba(0,0,0,0.3);
       margin-top: 0px;
       padding: 15px;
@@ -45,6 +36,7 @@
     table {
     	border: 2px solid #ad1457 !important;
     	font-family: 'Verdana', sans-serif;
+      margin-bottom: 0px !important;
     }
     th {
     	background-color: #ad1457;
@@ -73,138 +65,173 @@
       <li  class = "tab"><a href="#">LOGOUT</a></li>
     </ul>
   </div>
-   <div class="container box" style="overflow-y: auto;">
-    <table class="table table-bordered ">
-      <tr>
-        <th>Name <i class="glyphicon glyphicon-sort"></i></th>
-        <th>Contact <i class="glyphicon glyphicon-sort"></i></th>
-        <th>Gender <i class="glyphicon glyphicon-sort"></i></th>
-        <th>Email Id <i class="glyphicon glyphicon-sort"></i></th>
-        <th>Age <i class="glyphicon glyphicon-sort"></i></th>
-        <th>Weight <i class="glyphicon glyphicon-sort"></i></th>
-        <th>Blood Group <i class="glyphicon glyphicon-sort"></i></th>
-        <th>Date <i class="glyphicon glyphicon-sort"></i></th>
-        <th>Status <i class="glyphicon glyphicon-sort"></i></th>
-      </tr>
-       <tr>
-        <td>Parth</td>
-        <td>7977263730</td>
-        <td>Male</td>
-        <td>parth.js@somaiya.edu</td>
-        <td>20</td>
-        <td>65</td>
-        <td>O+</td>
-        <td>15/08/2018</td>
-        <td>Accepted</td>
-      </tr>
-       <tr>
-        <td>Parth</td>
-        <td>7977263730</td>
-        <td>Male</td>
-        <td>parth.js@somaiya.edu</td>
-        <td>20</td>
-        <td>65</td>
-        <td>O+</td>
-        <td>15/08/2018</td>
-        <td>Accepted</td>
-      </tr>
-       <tr>
-        <td>Parth</td>
-        <td>7977263730</td>
-        <td>Male</td>
-        <td>parth.js@somaiya.edu</td>
-        <td>20</td>
-        <td>65</td>
-        <td>O+</td>
-        <td>15/08/2018</td>
-        <td>Accepted</td>
-      </tr>
-       <tr>
-        <td>Parth</td>
-        <td>7977263730</td>
-        <td>Male</td>
-        <td>parth.js@somaiya.edu</td>
-        <td>20</td>
-        <td>65</td>
-        <td>O+</td>
-        <td>15/08/2018</td>
-        <td>Accepted</td>
-      </tr>
-       <tr>
-        <td>Parth</td>
-        <td>7977263730</td>
-        <td>Male</td>
-        <td>parth.js@somaiya.edu</td>
-        <td>20</td>
-        <td>65</td>
-        <td>O+</td>
-        <td>15/08/2018</td>
-        <td>Accepted</td>
-      </tr>
-       <tr>
-        <td>Parth</td>
-        <td>7977263730</td>
-        <td>Male</td>
-        <td>parth.js@somaiya.edu</td>
-        <td>20</td>
-        <td>65</td>
-        <td>O+</td>
-        <td>15/08/2018</td>
-        <td>Accepted</td>
-      </tr>
-      <tr>
-        <td>Parth</td>
-        <td>7977263730</td>
-        <td>Male</td>
-        <td>parth.js@somaiya.edu</td>
-        <td>20</td>
-        <td>65</td>
-        <td>O+</td>
-        <td>15/08/2018</td>
-        <td>Accepted</td>
-      </tr>
-      <tr>
-        <td>Parth</td>
-        <td>7977263730</td>
-        <td>Male</td>
-        <td>parth.js@somaiya.edu</td>
-        <td>20</td>
-        <td>65</td>
-        <td>O+</td>
-        <td>15/08/2018</td>
-        <td>Accepted</td>
-      </tr>
-      <tr>
-        <td>Parth</td>
-        <td>7977263730</td>
-        <td>Male</td>
-        <td>parth.js@somaiya.edu</td>
-        <td>20</td>
-        <td>65</td>
-        <td>O+</td>
-        <td>15/08/2018</td>
-        <td>Accepted</td>
-      </tr>
-      <tr>
-        <td>Parth</td>
-        <td>7977263730</td>
-        <td>Male</td>
-        <td>parth.js@somaiya.edu</td>
-        <td>20</td>
-        <td>65</td>
-        <td>O+</td>
-        <td>15/08/2018</td>
-        <td>Accepted</td>
-      </tr>
-    </table>
+  <div class="container">
+    <div class="box">
+      <div class="table-responsive">
+        <table class="table table-bordered ">
+        <tr>
+          <th>Name <i class="glyphicon glyphicon-sort"></i></th>
+          <th>Contact <i class="glyphicon glyphicon-sort"></i></th>
+          <th>Gender <i class="glyphicon glyphicon-sort"></i></th>
+          <th>Email Id <i class="glyphicon glyphicon-sort"></i></th>
+          <th>Age <i class="glyphicon glyphicon-sort"></i></th>
+          <th>Weight <i class="glyphicon glyphicon-sort"></i></th>
+          <th>Blood Group <i class="glyphicon glyphicon-sort"></i></th>
+          <th>Date <i class="glyphicon glyphicon-sort"></i></th>
+          <th>Status <i class="glyphicon glyphicon-sort"></i></th>
+        </tr>
+         <tr>
+          <td>Parth</td>
+          <td>7977263730</td>
+          <td>Male</td>
+          <td>parth.js@somaiya.edu</td>
+          <td>20</td>
+          <td>65</td>
+          <td>O+</td>
+          <td>15/08/2018</td>
+          <td>Accepted</td>
+        </tr>
+         <tr>
+          <td>Parth</td>
+          <td>7977263730</td>
+          <td>Male</td>
+          <td>parth.js@somaiya.edu</td>
+          <td>20</td>
+          <td>65</td>
+          <td>O+</td>
+          <td>15/08/2018</td>
+          <td>Accepted</td>
+        </tr>
+         <tr>
+          <td>Parth</td>
+          <td>7977263730</td>
+          <td>Male</td>
+          <td>parth.js@somaiya.edu</td>
+          <td>20</td>
+          <td>65</td>
+          <td>O+</td>
+          <td>15/08/2018</td>
+          <td>Accepted</td>
+        </tr>
+        <!--  <tr>
+          <td>Parth</td>
+          <td>7977263730</td>
+          <td>Male</td>
+          <td>parth.js@somaiya.edu</td>
+          <td>20</td>
+          <td>65</td>
+          <td>O+</td>
+          <td>15/08/2018</td>
+          <td>Accepted</td>
+        </tr>
+         <tr>
+          <td>Parth</td>
+          <td>7977263730</td>
+          <td>Male</td>
+          <td>parth.js@somaiya.edu</td>
+          <td>20</td>
+          <td>65</td>
+          <td>O+</td>
+          <td>15/08/2018</td>
+          <td>Accepted</td>
+        </tr>
+         <tr>
+          <td>Parth</td>
+          <td>7977263730</td>
+          <td>Male</td>
+          <td>parth.js@somaiya.edu</td>
+          <td>20</td>
+          <td>65</td>
+          <td>O+</td>
+          <td>15/08/2018</td>
+          <td>Accepted</td>
+        </tr>
+        <tr>
+          <td>Parth</td>
+          <td>7977263730</td>
+          <td>Male</td>
+          <td>parth.js@somaiya.edu</td>
+          <td>20</td>
+          <td>65</td>
+          <td>O+</td>
+          <td>15/08/2018</td>
+          <td>Accepted</td>
+        </tr>
+        <tr>
+          <td>Parth</td>
+          <td>7977263730</td>
+          <td>Male</td>
+          <td>parth.js@somaiya.edu</td>
+          <td>20</td>
+          <td>65</td>
+          <td>O+</td>
+          <td>15/08/2018</td>
+          <td>Accepted</td>
+        </tr>
+        <tr>
+          <td>Parth</td>
+          <td>7977263730</td>
+          <td>Male</td>
+          <td>parth.js@somaiya.edu</td>
+          <td>20</td>
+          <td>65</td>
+          <td>O+</td>
+          <td>15/08/2018</td>
+          <td>Accepted</td>
+        </tr> -->
+       <!--  <tr>
+          <td>Parth</td>
+          <td>7977263730</td>
+          <td>Male</td>
+          <td>parth.js@somaiya.edu</td>
+          <td>20</td>
+          <td>65</td>
+          <td>O+</td>
+          <td>15/08/2018</td>
+          <td>Accepted</td>
+        </tr>
+            <tr>
+          <td>Parth</td>
+          <td>7977263730</td>
+          <td>Male</td>
+          <td>parth.js@somaiya.edu</td>
+          <td>20</td>
+          <td>65</td>
+          <td>O+</td>
+          <td>15/08/2018</td>
+          <td>Accepted</td>
+        </tr>
+            <tr>
+          <td>Parth</td>
+          <td>7977263730</td>
+          <td>Male</td>
+          <td>parth.js@somaiya.edu</td>
+          <td>20</td>
+          <td>65</td>
+          <td>O+</td>
+          <td>15/08/2018</td>
+          <td>Accepted</td>
+        </tr>
+            <tr>
+          <td>Parth</td>
+          <td>7977263730</td>
+          <td>Male</td>
+          <td>parth.js@somaiya.edu</td>
+          <td>20</td>
+          <td>65</td>
+          <td>O+</td>
+          <td>15/08/2018</td>
+          <td>Accepted</td>
+        </tr> -->
+        </table>
+      </div>
+    </div>
   </div>
 
   <!--footer-->
-  <footer id="footer">
-    <span class="pull-right"><strong>Version</strong> 1.0.0</span>
-    <p><b>Copyright&nbsp;</b>&copy; DharVirPa | Design and Development. All Rights Reserved.</p>
-  </footer>
+ <?php include_once("footer.php") ?>
   <!--footer ends-->
+
   <script type="text/javascript">
     var header = document.getElementById("nav-main");
     var btns = header.getElementsByClassName("tab");
