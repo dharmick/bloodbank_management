@@ -30,11 +30,7 @@
       font-size: 14px;
       line-height: 22px;
     }
-    .container
-    {
-      margin-top: 20px;
-      margin-bottom: 10px;
-    }
+   
     #footer {
     background: #ad1457;
     height: 60px;
@@ -45,9 +41,10 @@
     .valign
     {
       font-family: 'Verdana', sans-serif;
-      height:90vh;
       display: flex;
+	  height:100vh;
       align-items: center;
+	  background: url('images/1111.png') no-repeat right;
     }
     .content p
     {
@@ -73,6 +70,15 @@
     h1 {
       text-shadow: 1px 2px 3px #e899bb;
     }
+	.banner-img {
+		width:100%;
+		height: 100%;
+		
+	}
+	.content {
+		width: 100%;
+		
+	}
   </style>
 </head>
 <body>
@@ -81,10 +87,15 @@
   <!--content-->
   <div class="container valign">
     <div class="content">
-    <h1>Blood is meant to circulate.<br>Pass it around.</h1>
-    <br><br><p>Their are number of countries who don't have adequate number<br>of blood suppliers and face the challenge of blood supply.We are<br>trying to make available adequate blood to needy patients all<br>over the world.</p>
-    <a href="" class="btn">Donate Blood</a>
-    <a href="" class="btn">Request Blood</a>
+		<div class="col-sm-6">
+			<h1>Blood is meant to circulate.<br>Pass it around.</h1>
+			<br><br><p>Their are number of countries who don't have adequate number<br>of blood suppliers and face the challenge of blood supply.We are<br>trying to make available adequate blood to needy patients all<br>over the world.</p>
+			<a href="" class="btn">Donate Blood</a>
+			<a href="" class="btn">Request Blood</a>
+		</div>
+		<!--<div class="col-sm-6">
+			<img src="images/1111.png" class="banner-img">
+		</div>-->
     </div>
   </div>
   <!--content ends-->

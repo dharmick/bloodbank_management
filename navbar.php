@@ -2,9 +2,11 @@
         <link rel="stylesheet" type="text/css" href="./css/navbar_style.css">
     <style type="text/css">
         #nav-main {
-        background-color: transparent; 
+        background-color: white; 
         width: 100%;
         display: block;
+		position: fixed;
+		top:0;
         margin: 0px auto;
         padding-top: 10px;
         padding-bottom: 10px;
