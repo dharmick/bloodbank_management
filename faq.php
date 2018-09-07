@@ -40,7 +40,7 @@
 	#bradcrumb
 	{
  		font-family: 'Verdana', sans-serif;
- 		margin-top: 5px;
+ 		margin-top: 100px;
  		height :45px; 
  		border-top: 1px solid #ccccc0;
  		border-bottom: 1px solid #ccccc0;
@@ -61,19 +61,21 @@
   .breadcrumb {
     background-color: transparent;
   }
-   #nav-main {
-        background-color: transparent; 
-        width: 100%;
-        display: block;
-        margin: 0px auto;
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
+  #nav-main {
+    background-color: white; 
+    width: 100%;
+    display: block;
+    position: fixed;
+    top:0;
+    margin: 0px auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
 </style>
 </head>
 <body>
   <div id="nav-main">
-    <img src="./images/logo.png" alt="Blood Bank" height="75" style="margin-left: 5px;">
+    <img src="./images/logo.png" alt="Blood Bank" height="65" style="margin-left: 5px;">
     <ul>
       <li  class = "tab" ><a href="index.php">HOME</a></li>
       <li  class = "tab"><a href="#">ABOUT US</a></li>
@@ -102,7 +104,7 @@
 	<br><img class="bullet" src="./images/download.jpeg">1unit of blood can save up to 3 lives.
 	<br><img class="bullet" src="./images/download.jpeg">From natural disasters to chronic diseases, the demand for blood is constant.
 
-	<br><br><br><strong style="font-size:20px;">I WANT TO DONATE BLOOD</strong>
+	<br><br><br><strong id="donate" style="font-size:20px;">I WANT TO DONATE BLOOD</strong>
 	<br><img class="bullet" src="./images/download.jpeg">We don't have any online registration facility, so you will need to visit our nearest branch.
     <br><img class="bullet" src="./images/download.jpeg">Make sure you carry your photo ID and other medical reports.
 	<br><img class="bullet" src="./images/download.jpeg">On your visit, head to receptionist who will fill out your Registration form.

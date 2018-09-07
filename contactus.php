@@ -17,6 +17,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
   <link rel="stylesheet" type="text/css" href="./css/navbar_style.css">
+  <link rel="stylesheet" type="text/css" href="./css/main.css">
 
 	<link rel="shortcut icon" href="./images/favicon.png">
 
@@ -27,18 +28,20 @@
       font-size: 14px;
       line-height: 22px;
     }
-     #nav-main {
-        background-color: transparent; 
-        width: 100%;
-        display: block;
-        margin: 0px auto;
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
+   #nav-main {
+    background-color: white; 
+    width: 100%;
+    display: block;
+    position: fixed;
+    top:0;
+    margin: 0px auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
    	#bradcrumb
 	{
  		font-family: 'Verdana', sans-serif;
- 		margin-top: 5px;
+ 		margin-top: 100px;
  		height :45px; 
  		border-top: 1px solid #ccccc0;
  		border-bottom: 1px solid #ccccc0;
@@ -61,7 +64,7 @@
 </head>
 <body>
   <div id="nav-main">
-    <img src="./images/logo.png" alt="Blood Bank" height="75" style="margin-left: 5px;">
+    <img src="./images/logo.png" alt="Blood Bank" height="65" style="margin-left: 5px;">
     <ul>
       <li  class = "tab" ><a href="index.php">HOME</a></li>
       <li  class = "tab"><a href="#">ABOUT US</a></li>

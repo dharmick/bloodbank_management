@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">  
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-   <link rel="stylesheet" type="text/css" href="./css/main.css">
+  <link rel="stylesheet" type="text/css" href="./css/main.css">
 
   <!-- jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -40,10 +40,10 @@
     }
     .valign
     {
-      font-family: 'Verdana', sans-serif;
-      display: flex;
+    font-family: 'Verdana', sans-serif;
+    display: flex;
 	  height:100vh;
-      align-items: center;
+    align-items: center;
 	  background: url('images/1111.png') no-repeat right;
     }
     .content p
@@ -68,7 +68,7 @@
       transform: scale(1.05);
     }
     h1 {
-      text-shadow: 1px 2px 3px #e899bb;
+      text-shadow: 1px 1px 1px #e899bb;
     }
 	.banner-img {
 		width:100%;
@@ -90,8 +90,8 @@
 		<div class="col-sm-6">
 			<h1>Blood is meant to circulate.<br>Pass it around.</h1>
 			<br><br><p>Their are number of countries who don't have adequate number<br>of blood suppliers and face the challenge of blood supply.We are<br>trying to make available adequate blood to needy patients all<br>over the world.</p>
-			<a href="" class="btn">Donate Blood</a>
-			<a href="" class="btn">Request Blood</a>
+			<a href="./faq.php/" class="btn">I want to Donate</a>
+			<a href="" class="btn">Request for Blood</a>
 		</div>
 		<!--<div class="col-sm-6">
 			<img src="images/1111.png" class="banner-img">

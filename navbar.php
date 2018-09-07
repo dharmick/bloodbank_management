@@ -5,8 +5,8 @@
         background-color: white; 
         width: 100%;
         display: block;
-		position: fixed;
-		top:0;
+		    position: fixed;
+		    top:0;
         margin: 0px auto;
         padding-top: 10px;
         padding-bottom: 10px;
@@ -15,7 +15,7 @@
     </head>
     <body>
   <div id="nav-main">
-    <img src="./images/logo.png" alt="Blood Bank" height="75" style="margin-left: 5px;">
+    <img src="./images/logo.png" alt="Blood Bank" height="65" style="margin-left: 5px;">
     <ul>
       <li  class = "tab current" ><a href="index.php">HOME</a></li>
       <li  class = "tab"><a href="#">ABOUT US</a></li>

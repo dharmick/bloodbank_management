@@ -9,7 +9,7 @@
     font-family: 'Verdana', sans-serif;
     color: #FFFFFF;
     padding: 20px;
-    position:fixed;
+    position:relative;
     bottom:0;
     left:0;
     right:0;
