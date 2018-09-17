@@ -63,7 +63,7 @@
 
 <?php include('./sidenav.php')?>
   <div id="main">
-		<?php include('./horizontal-nav.php')?>
+    <?php include('./horizontal-nav.php')?>
     <div class="box">
       <div class="table-responsive">
         <table class="table table-bordered ">

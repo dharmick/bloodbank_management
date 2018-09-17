@@ -60,7 +60,7 @@
 }
 
 #navbar.reduce {
-  width:82%;
+  width:81vw;
 }
 
 .avatar-wrapper {
@@ -100,6 +100,12 @@
   .sidenav a {font-size: 18px;}
 }
 
+.current {
+  color: #ad1457;
+  background: #f4eff2;
+  border-left: 4px solid #ad1457;
+}
+
 </style>
 
 <div id="mySidenav" class="sidenav">
@@ -110,9 +116,9 @@
     </div>
   </div>
   <div class="borderl">
-  <a href="#">View Donor Status</a>
-  <a href="#">Donation Form</a>
-  <a href="#">Logout</a>
+  <a href="rp.php" class="tab">View Donor Status</a>
+  <a href="donationform.php" class="tab">Donation Form</a>
+  <a href="#" class="tab">Logout</a>
 </div>
 </div>
 
