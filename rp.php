@@ -4,7 +4,7 @@
 	<title>Blood Bank</title>
 
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -19,19 +19,20 @@
   <link rel="shortcut icon" href="./images/favicon.png">
 
   <style type="text/css">
-  	#nav-main {
-    background-color: transparent; 
+  	/* #nav-main {
+    background-color: transparent;
     width: 100%;
     display: block;
     margin: 0px auto;
     padding-top: 10px;
     padding-bottom: 10px;
-    }
+    } */
     .box {
       box-shadow: 0 0 10px 0 rgba(0,0,0,0.3);
       margin-top: 0px;
       padding: 15px;
       border-radius: 5px;
+			margin: 20px;
     }
     table {
     	border: 2px solid #ad1457 !important;
@@ -57,15 +58,10 @@
   </style>
 </head>
 <body>
-	<div id="nav-main">
-    <img src="./images/logo.png" alt="Blood Bank" height="75" style="margin-left: 5px;">
-    <ul>
-      <li  class = "tab current"><a href="rp.php">View Donor Status</a></li>
-      <li  class = "tab"><a href="#">Donation Form</a></li>
-      <li  class = "tab"><a href="#">LOGOUT</a></li>
-    </ul>
-  </div>
-  <div class="container">
+
+<?php include('./sidenav.php')?>
+  <div id="main">
+		<?php include('./horizontal-nav.php')?>
     <div class="box">
       <div class="table-responsive">
         <table class="table table-bordered ">
@@ -226,11 +222,12 @@
         </table>
       </div>
     </div>
+		<!--footer-->
+	 <?php include_once("footer.php") ?>
+	  <!--footer ends-->
   </div>
 
-  <!--footer-->
- <?php include_once("footer.php") ?>
-  <!--footer ends-->
+
 
   <script type="text/javascript">
     var header = document.getElementById("nav-main");
