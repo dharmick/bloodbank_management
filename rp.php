@@ -15,6 +15,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
   <link rel="stylesheet" type="text/css" href="./css/navbar_style.css">
+  <link rel="stylesheet" type="text/css" href="./css/main.css">
 
   <link rel="shortcut icon" href="./images/favicon.png">
 
@@ -33,6 +34,7 @@
       padding: 15px;
       border-radius: 5px;
 			margin: 20px;
+      margin-top: 68px;
     }
     table {
     	border: 2px solid #ad1457 !important;
@@ -52,7 +54,7 @@
     }
     tr:hover
     {
-    	background-color: #efe8eb;
+    	background-color: #efe8dc;
     	color: #ad1457;
     }
   </style>
@@ -109,17 +111,6 @@
           <td>15/08/2018</td>
           <td>Accepted</td>
         </tr>
-        <!--  <tr>
-          <td>Parth</td>
-          <td>7977263730</td>
-          <td>Male</td>
-          <td>parth.js@somaiya.edu</td>
-          <td>20</td>
-          <td>65</td>
-          <td>O+</td>
-          <td>15/08/2018</td>
-          <td>Accepted</td>
-        </tr>
          <tr>
           <td>Parth</td>
           <td>7977263730</td>
@@ -142,7 +133,7 @@
           <td>15/08/2018</td>
           <td>Accepted</td>
         </tr>
-        <tr>
+         <tr>
           <td>Parth</td>
           <td>7977263730</td>
           <td>Male</td>
@@ -174,8 +165,19 @@
           <td>O+</td>
           <td>15/08/2018</td>
           <td>Accepted</td>
-        </tr> -->
-       <!--  <tr>
+        </tr>
+        <tr>
+          <td>Parth</td>
+          <td>7977263730</td>
+          <td>Male</td>
+          <td>parth.js@somaiya.edu</td>
+          <td>20</td>
+          <td>65</td>
+          <td>O+</td>
+          <td>15/08/2018</td>
+          <td>Accepted</td>
+        </tr>
+        <tr>
           <td>Parth</td>
           <td>7977263730</td>
           <td>Male</td>
@@ -218,7 +220,7 @@
           <td>O+</td>
           <td>15/08/2018</td>
           <td>Accepted</td>
-        </tr> -->
+        </tr>
         </table>
       </div>
     </div>

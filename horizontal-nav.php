@@ -5,10 +5,14 @@ ul {
   padding: 0;
   overflow: hidden;
   background-color: #fff;
+  position: fixed;
+  top:0;
+  width: 100%;
 }
 
 .custom-nav {
   margin-bottom: 20px;
+  /*padding:2px 0;*/
   /* box-shadow: 0 2px 4px 0 rgba(0,0,0,.1); */
 }
 
@@ -19,7 +23,7 @@ li {
 
 li a {
   display: block;
-  color: #ad1457;
+  color: #ad1459;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -28,9 +32,9 @@ li a {
 
 /* Change the link color to #111 (black) on hover */
 li a:hover {
-  background-color: #555;
+  background-color: #ad1457;
   text-decoration: none;
-  color: #ddd;
+  color: #fff;
 }
 
 .glyphicon-menu-hamburger {
@@ -41,13 +45,13 @@ li a:hover {
 </style>
 
 <div class="custom-nav">
-  <ul>
+  <ul id="navbar">
     <!-- Use any element to open the sidenav -->
     <li style="float: left"><a onclick="toggleNav()"><span class="glyphicon glyphicon-menu-hamburger"></span></a></li>
     <li style="float: left"><img src="./images/logo.png" alt="Blood Bank" height="57"></li>
     <!-- <li><a href="default.asp">Home</a></li>
     <li><a href="news.asp">News</a></li>
     <li><a href="contact.asp">Contact</a></li> -->
-    <li><a href="#">Logout</a></li>
+    <li><a href="#" style="font-family: Verdana, sans-serif;"><b>Logout</b></a></li>
   </ul>
 </div>

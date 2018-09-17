@@ -12,6 +12,7 @@
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
   white-space: nowrap ;
+  font-family: verdana, sans-serif;
 }
 
 /* The navigation menu links */
@@ -19,7 +20,7 @@
   padding: 8px 8px 8px 12px;
   text-decoration: none;
   font-size: 20px;
-  color: #818181;
+  color: #666262;
   display: block;
   transition: 0.3s;
 }
@@ -27,7 +28,8 @@
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
   color: #ad1457;
-  background: #fafafa;
+  background: #f4eff2;
+  border-left: 4px solid #ad1457;
 }
 
 /* Position and style the close button (top right corner) */
@@ -46,22 +48,31 @@
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
   transition: margin-left .5s;
+  /*position: relative;*/
 }
 
 #main.shrink {
   margin-left: 250px;
 }
 
+#navbar {
+  transition: width .5s;
+}
+
+#navbar.reduce {
+  width:82%;
+}
+
 .avatar-wrapper {
   height: 150px;
-  background: #555;
+  background: #a8215c;
   position: relative;
   padding: 10px;
 }
 
 .avatar-wrapper h6 {
   font-size: 20px;
-  color: #eee;
+  color: #f7f7f7;
   font-weight: bold;
   margin-top: 20px;
 }
@@ -80,23 +91,29 @@
   border-radius: 50%;
 }
 
+.borderl{
+  border-right: 4px solid #ad1457;
+}
+
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
   .sidenav a {font-size: 18px;}
 }
-</style>
 
+</style>
 
 <div id="mySidenav" class="sidenav">
   <div class="avatar-wrapper">
     <h6>Dharmik Joshi</h6>
     <div class="avatar">
-      <img src="./images/boy.png" height="50" alt="avatar">
+      <img src="./images/male.png" height="50" alt="avatar">
     </div>
   </div>
+  <div class="borderl">
   <a href="#">View Donor Status</a>
   <a href="#">Donation Form</a>
   <a href="#">Logout</a>
+</div>
 </div>
 
 
@@ -105,5 +122,6 @@
 function toggleNav() {
   $('#mySidenav').toggleClass('open-sidenav');
   $('#main').toggleClass('shrink');
+  $('#navbar').toggleClass('reduce');
 }
 </script>
