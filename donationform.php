@@ -29,10 +29,19 @@
       border-radius: 10px;
       transition: .05s ease-in-out;
     }
-    .btn:hover {
+   /* .btn:hover {
       background-color: #9e0045;
       color: white;
       transform: scale(1.05);
+      box-shadow: 0 0 10px 0 #d32e77;
+    }*/
+
+    .dform button[type="submit"]:hover, .dform button[type="submit"]:active{
+      background-color: #a01150;
+      color: white;
+      box-shadow: 0 0 10px 0 #d32e77;
+      transform: scale(1.05);
+      outline: 0 none !important;
     }
     .panel-primary {
       border-color: #ad1457;
@@ -45,13 +54,34 @@
    .col-md-8 {
     /*z-index: -1 !important;*/
    }
+
+   .dform input:focus{
+      outline: 0 none !important;
+      box-shadow: 0 0px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(173, 20, 87,0.6);
+      border-color:  rgba(173, 20, 87,0.6);
+    } 
+
+     .dform textarea:focus{
+      outline: 0 none !important;
+      box-shadow: 0 0px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(173, 20, 87,0.6);
+      border-color:  rgba(173, 20, 87,0.6);
+    } 
+     .dform select:focus{
+      outline: 0 none !important;
+      box-shadow: 0 0px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(173, 20, 87,0.6);
+      border-color:  rgba(173, 20, 87,0.6);
+    }
+    .dform option:hover{
+      background-color: #ad1457;
+      color: white;
+    }
   </style>
 </head>
 
 <body>
 
 <?php include('./sidenav.php')?>
-<div id="main">
+<div id="main" class="shrink">
   <?php include('./horizontal-nav.php')?>  
  <div class="container">   
  <div class= "col-md-8" style="margin-top: 50px;">
@@ -78,7 +108,7 @@
                 <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> Male
             </label>
             &nbsp; <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>Female
+                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> Female
             </label>
             </div>
             <div class="form-group has-feedback">

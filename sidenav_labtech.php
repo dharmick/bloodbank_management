@@ -116,8 +116,7 @@
     </div>
   </div>
   <div class="borderl">
-  <a href="rp.php" class="tab">View Donor Status</a>
-  <a href="donationform.php" class="tab">Donation Form</a>
+  <a href="lt.php" class="tab">View Donors</a>
   <a href="index.php" class="tab">Logout</a>
 </div>
 </div>

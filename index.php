@@ -31,13 +31,13 @@
       line-height: 22px;
     }
    
-    #footer {
+   /* #footer {
     background: #ad1457;
     height: 60px;
     font-family: 'Verdana', sans-serif;
     color: #FFFFFF;
     padding: 20px;
-    }
+    }*/
     .valign
     {
     font-family: 'Verdana', sans-serif;

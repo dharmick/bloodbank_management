@@ -46,7 +46,7 @@ li a:hover {
 </style>
 
 <div class="custom-nav">
-  <ul id="navbar">
+  <ul id="navbar" class="reduce">
     <!-- Use any element to open the sidenav -->
     <li style="float: left"><a onclick="toggleNav()"><span class="glyphicon glyphicon-menu-hamburger"></span></a></li>
     <li style="float: left"><img src="./images/logo.png" alt="Blood Bank" height="57"></li>

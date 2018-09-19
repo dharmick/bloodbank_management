@@ -62,7 +62,7 @@
 <body>
 
 <?php include('./sidenav.php')?>
-  <div id="main">
+  <div id="main" class="shrink">
     <?php include('./horizontal-nav.php')?>
     <div class="box">
       <div class="table-responsive">
