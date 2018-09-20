@@ -19,12 +19,260 @@
 
   <link rel="shortcut icon" href="./images/favicon.png">
 
-  <style type="text/css"></style>
+  <style type="text/css">
+     .box {
+      box-shadow: 0 0 10px 0 rgba(0,0,0,0.3);
+      margin-top: 0px;
+      padding: 15px;
+      border-radius: 5px;
+      margin: 20px;
+      margin-top: 68px;
+    }
+    table {
+      border: 2px solid #ad1457 !important;
+      font-family: 'Verdana', sans-serif;
+      margin-bottom: 0px !important;
+    }
+    th {
+      background-color: #ad1457;
+      color: white;
+      cursor: pointer;
+    }
+    th, td {
+
+      padding: 12px !important;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    tr:hover
+    {
+      background-color: #efe8dc;
+      color: #ad1457;
+    }
+    .btn-primary {
+      color: #fff !important;
+      background-color: #ad1457 !important;
+      border-color: #ad1457 !important;
+    }
+     .btn-primary:hover {
+      color: #fff !important;
+      background-color: #93134b !important;
+      border-color: #93134b !important;
+    }
+  </style>
 </head>
 <body>
   
   <?php include('./sidenav_labtech.php')?>
   <div id="main" class="shrink">
     <?php include('./horizontal-nav.php')?>
+    <div class="box">
+      <div class="table-responsive">
+        <table class="table table-bordered ">
+          <thead>
+          <tr>
+            <!-- <th><b>#</b> <i class="fa fa-fw fa-sort"></i></th> -->
+            <th>Name <i class="glyphicon glyphicon-sort"></i></th>
+            <th>Contact &nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-sort"></i></th>
+            <th>Gender <i class="glyphicon glyphicon-sort"></i></th>
+            <th>Email Id <i class="glyphicon glyphicon-sort"></i></th>
+            <th>Age <i class="glyphicon glyphicon-sort"></i></th>
+            <th>Weight <i class="glyphicon glyphicon-sort"></i></th>
+            <th>Blood Group <i class="glyphicon glyphicon-sort"></i></th>
+            <th>Date <i class="glyphicon glyphicon-sort"></i></th>
+            <th>Status <i class="glyphicon glyphicon-sort"></i></th>
+            <th>Edit</th>
+          </tr>
+          </thead>
+         <tr>
+          <td>Parth</td>
+          <td>7977263730</td>
+          <td>Male</td>
+          <td>parth.js@somaiya.edu</td>
+          <td>20</td>
+          <td>65</td>
+          <td>O+</td>
+          <td>15/08/2018</td>
+          <td>Accepted</td>
+          <td><button type = 'submit' class = 'btn btn-primary btn-sm'>
+                <span class='glyphicon glyphicon-edit'></span>
+          </button></td>
+        </tr>
+         <tr>
+          <td>Parth</td>
+          <td>7977263730</td>
+          <td>Male</td>
+          <td>parth.js@somaiya.edu</td>
+          <td>20</td>
+          <td>65</td>
+          <td>O+</td>
+          <td>15/08/2018</td>
+          <td>Accepted</td>
+          <td><button type = 'submit' class = 'btn btn-primary btn-sm'>
+                <span class='glyphicon glyphicon-edit'></span>
+          </button></td>
+        </tr>
+         <tr>
+          <td>Parth</td>
+          <td>7977263730</td>
+          <td>Male</td>
+          <td>parth.js@somaiya.edu</td>
+          <td>20</td>
+          <td>65</td>
+          <td>O+</td>
+          <td>15/08/2018</td>
+          <td>Accepted</td>
+          <td><button type = 'submit' class = 'btn btn-primary btn-sm'>
+                <span class='glyphicon glyphicon-edit'></span>
+          </button></td>
+        </tr>
+         <tr>
+          <td>Parth</td>
+          <td>7977263730</td>
+          <td>Male</td>
+          <td>parth.js@somaiya.edu</td>
+          <td>20</td>
+          <td>65</td>
+          <td>O+</td>
+          <td>15/08/2018</td>
+          <td>Accepted</td>
+          <td><button type = 'submit' class = 'btn btn-primary btn-sm'>
+                <span class='glyphicon glyphicon-edit'></span>
+          </button></td>
+        </tr>
+         <tr>
+          <td>Parth</td>
+          <td>7977263730</td>
+          <td>Male</td>
+          <td>parth.js@somaiya.edu</td>
+          <td>20</td>
+          <td>65</td>
+          <td>O+</td>
+          <td>15/08/2018</td>
+          <td>Accepted</td>
+          <td><button type = 'submit' class = 'btn btn-primary btn-sm'>
+                <span class='glyphicon glyphicon-edit'></span>
+          </button></td>
+        </tr>
+         <tr>
+          <td>Parth</td>
+          <td>7977263730</td>
+          <td>Male</td>
+          <td>parth.js@somaiya.edu</td>
+          <td>20</td>
+          <td>65</td>
+          <td>O+</td>
+          <td>15/08/2018</td>
+          <td>Accepted</td>
+          <td><button type = 'submit' class = 'btn btn-primary btn-sm'>
+                <span class='glyphicon glyphicon-edit'></span>
+          </button></td>
+        </tr>
+        <tr>
+          <td>Parth</td>
+          <td>7977263730</td>
+          <td>Male</td>
+          <td>parth.js@somaiya.edu</td>
+          <td>20</td>
+          <td>65</td>
+          <td>O+</td>
+          <td>15/08/2018</td>
+          <td>Accepted</td>
+          <td><button type = 'submit' class = 'btn btn-primary btn-sm'>
+                <span class='glyphicon glyphicon-edit'></span>
+          </button></td>
+        </tr>
+        <tr>
+          <td>Parth</td>
+          <td>7977263730</td>
+          <td>Male</td>
+          <td>parth.js@somaiya.edu</td>
+          <td>20</td>
+          <td>65</td>
+          <td>O+</td>
+          <td>15/08/2018</td>
+          <td>Accepted</td>
+          <td><button type = 'submit' class = 'btn btn-primary btn-sm'>
+                <span class='glyphicon glyphicon-edit'></span>
+          </button></td>
+        </tr>
+        <tr>
+          <td>Parth</td>
+          <td>7977263730</td>
+          <td>Male</td>
+          <td>parth.js@somaiya.edu</td>
+          <td>20</td>
+          <td>65</td>
+          <td>O+</td>
+          <td>15/08/2018</td>
+          <td>Accepted</td>
+          <td><button type = 'submit' class = 'btn btn-primary btn-sm'>
+                <span class='glyphicon glyphicon-edit'></span>
+          </button></td>
+        </tr>
+        <tr>
+          <td>Parth</td>
+          <td>7977263730</td>
+          <td>Male</td>
+          <td>parth.js@somaiya.edu</td>
+          <td>20</td>
+          <td>65</td>
+          <td>O+</td>
+          <td>15/08/2018</td>
+          <td>Accepted</td>
+          <td><button type = 'submit' class = 'btn btn-primary btn-sm'>
+                <span class='glyphicon glyphicon-edit'></span>
+          </button></td>
+        </tr>
+            <tr>
+          <td>Parth</td>
+          <td>7977263730</td>
+          <td>Male</td>
+          <td>parth.js@somaiya.edu</td>
+          <td>20</td>
+          <td>65</td>
+          <td>O+</td>
+          <td>15/08/2018</td>
+          <td>Accepted</td>
+          <td><button type = 'submit' class = 'btn btn-primary btn-sm'>
+                <span class='glyphicon glyphicon-edit'></span>
+          </button></td>
+        </tr>
+            <tr>
+          <td>Parth</td>
+          <td>7977263730</td>
+          <td>Male</td>
+          <td>parth.js@somaiya.edu</td>
+          <td>20</td>
+          <td>65</td>
+          <td>O+</td>
+          <td>15/08/2018</td>
+          <td>Accepted</td>
+          <td><button type = 'submit' class = 'btn btn-primary btn-sm'>
+                <span class='glyphicon glyphicon-edit'></span>
+          </button></td>
+        </tr>
+            <tr>
+          <td>Parth</td>
+          <td>7977263730</td>
+          <td>Male</td>
+          <td>parth.js@somaiya.edu</td>
+          <td>20</td>
+          <td>65</td>
+          <td>O+</td>
+          <td>15/08/2018</td>
+          <td>Accepted</td>
+          <td><button type = 'submit' class = 'btn btn-primary btn-sm'>
+                <span class='glyphicon glyphicon-edit'></span>
+          </button></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+    <!--footer-->
+   <?php include_once("footer.php") ?>
+    <!--footer ends-->
+  </div>
   </div>
 </body>

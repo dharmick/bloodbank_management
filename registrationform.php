@@ -11,6 +11,10 @@
   <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+  <link href="https://fonts.googleapis.com/css?family=Lato:900" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="./css/main.css">
+
   <link rel="shortcut icon" href="./images/favicon.png">
   <!-- <link rel="stylesheet" type="text/css" href="./css/main.css"> -->
 
@@ -75,6 +79,11 @@
       background-color: #ad1457;
       color: white;
     }
+
+    .log {
+      box-shadow: 0 0 10px 0 rgba(0,0,0,0.3);
+      font-family: Lato;
+    }
   </style>
 </head>
 
@@ -83,10 +92,10 @@
 <?php include('./sidenav.php')?>
 <div id="main" class="shrink">
   <?php include('./horizontal-nav.php')?>  
- <div class="container">   
+ <div class="">   
  <div class= "col-md-8" style="margin-top: 50px;">
     <div class="panel panel-primary">
-      <div class="panel-heading"><b>Donation Form</b></div>
+      <div class="panel-heading" style="font-family: Lato;"><b>Registration Form</b></div>
         <div class="panel-body log">
           <div class="dform">
           <form id="form1">

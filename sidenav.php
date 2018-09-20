@@ -1,3 +1,6 @@
+
+<link href="https://fonts.googleapis.com/css?family=Lato:900" rel="stylesheet">
+
 <style media="screen">
 /* The side navigation menu */
 .sidenav {
@@ -12,15 +15,15 @@
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
   white-space: nowrap ;
-  font-family: verdana, sans-serif;
+  font-family: Lato;
 }
 
 /* The navigation menu links */
 .sidenav a {
   padding: 8px 8px 8px 12px;
   text-decoration: none;
-  font-size: 20px;
-  color: #666262;
+  font-size: 18px;
+  color: #777373;
   display: block;
   transition: 0.3s;
 }
@@ -117,7 +120,7 @@
   </div>
   <div class="borderl">
   <a href="rp.php" class="tab">View Donor Status</a>
-  <a href="donationform.php" class="tab">Donation Form</a>
+  <a href="registrationform.php" class="tab">Donation Form</a>
   <a href="index.php" class="tab">Logout</a>
 </div>
 </div>

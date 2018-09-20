@@ -1,3 +1,5 @@
+<link href="https://fonts.googleapis.com/css?family=Lato:900" rel="stylesheet">
+
 <style media="screen">
 ul {
   list-style-type: none;
@@ -53,6 +55,6 @@ li a:hover {
     <!-- <li><a href="default.asp">Home</a></li>
     <li><a href="news.asp">News</a></li>
     <li><a href="contact.asp">Contact</a></li> -->
-    <li><a href="#" style="font-family: Verdana, sans-serif;"><b>Logout</b></a></li>
+    <li><a href="#" style="font-family: Lato;"><b>Logout</b></a></li>
   </ul>
 </div>

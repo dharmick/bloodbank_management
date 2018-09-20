@@ -44,6 +44,7 @@
     th {
     	background-color: #ad1457;
     	color: white;
+      cursor: pointer;
     }
     th, td {
 
