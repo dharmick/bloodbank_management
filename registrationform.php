@@ -75,9 +75,9 @@
       box-shadow: 0 0px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(173, 20, 87,0.6);
       border-color:  rgba(173, 20, 87,0.6);
     }
-    .dform option:hover{
-      background-color: #ad1457;
-      color: white;
+    .dform select option:hover{
+      background-color: #ad1457 !important;
+      color: white !important;
     }
 
     .log {
@@ -93,7 +93,7 @@
 <div id="main" class="shrink">
   <?php include('./horizontal-nav.php')?>  
  <div class="">   
- <div class= "col-md-8" style="margin-top: 50px;">
+ <div class= "col-md-8 col-md-offset-2" style="margin-top: 50px;">
     <div class="panel panel-primary">
       <div class="panel-heading" style="font-family: Lato;"><b>Registration Form</b></div>
         <div class="panel-body log">
