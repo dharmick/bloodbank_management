@@ -33,6 +33,9 @@
       font-family: 'Verdana', sans-serif;
       margin-bottom: 0px !important;
     }
+    .table-bordered>thead>tr>th {
+    border: 1px solid #ddd !important;
+	}
     th {
       background-color: #ad1457;
       color: white;
@@ -72,7 +75,6 @@
         <table class="table table-bordered ">
           <thead>
           <tr>
-            <!-- <th><b>#</b> <i class="fa fa-fw fa-sort"></i></th> -->
             <th>Name <i class="glyphicon glyphicon-sort"></i></th>
             <th>Contact &nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-sort"></i></th>
             <th>Gender <i class="glyphicon glyphicon-sort"></i></th>

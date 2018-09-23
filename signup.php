@@ -93,7 +93,7 @@
 <div id="main" class="shrink">
   <?php include('./horizontal-nav.php')?>  
  <div class="">   
- <div class= "col-md-8" style="margin-top: 50px;">
+ <div class= "col-md-8 col-md-offset-2" style="margin-top: 50px;">
     <div class="panel panel-primary">
       <div class="panel-heading" style="font-family: Lato;"><b>
       Sign up Form</b></div>
