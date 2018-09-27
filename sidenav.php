@@ -63,7 +63,7 @@
 }
 
 #navbar.reduce {
-  width:81vw;
+  width:calc(100% - 250px);
 }
 
 .avatar-wrapper {
@@ -96,6 +96,7 @@
 
 .borderl{
   border-right: 4px solid #ad1457;
+  height: 100%;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
@@ -112,17 +113,19 @@
 </style>
 
 <div id="mySidenav" class="sidenav open-sidenav">
-  <div class="avatar-wrapper">
-    <h6>Dharmik Joshi</h6>
-    <div class="avatar">
-      <img src="./images/male.png" height="50" alt="avatar">
-    </div>
-  </div>
   <div class="borderl">
-  <a href="rp.php" class="tab">View Donor Status</a>
-  <a href="registrationform.php" class="tab">Donation Form</a>
-  <a href="index.php" class="tab">Logout</a>
-</div>
+    <div class="avatar-wrapper">
+        <h6>Dharmik Joshi</h6>
+        <div class="avatar">
+          <img src="./images/male.png" height="50" alt="avatar">
+        </div>
+      </div>
+      <div class="">
+      <a href="rp.php" class="tab">View Donor Status</a>
+      <a href="registrationform.php" class="tab">Donation Form</a>
+      <a href="index.php" class="tab">Logout</a>
+    </div>   
+  </div>
 </div>
 
 

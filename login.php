@@ -6,6 +6,8 @@
 	 <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+  <link rel="stylesheet" href="./css/main.css">
+
   <!-- jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -91,18 +93,46 @@
 			box-shadow: 0 0px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(173, 20, 87,0.6);
 			border-color:  rgba(173, 20, 87,0.6);
 		} 
+		.hover-scale{
+			position: absolute;
+			top: 35px;
+			left: 35px;
+			font-size: 20px;
+			color: #ad1457;
+			
+		}
+		.hover-scale:before {
+			width: 40px;
+			height: 40px;
+			transform: translate(-9px,-9px) scale(0.7);
+			content: "";
+			border-radius: 50%;
+			position: absolute;
+			background: #ccc;
+			transition: all 250ms;
+			opacity: 0;
+		}
+		.hover-scale:hover:before {
+			transform: translate(-9px,-9px) scale(1);
+			opacity: 1;
+		}
 	</style>
 </head>
 <body>
 	<section class="login">
+		<div class="hover-scale">
+			<span class="glyphicon glyphicon-arrow-left"></span>
+		</div>
+		
 		<form action="">
 			<h2>Login</h2>
 			<div class="form-group">
-  			 <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+  			 <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" autocomplete="false">
   			</div>
  			 <div class="form-group">
     		<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
     		</div>
+    		<a href="#">Forgot Password</a>
     		<button type="submit" class="btn">Login</button>
 		</form>
 	</section>
