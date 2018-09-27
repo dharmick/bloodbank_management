@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
 	<title> Sign up Form </title>
@@ -120,10 +120,15 @@
             &nbsp; <label>
                 <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> Female
             </label>
-            </div>
             <div class="form-group has-feedback">
-            <label for="Age">Age:</label>
-            <input type="text" class="form-control" id= "Age" placeholder="Age" name="age">
+            <label for="Position">Position:</label>
+             <select class="form-control"  style="width: 95%;">
+                <option>Bloodbank Admin</option>
+                <option>Lab Assistant</option>
+                <option>Receptionist</option>
+                <option>Staff</option>
+                <option>Hospital Admin</option>
+                 </select>
             </div>
             <div class="form-group has-feedback">
             <label for="Email">Email:</label>
