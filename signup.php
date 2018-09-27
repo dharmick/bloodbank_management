@@ -1,3 +1,89 @@
+<?php
+ob_start();
+session_start(); 
+include_once("connection.php");
+?>
+
+<?php
+
+if(isset($_POST['sign']))
+{
+	$fname = $_POST['name'];
+	$mob = $_POST['contact'];
+	$address = $_POST['address'];
+	$gender = $_POST['gender'];
+	$position = $_POST['post'];
+	$email = $_POST['email'];
+
+	$query = "INSERT INTO person(Name,Contact,Address,Gender) values ('$fname','$mob','$address','$gender')";
+	if(mysqli_query($conn,$query))
+	{
+		$flag = 1;
+	}
+
+	if($flag == 1)
+	{
+
+		$query = "SELECT P_id from person where Contact = '$mob'";
+		$result = mysqli_query($conn,$query);
+		if($result);
+		{
+		$row =mysqli_fetch_assoc($result);
+		$pid = $row['P_id'];
+		}
+
+			$query = "INSERT INTO employees(P_id,Emp_email,Post_id) values ('$pid','$email','$position')";
+			if(mysqli_query($conn,$query))
+			{
+				echo "<script>alert('Sign Up successful')</script>";
+				$success=1;
+				$_SESSION['success'] = $success;
+			}
+	}
+}
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  <!DOCTYPE html>
 <html>
 <head>
@@ -101,7 +187,7 @@
       Sign up Form</b></div>
         <div class="panel-body log">
           <div class="dform">
-          <form id="form1">
+          <form id="form1" role="form" action="" method="post">
             <div class="form-group has-feedback">
             <label for="Name">Name:</label>
             <input type="text" class="form-control" id= "Name" name="name" placeholder="Name">
@@ -117,19 +203,17 @@
             <div class="form-group has-feedback">
             <label for="Gender">Gender:</label>
             &nbsp; <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> Male
+                <input type="radio" name="gender" id="optionsRadios1" value="Male" checked> Male
             </label>
             &nbsp; <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> Female
+                <input type="radio" name="gender" id="optionsRadios1" value="Female"> Female
             </label>
             <div class="form-group has-feedback">
             <label for="Position">Position:</label>
-             <select class="form-control"  style="width: 95%;">
-                <option>Bloodbank Admin</option>
-                <option>Lab Assistant</option>
-                <option>Receptionist</option>
-                <option>Staff</option>
-                <option>Hospital Admin</option>
+             <select name="post" class="form-control"  style="width: 95%;">
+                <option value="2">Lab Assistant</option>
+                <option value="3">Receptionist</option>
+                <option value="4">Delivery Staff</option>
                  </select>
             </div>
             <div class="form-group has-feedback">
@@ -138,7 +222,7 @@
             </div>
             
             
-            <button type="submit" class="btn" style="margin-bottom: 15px;">Submit</button>
+            <button type="submit" class="btn" style="margin-bottom: 15px;" name="sign">Submit</button>
           </form>
         </div>
     </div>
