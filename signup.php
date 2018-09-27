@@ -21,7 +21,9 @@
 
   <style type="text/css">
   
-    .panel-primary>.panel-heading {
+  
+  
+    .panel-primary>.panel-heading  {
       background-color: #ad1457;
       color: white;
       border-color: #ad1457;
