@@ -1,3 +1,38 @@
+<?php
+ob_start();
+session_start(); 
+include_once("connection.php");
+?>
+
+<?php
+
+date_default_timezone_set("Asia/Kolkata");
+
+if(isset($_POST['submit']))
+{
+  $hname = $_POST['hname'];
+  $mob = $_POST['contact'];
+  $address = $_POST['address'];
+
+  $query = "INSERT INTO hospitals(Hospital_name,address,Contact) values ('$hname','$address','$mob')";
+  if(mysqli_query($conn,$query))
+  {
+    echo "<script>alert('Registration successful')</script>";
+  }
+}
+
+?>
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -98,10 +133,10 @@
       <div class="panel-heading" style="font-family: Lato;"><b>Hospital Sign up Form</b></div>
         <div class="panel-body log">
           <div class="dform">
-          <form id="form1">
+          <form id="form1" role="form" action="" method="POST">
             <div class="form-group has-feedback">
             <label for="HospitalName">Hospital Name:</label>
-            <input type="text" class="form-control" id= "HospitalName" name="Hospitalname" placeholder="Name">
+            <input type="text" class="form-control" id= "HospitalName" name="hname" placeholder="Name">
             </div>
 
             <div class="form-group has-feedback">
@@ -113,11 +148,11 @@
             <textarea style="width: 95%;" type="text" class="form-control" id= "Address" placeholder="Address" name="address"></textarea>
             </div>
             <div class="form-group has-feedback">
-        <label class="control-label">Upload Registration certificate</label>
-        <input type="file" class="filestyle" data-buttonText="Select a File">
-    </div>
+              <label class="control-label">Upload &nbsp;Registration &nbsp;certificate</label>
+              <input type="file" class="filestyle" data-buttonText="Select a File">
+            </div>
             
-            <button type="submit" class="btn" style="margin-bottom: 15px;">Submit</button>
+            <button type="submit" class="btn" style="margin-bottom: 15px;" name="submit">Submit</button>
           </form>
         </div>
     </div>

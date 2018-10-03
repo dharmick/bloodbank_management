@@ -62,29 +62,7 @@ if(isset($_POST['sign']))
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title> Sign up Form </title>

@@ -1,3 +1,29 @@
+<?php
+ob_start();
+session_start(); 
+include_once("connection.php");
+?>
+
+<?php
+
+date_default_timezone_set("Asia/Kolkata");
+
+
+
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -98,7 +124,7 @@
       <div class="panel-heading" style="font-family: Lato;"><b>Lab Technician Form</b></div>
         <div class="panel-body log">
           <div class="dform">
-          <form id="form1">
+          <form id="form1" role="" action="" method="POST">
             <div class="form-group has-feedback">
             <label for="Name">Name:</label>
             <input type="text" class="form-control" id= "Name" name="name" placeholder="Name">
@@ -114,10 +140,10 @@
             <div class="form-group has-feedback">
             <label for="Gender">Gender:</label>
             &nbsp; <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> Male
+                <input type="radio" name="gender" id="optionsRadios1" value="Male" checked> Male
             </label>
             &nbsp; <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> Female
+                <input type="radio" name="gender" id="optionsRadios1" value="Female"> Female
             </label>
             </div>
             <div class="form-group has-feedback">
@@ -134,17 +160,26 @@
             </div>
             <div class="form-group has-feedback">
             <label for="Blood Group">Blood Group:</label>
-             <select class="form-control"  style="width: 95%;">
-                <option>A+</option>
-                <option>B+</option>
-                <option>AB+</option>
-                <option>A-</option>
-                <option>B-</option>
-                 <option>AB-</option>
-                <option>O+</option>
-                <option>O-</option>
+             <select class="form-control" name="bg" style="width: 95%;">
+                <option value="A+">A+</option>
+                <option value="B+">B+</option>
+                <option value="AB+">AB+</option>
+                <option value="A-">A-</option>
+                <option value="B-">B-</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
               </select>
             </div>
+
+            <div class="form-group has-feedback">
+            <label for="status">Status:</label>
+             <select class="form-control" name="status" style="width: 95%;">
+                <option value="Pending" disabled selected="Pending">Pending</option>
+                <option value="Accepted">Accepted</option>
+                <option value="Rejected">Rejected</option>
+              </select>
+            </div>  
             
             <div class="form-group has-feedback">
             <label for="RBC">RBC:</label>
@@ -159,28 +194,20 @@
 
             <div class="form-group has-feedback">
             <label for="Haemoglobin">Haemoglobin:</label>
-            <input type="text" class="form-control" id= "Haemoglobin" placeholder="Haemoglobin" name="haemoglobin">
+            <input type="text" class="form-control" id= "Haemoglobin" placeholder="Haemoglobin" name="hb">
             </div>
 
             <div class="form-group has-feedback">
             <label for="Blood-Units">Blood Units:</label>
-            <input type="text" class="form-control" id= "Blood-Units" placeholder="Units in Liter" name="blood_units">
+            <input type="text" class="form-control" id= "Blood-Units" placeholder="Units in Liter" name="units">
             </div>
 
             <div class="form-group has-feedback">
             <label for="Comments">Comments:</label>
-            <input type="text" class="form-control" id= "Comments" placeholder="Any comments about Donor" name="comments">
+            <input type="text" class="form-control" id= "Comments" placeholder="Any comments about Donor" name="comment">
             </div>
 
-            <div class="form-group has-feedback">
-            <label for="Date">Date:</label>
-            <input type="Date" class="form-control" id= "Date" placeholder="Date" name="date">
-            </div>
-
-
-
-
-            <button type="submit" class="btn" style="margin-bottom: 15px;">Submit</button>
+            <button type="submit" class="btn" style="margin-bottom: 15px;" name="submit">Submit</button>
           </form>
         </div>
     </div>

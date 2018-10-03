@@ -1,3 +1,50 @@
+<?php
+ob_start();
+session_start(); 
+include_once("connection.php");
+?>
+
+<?php
+
+date_default_timezone_set("Asia/Kolkata");
+
+if(isset($_POST['submit']))
+{
+  $hname = $_POST['hname'];
+  $units = $_POST['units'];
+  $bloodgroup = $_POST['bg'];
+  $comment = $_POST['comment'];
+
+  $query = "SELECT Hospital_id from hospitals where Hospital_name = '$hname'";
+  $result = mysqli_query($conn,$query);
+    if($result);
+    {
+    $row =mysqli_fetch_assoc($result);
+    $hid = $row['Hospital_id'];
+    $flag = 1;
+    }
+
+    if($flag == 1)
+    {
+      $query = "INSERT INTO orders(Hospital_id,Units,Blood_group,Comments) values ('$hid','$units','$bloodgroup','$comment')";
+      if(mysqli_query($conn,$query))
+      {
+        echo "<script>alert('Order request sent successfully')</script>";
+      }
+    }
+}
+
+?>
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -98,38 +145,36 @@
       <div class="panel-heading" style="font-family: Lato;"><b>Request Blood</b></div>
         <div class="panel-body log">
           <div class="dform">
-          <form id="form1">
+          <form id="form1" role="" action="" method="POST">
             <div class="form-group has-feedback">
             <label for="HospitalName">Hospital Name:</label>
-            <input type="text" class="form-control" id= "HospitalName" name="Hospitalname" placeholder="Name">
+            <input type="text" class="form-control" id= "HospitalName" placeholder="Name" name="hname">
             </div>
-            <div class="form-group has-feedback">
-            <label for="Contact">Contact No:</label>
-            <input type="text" class="form-control" id= "Contact" placeholder="Contact No." name="contact">
-            </div>
-            <div class="form-group has-feedback">
-            <label for="Address">Address:</label>
-            <textarea style="width: 95%;" type="text" class="form-control" id= "Address" placeholder="Address" name="address"></textarea>
-            </div>
+          
             <div class="form-group has-feedback">
             <label for="Unitsrequired">No of units required:</label>
-            <input type="text" class="form-control" id= "Unitsrequired" placeholder="Enter required number of units in liter" name="Unitsrequired">
+            <input type="text" class="form-control" id= "Unitsrequired" placeholder="Enter required number of units in liter" name="units">
             </div>
             
             <div class="form-group has-feedback">
             <label for="Blood Group">Blood Group:</label>
-             <select class="form-control"  style="width: 95%;">
-                <option>A+</option>
-                <option>B+</option>
-                <option>AB+</option>
-                <option>A-</option>
-                <option>B-</option>
-                 <option>AB-</option>
-                <option>O+</option>
-                <option>O-</option>
+             <select class="form-control" name="bg" style="width: 95%;">
+                <option value="A+">A+</option>
+                <option value="B+">B+</option>
+                <option value="AB+">AB+</option>
+                <option value="A-">A-</option>
+                <option value="B-">B-</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
               </select>
             </div>
-            <button type="submit" class="btn" style="margin-bottom: 15px;">Submit</button>
+
+            <div class="form-group has-feedback">
+            <label for="Address">Comments:</label>
+            <textarea style="width: 95%;" type="text" class="form-control" id= "Address" placeholder="Comments, if any" name="comment"></textarea>
+            </div>
+            <button type="submit" class="btn" style="margin-bottom: 15px;" name="submit">Submit</button>
           </form>
         </div>
     </div>
