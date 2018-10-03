@@ -20,7 +20,7 @@
 
 
   <style type="text/css">
-  
+
     .panel-primary>.panel-heading {
       background-color: #ad1457;
       color: white;
@@ -51,10 +51,6 @@
       border-color: #ad1457;
     }
 
-    .dform input[type="text"], .dform input[type="email"] {
-      width: 95%;
-    }
-
    .col-md-8 {
     /*z-index: -1 !important;*/
    }
@@ -63,13 +59,13 @@
       outline: 0 none !important;
       box-shadow: 0 0px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(173, 20, 87,0.6);
       border-color:  rgba(173, 20, 87,0.6);
-    } 
+    }
 
      .dform textarea:focus{
       outline: 0 none !important;
       box-shadow: 0 0px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(173, 20, 87,0.6);
       border-color:  rgba(173, 20, 87,0.6);
-    } 
+    }
      .dform select:focus{
       outline: 0 none !important;
       box-shadow: 0 0px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(173, 20, 87,0.6);
@@ -84,6 +80,15 @@
       box-shadow: 0 0 10px 0 rgba(0,0,0,0.3);
       font-family: Lato;
     }
+
+		.alert{
+			padding: 0;
+			border-width: 0;
+		}
+
+		.alert p {
+			padding: 5px;
+		}
   </style>
 </head>
 
@@ -91,8 +96,8 @@
 
 <?php include('./sidenav.php')?>
 <div id="main" class="shrink">
-  <?php include('./horizontal-nav.php')?>  
- <div class="">   
+  <?php include('./horizontal-nav.php')?>
+ <div class="">
  <div class= "col-md-8 col-md-offset-2" style="margin-top: 50px;">
     <div class="panel panel-primary">
       <div class="panel-heading" style="font-family: Lato;"><b>Registration Form</b></div>
@@ -100,41 +105,47 @@
           <div class="dform">
           <form id="form1">
             <div class="form-group has-feedback">
-            <label for="Name">Name:</label>
-            <input type="text" class="form-control" id= "Name" name="name" placeholder="Name">
+	            <label for="Name">Name:</label>
+	            <input type="text" class="form-control" id= "Name" name="name" placeholder="Name" required>
+							<div class="alert alert-danger"></div>
             </div>
             <div class="form-group has-feedback">
-            <label for="Contact">Contact No:</label>
-            <input type="text" class="form-control" id= "Contact" placeholder="Contact No." name="contact">
+            	<label for="Contact">Contact No:</label>
+            	<input type="text" class="form-control contact number" id= "Contact" placeholder="Contact No." name="contact" required>
+							<div class="alert alert-danger"></div>
             </div>
             <div class="form-group has-feedback">
-            <label for="Address">Address:</label>
-            <textarea style="width: 95%;" type="text" class="form-control" id= "Address" placeholder="Address" name="address"></textarea>
+	            <label for="Address">Address:</label>
+	            <textarea type="text" class="form-control" id= "Address" placeholder="Address" name="address" required></textarea>
+							<div class="alert alert-danger"></div>
+						</div>
+            <div class="form-group has-feedback">
+	            <label for="Gender">Gender:</label>
+	            &nbsp; <label>
+	                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked  required> Male
+	            </label>
+	            &nbsp; <label>
+	                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"  required> Female
+	            </label>
             </div>
             <div class="form-group has-feedback">
-            <label for="Gender">Gender:</label>
-            &nbsp; <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> Male
-            </label>
-            &nbsp; <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> Female
-            </label>
+	            <label for="Age">Age:</label>
+	            <input type="text" class="form-control number" id= "Age" placeholder="Age" name="age"  required>
+							<div class="alert alert-danger"></div>
             </div>
             <div class="form-group has-feedback">
-            <label for="Age">Age:</label>
-            <input type="text" class="form-control" id= "Age" placeholder="Age" name="age">
+	            <label for="Email">Email:</label>
+	            <input type="email" class="form-control email" id= "Email" placeholder="Email" name="email" required>
+							<div class="alert alert-danger"></div>
             </div>
             <div class="form-group has-feedback">
-            <label for="Email">Email:</label>
-            <input type="email" class="form-control" id= "Email" placeholder="Email" name="email">
-            </div>
-            <div class="form-group has-feedback">
-            <label for="Weight">Weight:</label>
-            <input type="text" class="form-control" id= "Weight" placeholder="Weight" name="weight">
+	            <label for="Weight">Weight:</label>
+	            <input type="text" class="form-control number" id= "Weight" placeholder="Weight" name="weight" required>
+							<div class="alert alert-danger"></div>
             </div>
             <div class="form-group has-feedback">
             <label for="Blood Group">Blood Group:</label>
-             <select class="form-control"  style="width: 95%;">
+             <select class="form-control" required>
                 <option>A+</option>
                 <option>B+</option>
                 <option>AB+</option>
@@ -153,5 +164,6 @@
 </div>
 </div>
 </div>
+<script src="js/validations.js"></script>
 </body>
 </html>
