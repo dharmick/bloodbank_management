@@ -55,14 +55,6 @@ if(isset($_POST['submit']))
 
 
 
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -85,7 +77,7 @@ if(isset($_POST['submit']))
 
 
   <style type="text/css">
-  
+
     .panel-primary>.panel-heading {
       background-color: #ad1457;
       color: white;
@@ -116,10 +108,6 @@ if(isset($_POST['submit']))
       border-color: #ad1457;
     }
 
-    .dform input[type="text"], .dform input[type="email"] {
-      width: 95%;
-    }
-
    .col-md-8 {
     /*z-index: -1 !important;*/
    }
@@ -128,13 +116,13 @@ if(isset($_POST['submit']))
       outline: 0 none !important;
       box-shadow: 0 0px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(173, 20, 87,0.6);
       border-color:  rgba(173, 20, 87,0.6);
-    } 
+    }
 
      .dform textarea:focus{
       outline: 0 none !important;
       box-shadow: 0 0px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(173, 20, 87,0.6);
       border-color:  rgba(173, 20, 87,0.6);
-    } 
+    }
      .dform select:focus{
       outline: 0 none !important;
       box-shadow: 0 0px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(173, 20, 87,0.6);
@@ -149,6 +137,15 @@ if(isset($_POST['submit']))
       box-shadow: 0 0 10px 0 rgba(0,0,0,0.3);
       font-family: Lato;
     }
+
+		.alert{
+			padding: 0;
+			border-width: 0;
+		}
+
+		.alert p {
+			padding: 5px;
+		}
   </style>
 </head>
 
@@ -156,8 +153,8 @@ if(isset($_POST['submit']))
 
 <?php include('./sidenav.php')?>
 <div id="main" class="shrink">
-  <?php include('./horizontal-nav.php')?>  
- <div class="">   
+  <?php include('./horizontal-nav.php')?>
+ <div class="">
  <div class= "col-md-8 col-md-offset-2" style="margin-top: 50px;">
     <div class="panel panel-primary">
       <div class="panel-heading" style="font-family: Lato;"><b>Registration Form</b></div>
@@ -165,41 +162,47 @@ if(isset($_POST['submit']))
           <div class="dform">
           <form id="form1" role="form" action="" method="POST">
             <div class="form-group has-feedback">
-            <label for="Name">Name:</label>
-            <input type="text" class="form-control" id= "Name" name="name" placeholder="Full Name">
+	            <label for="Name">Name:</label>
+	            <input type="text" class="form-control" id= "Name" name="name" placeholder="Name" required>
+							<div class="alert alert-danger"></div>
             </div>
             <div class="form-group has-feedback">
-            <label for="Contact">Contact No:</label>
-            <input type="text" class="form-control" id= "Contact" placeholder="Contact No." name="contact">
+            	<label for="Contact">Contact No:</label>
+            	<input type="text" class="form-control contact number" id= "Contact" placeholder="Contact No." name="contact" required>
+							<div class="alert alert-danger"></div>
             </div>
             <div class="form-group has-feedback">
-            <label for="Address">Address:</label>
-            <textarea style="width: 95%;" type="text" class="form-control" id= "Address" placeholder="Address" name="address"></textarea>
+	            <label for="Address">Address:</label>
+	            <textarea type="text" class="form-control" id= "Address" placeholder="Address" name="address" required></textarea>
+							<div class="alert alert-danger"></div>
+						</div>
+            <div class="form-group has-feedback">
+	            <label for="Gender">Gender:</label>
+	            &nbsp; <label>
+	                <input type="radio" name="gender" id="optionsRadios1" value="Male" checked  required> Male
+	            </label>
+	            &nbsp; <label>
+	                <input type="radio" name="gender" id="optionsRadios1" value="Female"  required> Female
+	            </label>
             </div>
             <div class="form-group has-feedback">
-            <label for="Gender">Gender:</label>
-            &nbsp; <label>
-                <input type="radio" name="gender" id="optionsRadios1" value="Male" checked> Male
-            </label>
-            &nbsp; <label>
-                <input type="radio" name="gender" id="optionsRadios1" value="Female"> Female
-            </label>
+	            <label for="Age">Age:</label>
+	            <input type="text" class="form-control number" id= "Age" placeholder="Age" name="age"  required>
+							<div class="alert alert-danger"></div>
             </div>
             <div class="form-group has-feedback">
-            <label for="Age">Age:</label>
-            <input type="text" class="form-control" id= "Age" placeholder="Age" name="age">
+	            <label for="Email">Email:</label>
+	            <input type="email" class="form-control email" id= "Email" placeholder="Email" name="email" required>
+							<div class="alert alert-danger"></div>
             </div>
             <div class="form-group has-feedback">
-            <label for="Email">Email:</label>
-            <input type="email" class="form-control" id= "Email" placeholder="Email" name="email">
+	            <label for="Weight">Weight:</label>
+	            <input type="text" class="form-control number" id= "Weight" placeholder="Weight" name="weight" required>
+							<div class="alert alert-danger"></div>
             </div>
             <div class="form-group has-feedback">
-            <label for="Weight">Weight:</label>
-            <input type="text" class="form-control" id= "Weight" placeholder="Weight" name="weight">
-            </div>
-            <div class="form-group has-feedback">
-             <label for="Blood Group">Blood Group:</label>
-             <select class="form-control" name="bg"  style="width: 95%;">
+            <label for="Blood Group">Blood Group:</label>
+             <select class="form-control" name="bg" required>
                 <option value="A+">A+</option>
                 <option value="B+">B+</option>
                 <option value="AB+">AB+</option>
@@ -210,7 +213,7 @@ if(isset($_POST['submit']))
                 <option value="O-">O-</option>
               </select>
             </div>
-            <button type="submit" class="btn" style="margin-bottom: 15px; " name="submit">Submit</button>
+            <button type="submit" class="btn" style="margin-bottom: 15px;" name="submit">Submit</button>
           </form>
         </div>
     </div>
@@ -218,5 +221,6 @@ if(isset($_POST['submit']))
 </div>
 </div>
 </div>
+<script src="js/validations.js"></script>
 </body>
 </html>
