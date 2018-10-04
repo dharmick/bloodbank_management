@@ -1,3 +1,13 @@
+<?php
+ob_start();
+session_start(); 
+include_once("connection.php");
+?>
+
+
+
+
+
 
 <link href="https://fonts.googleapis.com/css?family=Lato:900" rel="stylesheet">
 
@@ -115,7 +125,7 @@
 <div id="mySidenav" class="sidenav open-sidenav">
   <div class="borderl">
     <div class="avatar-wrapper">
-        <h6>Dharmik Joshi</h6>
+        <h6><?php echo $_SESSION['Ename']; ?></h6>
         <div class="avatar">
           <img src="./images/male.png" height="50" alt="avatar">
         </div>
