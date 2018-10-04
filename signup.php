@@ -6,6 +6,16 @@ include_once("connection.php");
 
 <?php
 
+if(!isset($_SESSION['Emp_email'])){
+    //send them to login page
+    echo "<script>alert('You are not logged in')</script>";
+    header("location:index.php");
+}
+
+?>
+
+<?php
+
 if(isset($_POST['sign']))
 {
 	$fname = $_POST['name'];
@@ -55,9 +65,18 @@ if(isset($_POST['sign']))
 
 
 
+<!-- <?php $link = $_SERVER['REQUEST_URI']; ?>
 
 
-
+<?php 
+  if($_SESSION['post'] != 1)
+  {
+    // echo "Hii";
+    
+    echo "<script>alert('Sign Up successful')</script>";
+    echo "<script>alert('$link')</script>";
+  }
+?> -->
 
 
 
@@ -154,7 +173,6 @@ if(isset($_POST['sign']))
 </head>
 
 <body>
-
 <?php include('./sidenav.php')?>
 <div id="main" class="shrink">
   <?php include('./horizontal-nav.php')?>  
@@ -162,7 +180,7 @@ if(isset($_POST['sign']))
  <div class= "col-md-8 col-md-offset-2" style="margin-top: 50px;">
     <div class="panel panel-primary">
       <div class="panel-heading" style="font-family: Lato;"><b>
-      Sign up Form</b></div>
+      Signup Form</b></div>
         <div class="panel-body log">
           <div class="dform">
           <form id="form1" role="form" action="" method="post">
@@ -210,3 +228,4 @@ if(isset($_POST['sign']))
 </div>
 </body>
 </html>
+

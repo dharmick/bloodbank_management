@@ -84,7 +84,7 @@ if(!isset($_SESSION['Emp_email'])){
 </head>
 <body>
   
-  <?php include('./sidenav_labtech.php')?>
+  <?php include('./sidenav.php')?>
   <div id="main" class="shrink">
     <?php include('./horizontal-nav.php')?>
     <div class="box">

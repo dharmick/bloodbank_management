@@ -4,6 +4,15 @@ session_start();
 include_once("connection.php");
 ?>
 
+<?php
+
+if(!isset($_SESSION['Emp_email'])){
+    //send them to login page
+    echo "<script>alert('You are not logged in')</script>";
+    header("location:index.php");
+}
+
+?>
 
 
 
@@ -131,9 +140,60 @@ include_once("connection.php");
         </div>
       </div>
       <div class="">
+
+      <?php 
+        switch ($_SESSION['post']) 
+        {
+        case 1:
+      ?>
+      <a href="#" class="tab">View Inventory</a>
+      <a href="#" class="tab">View Orders</a>
+      <a href="#" class="tab">View Employee Details</a>
+      <a href="signup.php" class="tab">Employee Signup Form</a>
+      <a href="logout.php" class="tab">Logout</a>
+
+      <?php 
+        break;
+        case 2:
+      ?>      
+      <a href="lt.php" class="tab">View Donors</a>
+      <a href="logout.php" class="tab">Logout</a>
+
+      <?php 
+        break;
+        case 3:
+      ?> 
       <a href="rp.php" class="tab">View Donor Status</a>
       <a href="registrationform.php" class="tab">Donation Form</a>
-      <a href="index.php" class="tab">Logout</a>
+      <a href="logout.php" class="tab">Logout</a>
+
+      <?php 
+        break;
+        case 4:
+      ?> 
+      <a href="#" class="tab">View Deliveries</a>
+      <a href="#" class="tab">Delivery Form</a>
+      <a href="logout.php" class="tab">Logout</a>
+
+      <?php 
+        break;
+        case 5:
+      ?> 
+      <a href="#" class="tab">View Inventory</a>
+      <a href="#" class="tab">View orders</a>
+      <a href="Requestblood.php" class="tab">Order form</a>
+      <a href="logout.php" class="tab">Logout</a>
+
+      <?php 
+        break;
+        default:
+          break;
+        }
+      ?>
+
+
+
+
     </div>   
   </div>
 </div>
