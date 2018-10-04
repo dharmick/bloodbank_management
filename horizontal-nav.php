@@ -55,6 +55,6 @@ li a:hover {
     <!-- <li><a href="default.asp">Home</a></li>
     <li><a href="news.asp">News</a></li>
     <li><a href="contact.asp">Contact</a></li> -->
-    <li><a href="#" style="font-family: Lato; float: right;"><b>Logout</b></a></li>
+    <li><a href="logout.php" style="font-family: Lato; float: right;"><b>Logout</b></a></li>
   </ul>
 </div>

@@ -1,3 +1,98 @@
+<?php
+ob_start();
+session_start(); 
+include_once("connection.php");
+?>
+
+<?php 
+
+$loginsuccess = 0;
+
+if(isset($_POST['login']))
+{
+	$Username=$_POST['email'];	
+	$Password=$_POST['password'];
+
+	$query="SELECT * from employees where Emp_email='$Username'";
+	$result=mysqli_query($conn,$query);
+
+	if(mysqli_num_rows($result) == 1)
+	{
+		$row=mysqli_fetch_assoc($result);
+		$pid = $row['P_id'];
+		$pass=$row['Password'];
+		$postid = $row['Post_id'];
+
+		if($pass == $Password)
+		{
+			$loginsuccess = 1;
+		}
+
+		if($loginsuccess == 1)
+		{
+			$_SESSION['Emp_email']  = $row['Emp_email'];
+			$_SESSION['passwordchanged'] = $row['password_changed'];
+			$_SESSION['post'] = $row['Post_id'];
+			$_SESSION['Pid']  = $row['P_id'];
+
+			$sql = "SELECT Name from person where P_id = $pid";
+			$result=mysqli_query($conn,$sql);
+			if(mysqli_num_rows($result) == 1)
+			{
+				$row=mysqli_fetch_assoc($result);
+				$_SESSION['Ename']  = $row['Name'];
+				$loginsuccess = 1;
+			}
+
+			switch ($postid) {
+
+				case 1:
+					header("location:rp.php");
+					break;
+
+				case 2:
+					header("location:lt.php");
+					break;
+
+				case 3:
+					header("location:rp.php");
+					break;
+
+				case 4:
+					header("location:rp.php");
+					break;
+
+				case 5:
+					header("location:rp.php");
+					break;
+				
+				default:
+					break;
+			}
+			
+		}
+		else 
+		{
+			echo "<script>alert('Password incorrect')</script>";
+		}
+
+		
+
+	}
+
+}
+
+
+?>
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -124,16 +219,16 @@
 			<span class="glyphicon glyphicon-arrow-left"></span>
 		</div>
 		
-		<form action="">
+		<form action="" role="form" method="POST">
 			<h2>Login</h2>
 			<div class="form-group">
-  			 <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" autocomplete="false">
+  			 <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" name="email" autocomplete="false">
   			</div>
  			 <div class="form-group">
-    		<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    		<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
     		</div>
     		<a href="#">Forgot Password</a>
-    		<button type="submit" class="btn">Login</button>
+    		<button type="submit" class="btn" name="login">Login</button>
 		</form>
 	</section>
 </body>
