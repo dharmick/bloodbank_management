@@ -65,7 +65,7 @@ if(isset($_POST['sign']))
 
 
 
-<!-- <?php $link = $_SERVER['REQUEST_URI']; ?>
+<!-- <?php $link = $_SERVER['REQUEST_URI']; ?> -->
 
 
 <?php 
@@ -73,10 +73,11 @@ if(isset($_POST['sign']))
   {
     // echo "Hii";
     
-    echo "<script>alert('Sign Up successful')</script>";
-    echo "<script>alert('$link')</script>";
+    // echo "<script>alert('Sign Up successful')</script>";
+    // echo "<script>alert('$link')</script>";
+    die("Not authorized to access this page! \n Please go back to previous page");
   }
-?> -->
+?>
 
 
 

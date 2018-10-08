@@ -13,8 +13,11 @@ if(isset($_POST['submit']))
   $hname = $_POST['hname'];
   $mob = $_POST['contact'];
   $address = $_POST['address'];
+  $email = $_POST['email'];
+  $file = addslashes(file_get_contents($_FILES["certi"]["tmp_name"]));
+  // echo "<script>alert('$file')</script>";
 
-  $query = "INSERT INTO hospitals(Hospital_name,address,Contact) values ('$hname','$address','$mob')";
+  $query = "INSERT INTO hospitals(Post_id,Hospital_name,Hosp_email,address,Contact,Hosp_certi) values (5,'$hname','$email','$address','$mob','$file')";
   if(mysqli_query($conn,$query))
   {
     echo "<script>alert('Registration successful')</script>";
@@ -133,7 +136,7 @@ if(isset($_POST['submit']))
       <div class="panel-heading" style="font-family: Lato;"><b>Hospital Sign up Form</b></div>
         <div class="panel-body log">
           <div class="dform">
-          <form id="form1" role="form" action="" method="POST">
+          <form id="form1" role="form" enctype="multipart/form-data" action="" method="POST">
             <div class="form-group has-feedback">
             <label for="HospitalName">Hospital Name:</label>
             <input type="text" class="form-control" id= "HospitalName" name="hname" placeholder="Name">
@@ -143,13 +146,20 @@ if(isset($_POST['submit']))
             <label for="Contact">Contact No:</label>
             <input type="text" class="form-control" id= "Contact" placeholder="Contact No." name="contact">
             </div>
+
+            <div class="form-group has-feedback">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id= "email" placeholder="Email" name="email">
+            </div>
+
             <div class="form-group has-feedback">
             <label for="Address">Address:</label>
             <textarea style="width: 95%;" type="text" class="form-control" id= "Address" placeholder="Address" name="address"></textarea>
             </div>
+
             <div class="form-group has-feedback">
               <label class="control-label">Upload &nbsp;Registration &nbsp;certificate</label>
-              <input type="file" class="filestyle" data-buttonText="Select a File">
+              <input type="file" name="certi"  class="filestyle" data-buttonText="Select a File">
             </div>
             
             <button type="submit" class="btn" style="margin-bottom: 15px;" name="submit">Submit</button>
