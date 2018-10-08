@@ -158,7 +158,8 @@ if(isset($_POST['submit']))
           <form id="form1" role="" action="" method="POST">
             <div class="form-group has-feedback">
             <label for="HospitalName">Hospital Name:</label>
-            <input type="text" class="form-control" id= "HospitalName" placeholder="Name" name="hname">
+            <input type="text" class="form-control" id= "HospitalName" placeholder="Name" name="hname" value = '<?php echo 
+            $_SESSION['Ename']; ?>' readonly>
             </div>
           
             <div class="form-group has-feedback">

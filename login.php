@@ -97,7 +97,7 @@ if(isset($_POST['login']))
 			$_SESSION['Emp_email']  = $row['Hosp_email'];
 			$_SESSION['passwordchanged'] = $row['passwd_change'];
 			$_SESSION['post'] = $row['Post_id'];
-			$_SESSION['Ename'] = $row['Hospital_name']." Hospital";
+			$_SESSION['Ename'] = $row['Hospital_name'];
 
 			header("location:rp.php");
 
