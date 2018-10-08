@@ -148,6 +148,14 @@ if(isset($_POST['login']))
 		body {
 			background: #f5f5f5;
 		}
+		.form-control-feedback {
+			top: 3px;
+			right: 2px;
+		}
+		.form-group
+		{
+			position: relative;
+		}
 		.login {
 			height:80vh;
 			box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
@@ -189,6 +197,7 @@ if(isset($_POST['login']))
 		.login input {
 			padding: 20px;
 			border-radius: 20px;
+			position: relative;
 		}
 		.login button[type="submit"] {
 			background-color: #ad1457;
@@ -242,6 +251,16 @@ if(isset($_POST['login']))
 			transform: translate(-9px,-9px) scale(1);
 			opacity: 1;
 		}
+
+		.alert{
+      padding: 0;
+      border-width: 0;
+      border-radius: 15px;
+    }
+
+    .alert p {
+      padding: 5px;
+    }
 	</style>
 </head>
 <body>
@@ -253,14 +272,17 @@ if(isset($_POST['login']))
 		<form action="" role="form" method="POST">
 			<h2>Login</h2>
 			<div class="form-group">
-  			 <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" name="email" autocomplete="false">
+  			 <input type="text" class="form-control email" id="exampleInputEmail1" placeholder="Email" name="email" autocomplete="false">
+  			 <div class="alert alert-danger"></div>
   			</div>
  			 <div class="form-group">
     		<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+    		<div class="alert alert-danger"></div>
     		</div>
     		<a href="#">Forgot Password</a>
     		<button type="submit" class="btn" name="login">Login</button>
 		</form>
 	</section>
+	<script src="js/validations.js"></script>
 </body>
 </html>

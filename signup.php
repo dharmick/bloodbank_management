@@ -137,9 +137,9 @@ if(isset($_POST['sign']))
       border-color: #ad1457;
     }
 
-    .dform input[type="text"], .dform input[type="email"] {
+    /*dform input[type="text"], .dform input[type="email"] {
       width: 95%;
-    }
+    }*/
 
    .col-md-8 {
     /*z-index: -1 !important;*/
@@ -170,6 +170,16 @@ if(isset($_POST['sign']))
       box-shadow: 0 0 10px 0 rgba(0,0,0,0.3);
       font-family: Lato;
     }
+
+    .alert{
+      padding: 0;
+      border-width: 0;
+    }
+
+    .alert p {
+      padding: 5px;
+    }
+
   </style>
 </head>
 
@@ -187,15 +197,20 @@ if(isset($_POST['sign']))
           <form id="form1" role="form" action="" method="post">
             <div class="form-group has-feedback">
             <label for="Name">Name:</label>
-            <input type="text" class="form-control" id= "Name" name="name" placeholder="Name">
+            <input type="text" class="form-control" id= "Name" name="name" placeholder="Name" required>
+            <div class="alert alert-danger"></div>
+
             </div>
             <div class="form-group has-feedback">
             <label for="Contact">Contact No:</label>
-            <input type="text" class="form-control" id= "Contact" placeholder="Contact No." name="contact">
+            <input type="text" class="form-control contact number" id= "Contact" placeholder="Contact No." name="contact">
+            <div class="alert alert-danger"></div>
+
             </div>
             <div class="form-group has-feedback">
             <label for="Address">Address:</label>
-            <textarea style="width: 95%;" type="text" class="form-control" id= "Address" placeholder="Address" name="address"></textarea>
+            <textarea type="text" class="form-control" id= "Address" placeholder="Address" name="address"></textarea>
+            <div class="alert alert-danger"></div>
             </div>
             <div class="form-group has-feedback">
             <label for="Gender">Gender:</label>
@@ -207,7 +222,7 @@ if(isset($_POST['sign']))
             </label>
             <div class="form-group has-feedback">
             <label for="Position">Position:</label>
-             <select name="post" class="form-control"  style="width: 95%;">
+             <select name="post" class="form-control" >
                 <option value="2">Lab Assistant</option>
                 <option value="3">Receptionist</option>
                 <option value="4">Delivery Staff</option>
@@ -215,7 +230,8 @@ if(isset($_POST['sign']))
             </div>
             <div class="form-group has-feedback">
             <label for="Email">Email:</label>
-            <input type="email" class="form-control" id= "Email" placeholder="Email" name="email">
+            <input type="text" class="form-control email" id= "Email" placeholder="Email" name="email">
+            <div class="alert alert-danger"></div>
             </div>
             
             
@@ -227,6 +243,7 @@ if(isset($_POST['sign']))
 </div>
 </div>
 </div>
+<script src="js/validations.js"></script>
 </body>
 </html>
 

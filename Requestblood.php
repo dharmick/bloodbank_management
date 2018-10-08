@@ -108,9 +108,9 @@ if(isset($_POST['submit']))
       border-color: #ad1457;
     }
 
-    .dform input[type="text"], .dform input[type="email"] {
+    /*.dform input[type="text"], .dform input[type="email"] {
       width: 95%;
-    }
+    }*/
 
    .col-md-8 {
     /*z-index: -1 !important;*/
@@ -141,6 +141,16 @@ if(isset($_POST['submit']))
       box-shadow: 0 0 10px 0 rgba(0,0,0,0.3);
       font-family: Lato;
     }
+
+    .alert{
+      padding: 0;
+      border-width: 0;
+    }
+
+    .alert p {
+      padding: 5px;
+    }
+
   </style>
 </head>
 
@@ -165,11 +175,12 @@ if(isset($_POST['submit']))
             <div class="form-group has-feedback">
             <label for="Unitsrequired">No of units required:</label>
             <input type="text" class="form-control" id= "Unitsrequired" placeholder="Enter required number of units in liter" name="units">
+            <div class="alert alert-danger"></div>
             </div>
             
             <div class="form-group has-feedback">
             <label for="Blood Group">Blood Group:</label>
-             <select class="form-control" name="bg" style="width: 95%;">
+             <select class="form-control" name="bg" >
                 <option value="A+">A+</option>
                 <option value="B+">B+</option>
                 <option value="AB+">AB+</option>
@@ -183,7 +194,8 @@ if(isset($_POST['submit']))
 
             <div class="form-group has-feedback">
             <label for="Address">Comments:</label>
-            <textarea style="width: 95%;" type="text" class="form-control" id= "Address" placeholder="Comments, if any" name="comment"></textarea>
+            <textarea type="text" class="form-control" id= "Address" placeholder="Comments, if any" name="comment"></textarea>
+            <div class="alert alert-danger"></div>
             </div>
             <button type="submit" class="btn" style="margin-bottom: 15px;" name="submit">Submit</button>
           </form>
@@ -193,5 +205,6 @@ if(isset($_POST['submit']))
 </div>
 </div>
 </div>
+<script src="js/validations.js"></script>
 </body>
 </html>

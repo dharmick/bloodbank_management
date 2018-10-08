@@ -89,12 +89,12 @@ if(isset($_POST['submit']))
       border-color: #ad1457;
     }
 
-    .dform input[type="text"], .dform input[type="email"] {
+    /*.dform input[type="text"], .dform input[type="email"] {
       width: 95%;
-    }
+    }*/
 
    .col-md-8 {
-    /*z-index: -1 !important;*/
+    /*z-index: -1 !importan t;*/
    }
 
    .dform input:focus{
@@ -122,6 +122,16 @@ if(isset($_POST['submit']))
       box-shadow: 0 0 10px 0 rgba(0,0,0,0.3);
       font-family: Lato;
     }
+
+    .alert{
+      padding: 0;
+      border-width: 0;
+    }
+
+    .alert p {
+      padding: 5px;
+    }
+
   </style>
 </head>
 
@@ -140,21 +150,25 @@ if(isset($_POST['submit']))
             <div class="form-group has-feedback">
             <label for="HospitalName">Hospital Name:</label>
             <input type="text" class="form-control" id= "HospitalName" name="hname" placeholder="Name">
+            <div class="alert alert-danger"></div>
             </div>
 
             <div class="form-group has-feedback">
             <label for="Contact">Contact No:</label>
-            <input type="text" class="form-control" id= "Contact" placeholder="Contact No." name="contact">
+            <input type="text" class="form-control contact number" id= "Contact" placeholder="Contact No." name="contact">
+            <div class="alert alert-danger"></div>
             </div>
 
             <div class="form-group has-feedback">
             <label for="email">Email:</label>
-            <input type="email" class="form-control" id= "email" placeholder="Email" name="email">
+            <input type="text" class="form-control email" id= "email" placeholder="Email" name="email">
+            <div class="alert alert-danger"></div>
             </div>
 
             <div class="form-group has-feedback">
             <label for="Address">Address:</label>
-            <textarea style="width: 95%;" type="text" class="form-control" id= "Address" placeholder="Address" name="address"></textarea>
+            <textarea type="text" class="form-control" id= "Address" placeholder="Address" name="address"></textarea>
+            <div class="alert alert-danger"></div>
             </div>
 
             <div class="form-group has-feedback">
@@ -170,5 +184,6 @@ if(isset($_POST['submit']))
 </div>
 </div>
 </div>
+<script src="js/validations.js"></script>
 </body>
 </html>

@@ -245,7 +245,7 @@ if(isset($_POST['submit']))
             </div>
             <div class="form-group has-feedback">
 	            <label for="Email">Email:</label>
-	            <input type="email" class="form-control email" id= "Email" placeholder="Email" name="email" required>
+	            <input type="text" class="form-control email" id= "Email" placeholder="Email" name="email" required>
 							<div class="alert alert-danger"></div>
             </div>
             <div class="form-group has-feedback">
