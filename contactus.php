@@ -87,7 +87,7 @@
   <section class="container">
   	<h3><strong>CONTACT Us</strong></h3>
   	<br><h4><b>Address</b></h4>
-  	<p>Somaiya Blood Bank,<br>3rd Floor, Somaiya Satsang Bhavan,<br>Western Express Highway,
+  	<p>Hope Drops Blood Bank,<br>3rd Floor, Somaiya Satsang Bhavan,<br>Western Express Highway,
   		<br>Dr. R P Road, Andheri(East),<br>Mumbai-400069(INDIA)
   	</p>
   	<br>
