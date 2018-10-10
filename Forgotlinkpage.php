@@ -4,106 +4,135 @@ session_start();
 include_once("connection.php");
 ?>
 
-<?php
+<?php 
 
-if(!isset($_SESSION['Emp_email'])){
-    //send them to login page
-    echo "<script>alert('You are not logged in')</script>";
-    header("location:index.php");
-}
+$loginsuccess = 0;
+$flag = 0;
 
-?>
-
-<?php
-
-date_default_timezone_set("Asia/Kolkata");
-
-if(isset($_POST['submit']))
+if(isset($_POST['login']))
 {
-  $fname = $_POST['name'];
-  $mob = $_POST['contact'];
-  $address = $_POST['address'];
-  $gender = $_POST['gender'];
-  $age = $_POST['age'];
-  $email = $_POST['email'];
-  $weight = $_POST['weight'];
-  $bloodgroup = $_POST['bg'];
+  $Username=$_POST['email'];  
+  $Password=$_POST['password'];
 
-  $query = "INSERT INTO person(Name,Contact,Address,Gender) values ('$fname','$mob','$address','$gender')";
-  if(mysqli_query($conn,$query))
+  $query="SELECT * from employees where Emp_email='$Username'";
+  $result=mysqli_query($conn,$query);
+
+  if(mysqli_num_rows($result) == 1)
   {
+    $row=mysqli_fetch_assoc($result);
+    $pid = $row['P_id'];
+    $pass=$row['Password'];
+    $postid = $row['Post_id'];
+
+    if($pass == $Password)
+    {
+      $loginsuccess = 1;
+    }
+
     $flag = 1;
   }
 
-  if($flag == 1)
+  if($flag != 1)
   {
-
-    $query = "SELECT P_id from person where Contact = '$mob'";
-    $result = mysqli_query($conn,$query);
-    if($result);
+    $query="SELECT * from hospitals where Hosp_email='$Username'";
+    $result=mysqli_query($conn,$query);
+    
+    if(mysqli_num_rows($result) == 1)
     {
-    $row =mysqli_fetch_assoc($result);
-    $pid = $row['P_id'];
-    }
+      $row=mysqli_fetch_assoc($result);
+      $hid = $row['Hospital_id'];
+      $pass=$row['Hosp_passwd'];
+      $postid = $row['Post_id'];
 
-      $query = "INSERT INTO donor(P_id,Email,Weight,Blood_group,Age) values ('$pid','$email','$weight','$bloodgroup','$age')";
-      if(mysqli_query($conn,$query))
+      if($pass == $Password)
       {
-        echo "<script>alert('Registration successful')</script>";
-        $success=1;
-        $_SESSION['success'] = $success;
+        $loginsuccess = 1;
       }
 
+      $flag = 0;
+    }
+  }
 
-    // You need to install the sendgrid client library so run:     
-    // composer require sendgrid/sendgrid
-    require './vendor/autoload.php';
-    
-    // contains a variable called: $API_KEY that is the API Key.
-    // You need this API_KEY created on the Sendgrid website.
-    $API_KEY="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";
-    
-    $FROM_EMAIL = 'dharmik.joshi@somaiya.edu';
-    // they dont like when it comes from @gmail, prefers business 
-    // emails
-    
-    $TO_EMAIL = 'parth.js@somaiya.edu';
-    // Try to be nice. Take a look at the anti spam laws. In most
-    // cases, you must have an unsubscribe. You also cannot be 
-    // misleading.
-    $subject = "YOUR_SUBJECT";
-    $from = new SendGrid\Email(null, $FROM_EMAIL);
-    $to = new SendGrid\Email(null, $TO_EMAIL);
-    $htmlContent = '';
-    // Create Sendgrid content
-    $content = new SendGrid\Content("text/html",$htmlContent);
-    // Create a mail object
-    $mail = new SendGrid\Mail($from, $subject, $to, $content);
-    
-    $sg = new \SendGrid($API_KEY);
-    $response = $sg->client->mail()->send()->post($mail);
-      
-    if ($response->statusCode() == 202) {
-     // Successfully sent
-     echo 'done';
-    } else {
-     echo 'false';
+  if($loginsuccess == 1 && $flag == 1)
+  {
+    $_SESSION['Emp_email']  = $row['Emp_email'];
+    $_SESSION['passwordchanged'] = $row['password_changed'];
+    $_SESSION['post'] = $row['Post_id'];
+    $_SESSION['Pid']  = $row['P_id'];
+
+    $sql = "SELECT Name from person where P_id = $pid";
+    $result=mysqli_query($conn,$sql);
+    if(mysqli_num_rows($result) == 1)
+    {
+      $row=mysqli_fetch_assoc($result);
+      $_SESSION['Ename']  = $row['Name'];
+      $loginsuccess = 1;
     }
 
+      switch ($postid) {
 
+        case 1:
+          header("location:rp.php");
+          break;
 
+        case 2:
+          header("location:lt.php");
+          break;
 
-  }
+        case 3:
+          header("location:rp.php");
+          break;
+
+        case 4:
+          header("location:rp.php");
+          break;
+        
+        default:
+          break;
+      }
+      
+    }
+    elseif ($loginsuccess == 1 && $flag != 1) 
+    {
+      $_SESSION['Emp_email']  = $row['Hosp_email'];
+      $_SESSION['passwordchanged'] = $row['passwd_change'];
+      $_SESSION['post'] = $row['Post_id'];
+      $_SESSION['Ename'] = $row['Hospital_name'];
+
+      header("location:rp.php");
+
+    }
+    else 
+    {
+      echo "<script>alert('Password incorrect')</script>";
+    }
+
+    
+
+  
+
 }
+
 
 ?>
 
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Set New Password</title>
-	 <!-- Latest compiled and minified CSS -->
+  <meta charset="UTF-8">
+  <title>Set New Password</title>
+   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="./css/main.css">
 
   <!-- jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -113,123 +142,148 @@ if(isset($_POST['submit']))
 
   <link href="https://fonts.googleapis.com/css?family=Lato:900" rel="stylesheet">
 
-  <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link rel="shortcut icon" href="./images/favicon.png">
 
-  <link rel="shortcut icon" href="./images/favicon.png">
-  <!-- <link rel="stylesheet" type="text/css" href="./css/main.css"> -->
-
-
-  <style type="text/css">
-
-    .panel-primary>.panel-heading {
+  <style>
+    body {
+      background: #f5f5f5;
+    }
+    .form-control-feedback {
+      top: 3px;
+      right: 2px;
+    }
+    .form-group
+    {
+      position: relative;
+    }
+    .login {
+      height:80vh;
+      box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+      margin: 10vh;
+      background: white;
+      border-radius: 5px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+    }
+    .login:before {
+      content: "";
+      z-index: 1;
+      width: 700px;
+      height:700px;
+      border-radius: 50%;
+            background-image: linear-gradient(#c63374,#ad1457);
+      position: absolute;
+      bottom:-300px;
+      left: -300px;
+    }
+    .login:after {
+      content: "";
+      width: 300px;
+      height:400px;
+      border-radius: 50px;
+      background-image: linear-gradient(#c63374,#ad1457);
+      position: absolute;
+      top:-100px;
+      right: -100px;
+      transform: rotateZ(-30deg);
+    }
+    .login form {
+      width: 300px;
+    }
+    .login input {
+      padding: 20px;
+      border-radius: 20px;
+      position: relative;
+    }
+    .login button[type="submit"] {
       background-color: #ad1457;
       color: white;
-      border-color: #ad1457;
+      width: 100%;
+      border-radius: 20px;
+      padding: 10px;
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 15px;
     }
-    .btn {
-      background-color: #ad1457;
-      color: white;
-      width: 125px;
-      border-radius: 10px;
-      transition: .05s ease-in-out;
-    }
-   /* .btn:hover {
-      background-color: #9e0045;
-      color: white;
-      transform: scale(1.05);
-      box-shadow: 0 0 10px 0 #d32e77;
-    }*/
-
-    .dform button[type="submit"]:hover, .dform button[type="submit"]:active{
+    .login button[type="submit"]:hover, .login button[type="submit"]:active{
       background-color: #a01150;
       color: white;
-      box-shadow: 0 0 10px 0 #d32e77;
-      transform: scale(1.05);
-      outline: 0 none !important;
+          box-shadow: 0 0 10px 0 #d32e77;
+          outline: 0 none !important;
     }
-    .panel-primary {
-      border-color: #ad1457;
-    }
-
-   .col-md-8 {
-    /*z-index: -1 !important;*/
-   }
-
-   .dform input:focus{
-      outline: 0 none !important;
-      box-shadow: 0 0px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(173, 20, 87,0.6);
-      border-color:  rgba(173, 20, 87,0.6);
-    }
-
-     .dform textarea:focus{
-      outline: 0 none !important;
-      box-shadow: 0 0px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(173, 20, 87,0.6);
-      border-color:  rgba(173, 20, 87,0.6);
-    }
-     .dform select:focus{
-      outline: 0 none !important;
-      box-shadow: 0 0px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(173, 20, 87,0.6);
-      border-color:  rgba(173, 20, 87,0.6);
-    }
-    .dform select option:hover{
-      background-color: #ad1457 !important;
-      color: white !important;
-    }
-
-    .log {
-      box-shadow: 0 0 10px 0 rgba(0,0,0,0.3);
+    .login h2 {
+      font-size: 45px;
+      margin-bottom: 30px;
+      font-weight: bold;
+      color: #797d7f;
+      text-transform: uppercase;
       font-family: Lato;
     }
+    .login input:focus{
+      outline: 0 none !important;
+      box-shadow: 0 0px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(173, 20, 87,0.6);
+      border-color:  rgba(173, 20, 87,0.6);
+    } 
+    .hover-scale{
+      position: absolute;
+      top: 35px;
+      left: 35px;
+      font-size: 20px;
+      color: #ad1457;
+      
+    }
+    .hover-scale:before {
+      width: 40px;
+      height: 40px;
+      transform: translate(-9px,-9px) scale(0.7);
+      content: "";
+      border-radius: 50%;
+      position: absolute;
+      background: #ccc;
+      transition: all 250ms;
+      opacity: 0;
+    }
+    .hover-scale:hover:before {
+      transform: translate(-9px,-9px) scale(1);
+      opacity: 1;
+    }
 
-		.alert{
-			padding: 0;
-			border-width: 0;
-		}
+    .alert{
+      padding: 0;
+      border-width: 0;
+      border-radius: 15px;
+    }
 
-		.alert p {
-			padding: 5px;
-		}
+    .alert p {
+      padding: 5px;
+    }
   </style>
 </head>
-
 <body>
-
-<?php include('./sidenav.php')?>
-<div id="main" class="shrink">
-  <?php include('./horizontal-nav.php')?>
- <div class="">
- <div class= "col-md-8 col-md-offset-2" style="margin-top: 50px;">
-    <div class="panel panel-primary">
-      <div class="panel-heading" style="font-family: Lato;"><b>Set New Password</b></div>
-        <div class="panel-body log">
-          <div class="dform">
-          <form id="form1" role="form" action="" method="POST">
-
-            
-            
-            <div class="form-group has-feedback">
-              <label for="Newpass">New Password:</label>
-              <input type="Password" class="form-control" id= "Newpass" name="Newpass" placeholder="New Password" required>
-              <div class="alert alert-danger"></div>
-            </div>
-
-            <div class="form-group has-feedback">
-              <label for="Confirmpass">Confirm New Password:</label>
-              <input type="Password" class="form-control" id= "Confirmpass" name="Confirmpass" placeholder="Confirm Password" required>
-              <div class="alert alert-danger"></div>
-            </div>
-
-            
-            
-            
-            <button type="submit" class="btn" style="margin-bottom: 15px;" name="save">Save</button>
-          </form>
-        </div>
+  <section class="login">
+    <div class="hover-scale">
+      <a style="text-decoration: none;" href="index.php" class="glyphicon glyphicon-arrow-left"></a>
     </div>
-  </div>
-</div>
-</div>
-</div>
-<script src="js/validations.js"></script>
+    
+    <form action="" role="form" method="POST">
+      <h2>Set New Password</h2>
+
+      <div class="form-group">
+         <input type="Password" class="form-control" id="Newpass" placeholder="New Password" name="Newpass" autocomplete="false">
+         <div class="alert alert-danger"></div>
+        </div>
+       <div class="form-group">
+        <input type="password" class="form-control" id="confirmpass" placeholder="Confirm Password" name="confirmpass">
+        <div class="alert alert-danger"></div>
+        </div>
+<!--         <a href="#">Forgot Password</a>
+ -->        <button type="submit" class="btn" name="login">Save Changes</button>
+    </form>
+  </section>
+  <script src="js/validations.js"></script>
 </body>
 </html>
