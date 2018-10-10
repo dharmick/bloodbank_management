@@ -1,6 +1,6 @@
 <?php
 ob_start();
-session_start(); 
+session_start();
 include_once("connection.php");
 ?>
 
@@ -14,65 +14,16 @@ if(!isset($_SESSION['Emp_email'])){
 
 ?>
 
-<?php
-
-if(isset($_POST['sign']))
-{
-	$fname = $_POST['name'];
-	$mob = $_POST['contact'];
-	$address = $_POST['address'];
-	$gender = $_POST['gender'];
-	$position = $_POST['post'];
-	$email = $_POST['email'];
-
-	$query = "INSERT INTO person(Name,Contact,Address,Gender) values ('$fname','$mob','$address','$gender')";
-	if(mysqli_query($conn,$query))
-	{
-		$flag = 1;
-	}
-
-	if($flag == 1)
-	{
-
-		$query = "SELECT P_id from person where Contact = '$mob'";
-		$result = mysqli_query($conn,$query);
-		if($result);
-		{
-		$row =mysqli_fetch_assoc($result);
-		$pid = $row['P_id'];
-		}
-
-			$query = "INSERT INTO employees(P_id,Emp_email,Post_id) values ('$pid','$email','$position')";
-			if(mysqli_query($conn,$query))
-			{
-				echo "<script>alert('Sign Up successful')</script>";
-				$success=1;
-				$_SESSION['success'] = $success;
-			}
-	}
-}
-?>
-
-
-
-
-
-
-
-
-
-
-
 
 
 <!-- <?php $link = $_SERVER['REQUEST_URI']; ?> -->
 
 
-<?php 
+<?php
   if($_SESSION['post'] != 1)
   {
     // echo "Hii";
-    
+
     // echo "<script>alert('Sign Up successful')</script>";
     // echo "<script>alert('$link')</script>";
     die("Not authorized to access this page! \n Please go back to previous page");
@@ -104,9 +55,9 @@ if(isset($_POST['sign']))
 
 
   <style type="text/css">
-  
-  
-  
+
+
+
     .panel-primary>.panel-heading  {
       background-color: #ad1457;
       color: white;
@@ -149,13 +100,13 @@ if(isset($_POST['sign']))
       outline: 0 none !important;
       box-shadow: 0 0px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(173, 20, 87,0.6);
       border-color:  rgba(173, 20, 87,0.6);
-    } 
+    }
 
      .dform textarea:focus{
       outline: 0 none !important;
       box-shadow: 0 0px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(173, 20, 87,0.6);
       border-color:  rgba(173, 20, 87,0.6);
-    } 
+    }
      .dform select:focus{
       outline: 0 none !important;
       box-shadow: 0 0px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(173, 20, 87,0.6);
@@ -186,15 +137,15 @@ if(isset($_POST['sign']))
 <body>
 <?php include('./sidenav.php')?>
 <div id="main" class="shrink">
-  <?php include('./horizontal-nav.php')?>  
- <div class="">   
+  <?php include('./horizontal-nav.php')?>
+ <div class="">
  <div class= "col-md-8 col-md-offset-2" style="margin-top: 50px;">
     <div class="panel panel-primary">
       <div class="panel-heading" style="font-family: Lato;"><b>
       Signup Form</b></div>
         <div class="panel-body log">
           <div class="dform">
-          <form id="form1" role="form" action="" method="post">
+          <form id="form1" role="form" action="signup_submit.php" method="post">
             <div class="form-group has-feedback">
             <label for="Name">Name:</label>
             <input type="text" class="form-control" id= "Name" name="name" placeholder="Name" required>
@@ -233,8 +184,8 @@ if(isset($_POST['sign']))
             <input type="text" class="form-control email" id= "Email" placeholder="Email" name="email">
             <div class="alert alert-danger"></div>
             </div>
-            
-            
+
+
             <button type="submit" class="btn" style="margin-bottom: 15px;" name="sign">Submit</button>
           </form>
         </div>
@@ -246,4 +197,3 @@ if(isset($_POST['sign']))
 <script src="js/validations.js"></script>
 </body>
 </html>
-
