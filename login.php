@@ -59,6 +59,7 @@ if(isset($_POST['login']))
 		$_SESSION['passwordchanged'] = $row['password_changed'];
 		$_SESSION['post'] = $row['Post_id'];
 		$_SESSION['Pid']  = $row['P_id'];
+		$_SESSION['Eid'] = $row['Emp_id'];
 
 		$sql = "SELECT Name from person where P_id = $pid";
 		$result=mysqli_query($conn,$sql);
@@ -84,7 +85,7 @@ if(isset($_POST['login']))
 					break;
 
 				case 4:
-					header("location:rp.php");
+					header("location:ds.php");
 					break;
 				
 				default:
@@ -95,11 +96,12 @@ if(isset($_POST['login']))
 		elseif ($loginsuccess == 1 && $flag != 1) 
 		{
 			$_SESSION['Emp_email']  = $row['Hosp_email'];
+			$_SESSION['hid'] = $row['Hospital_id'];
 			$_SESSION['passwordchanged'] = $row['passwd_change'];
 			$_SESSION['post'] = $row['Post_id'];
 			$_SESSION['Ename'] = $row['Hospital_name'];
 
-			header("location:rp.php");
+			header("location:order_hosp.php");
 
 		}
 		else 

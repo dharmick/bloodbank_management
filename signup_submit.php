@@ -67,6 +67,7 @@ if(isset($_POST['sign']))
 				$success=1;
 				$_SESSION['success'] = $success;
         include 'Email/signup_mail.php';
+        	//header("location: signup.php");
 			}
 	}
 }

@@ -6,6 +6,24 @@ include_once("connection.php");
 
 <?php
 
+if(!isset($_SESSION['Emp_email'])){
+    //send them to login page
+    echo "<script>alert('You are not logged in')</script>";
+    header("location:login.php");
+}
+
+?>
+
+<?php
+  if($_SESSION['post'] != 4)
+  {
+    // echo "<script>alert('Sign Up successful')</script>";
+    die("Not authorized to access this page! \n Please go back to previous page");
+  }
+?>
+
+<?php
+
 $flag = 0;
 
 date_default_timezone_set("Asia/Kolkata");
@@ -15,6 +33,7 @@ if(isset($_POST['submit']))
   $hname = $_POST['hname'];
   $oid = $_POST['orderid'];
   $token = $_POST['token'];
+  $ddate = $_POST['ddate'];
 
   $query = "SELECT Hospital_id from hospitals WHERE Hospital_name = '$hname'";
   $result = mysqli_query($conn,$query);
@@ -44,6 +63,9 @@ if(isset($_POST['submit']))
       if(($hospid == $hid) && ($tokenver == $token) && ($status == 'accepted'))
       {
         echo "<script>alert('Delivery successful')</script>";
+        $_SESSION['oid'] = $oid;
+        $_SESSION['ddate'] = $ddate;
+        header("location: ds.php?alert=success");
       }
       else
       {
@@ -182,7 +204,7 @@ if(isset($_POST['submit']))
         <div class="panel-body log">
           <div class="dform">
           <form id="form1" role="form" enctype="multipart/form-data" action="" method="POST">
-
+            <input type="hidden" name="ddate" value="<?php echo date('Y-m-d H:i:s'); ?>" />
             <div class="form-group has-feedback">
             <label for="HospitalName">Hospital Name:</label>
             <input type="text" class="form-control" id= "HospitalName" name="hname" placeholder="Name">

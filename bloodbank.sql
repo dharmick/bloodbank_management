@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2018 at 09:10 PM
+-- Generation Time: Oct 10, 2018 at 08:49 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -12,7 +12,7 @@ SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-CREATE Database bloodbank;
+CREATE Database bloodbank;\
 USE bloodbank;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -38,18 +38,24 @@ CREATE TABLE `donor` (
   `Blood_group` varchar(5) NOT NULL,
   `Status` varchar(20) NOT NULL DEFAULT 'Pending',
   `Age` int(5) NOT NULL,
-  `Registration_date` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6)
+  `Date` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `donor`
 --
 
-INSERT INTO `donor` (`D_id`, `P_id`, `Email`, `Weight`, `Blood_group`, `Status`, `Age`, `Registration_date`) VALUES
-(1, 5, 'rahul.punjabi@somaiya.edu', 70, 'O+', 'Pending', 20, '2018-10-03 15:45:14.607695'),
-(2, 6, 'darshil11@somaiya.edu', 75, 'A+', 'Pending', 21, '2018-10-03 15:50:11.031262'),
-(3, 7, 'viral.rambhia@somaiya.edu', 65, 'A+', 'Pending', 20, '2018-10-03 18:52:00.131962'),
-(4, 8, 'parth.jss@somaiya.edu', 70, 'O+', 'Pending', 20, '2018-10-04 16:44:36.137678');
+INSERT INTO `donor` (`D_id`, `P_id`, `Email`, `Weight`, `Blood_group`, `Status`, `Age`, `Date`) VALUES
+(1, 5, 'rahul.punjabi@somaiya.edu', 70, 'O+', 'Pending', 20, '2018-10-10 14:22:57'),
+(2, 6, 'darshil11@somaiya.edu', 75, 'A+', 'Pending', 21, '2018-10-10 14:22:57'),
+(3, 7, 'viral.rambhia@somaiya.edu', 65, 'A+', 'Pending', 20, '2018-10-10 14:22:57'),
+(4, 8, 'parth.jss@somaiya.edu', 70, 'O+', 'Pending', 20, '2018-10-10 14:22:57'),
+(5, 12, 'prithvi.kunder@somaiya.edu', 65, 'A+', 'Pending', 20, '2018-10-10 14:22:57'),
+(6, 13, 'kinjalsanghavi@gmail.com', 75, 'O+', 'Pending', 40, '2018-10-10 14:24:45'),
+(7, 14, 'jitu9@gmail.com', 70, 'AB+', 'Pending', 45, '2018-10-10 14:27:10'),
+(8, 15, 'poojan.sanghavi@somaiya.edu', 70, 'O+', 'Pending', 16, '2018-10-10 14:31:27'),
+(9, 16, 'darshilsanghavi@gmail.com', 75, 'B+', 'Pending', 14, '2018-10-10 14:36:22'),
+(10, 17, 'as@gmail.com', 70, 'A+', 'Pending', 40, '2018-10-10 14:47:50');
 
 -- --------------------------------------------------------
 
@@ -72,7 +78,9 @@ CREATE TABLE `employees` (
 
 INSERT INTO `employees` (`Emp_id`, `P_id`, `Emp_email`, `Password`, `password_changed`, `Post_id`) VALUES
 (1, 1, 'parth.js@somaiya.edu', '12345', 0, 1),
-(2, 4, 'dharmik.joshi@somaiya.edu', '12345', 0, 2);
+(2, 4, 'dharmik.joshi@somaiya.edu', '12345', 0, 2),
+(4, 10, 'aman.valera@somaiya.edu', '12345', 0, 3),
+(5, 11, 'jkm@somaiya.edu', '12345', 0, 4);
 
 -- --------------------------------------------------------
 
@@ -131,10 +139,25 @@ CREATE TABLE `orders` (
   `Units` float NOT NULL,
   `Blood_group` varchar(5) NOT NULL,
   `status` varchar(15) NOT NULL DEFAULT 'Pending',
+  `Token` varchar(8) NOT NULL,
   `Comments` varchar(200) NOT NULL,
-  `Delivered_by` varchar(30) NOT NULL,
-  `order_date` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6)
+  `Delivered_by` int(30) NOT NULL,
+  `Delivery_status` varchar(10) NOT NULL DEFAULT 'Pending',
+  `Delivery_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `Order_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`Order_id`, `Hospital_id`, `Units`, `Blood_group`, `status`, `Token`, `Comments`, `Delivered_by`, `Delivery_status`, `Delivery_date`, `Order_date`) VALUES
+(5, 10, 10, 'AB+', 'accepted', '12345', 'Nothing', 5, 'Delivered', '2018-10-10 18:46:27', '2018-10-10 16:24:14'),
+(6, 11, 5, 'AB-', 'accepted', '12345', 'qswderthyjui', 5, 'Pending', '0000-00-00 00:00:00', '2018-10-10 16:24:14'),
+(7, 10, 10, 'AB+', 'accepted', '12345', 'dfghjkl', 5, 'Delivered', '2018-10-10 18:46:45', '2018-10-10 16:28:01'),
+(8, 10, 15, 'O+', 'Pending', '', 'tbqwertyui', 0, 'Pending', '0000-00-00 00:00:00', '2018-10-10 16:28:55'),
+(9, 10, 26, 'O+', 'Pending', '', 'wertyuio', 0, 'Pending', '0000-00-00 00:00:00', '2018-10-10 16:37:15'),
+(10, 10, 23, 'B-', 'Pending', '', 'asdfghjk', 0, 'Pending', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -160,7 +183,15 @@ INSERT INTO `person` (`P_id`, `Name`, `Contact`, `Address`, `Gender`) VALUES
 (5, 'Rahul Punjabi', '7788995566', 'B-303,sarvodaya aangan ,pandurangwadi\r\nnear sai baba temple ,dombivali east', 'Male'),
 (6, 'Darshil Shah', '1234567890', 'B-303,sarvodaya aangan ,pandurangwadi\r\nnear sai baba temple ,dombivali east', 'Male'),
 (7, 'Viral Rambhia', '7744556688', 'B-303,sarvodaya aangan ,pandurangwadi\r\nnear sai baba temple ,dombivali east', 'Male'),
-(8, 'Parth s', '8451970725', 'B-303,sarvodaya aangan ,pandurangwadi\r\nnear sai baba temple ,dombivali east', 'Male');
+(8, 'Parth s', '8451970725', 'B-303,sarvodaya aangan ,pandurangwadi\r\nnear sai baba temple ,dombivali east', 'Male'),
+(10, 'Aman valera', '9867870710', 'B-303,sarvodaya aangan ,pandurangwadi\r\nnear sai baba temple ,dombivali east', 'Male'),
+(11, 'Jash Mehta', '9867870701', 'B-303,sarvodaya aangan ,pandurangwadi\r\nnear sai baba temple ,dombivali east', 'Male'),
+(12, 'Prithvi Kunder', '5454545454', 'B-303,sarvodaya aangan ,pandurangwadi\r\nnear sai baba temple ,dombivali east', 'Male'),
+(13, 'Kinjal Sanghavi', '1234567809', 'B-303,sarvodaya aangan ,pandurangwadi\r\nnear sai baba temple ,dombivali east', 'Female'),
+(14, 'Jitendra sanghavi', '2545689122', 'B-303,sarvodaya aangan ,pandurangwadi\r\nnear sai baba temple ,dombivali east', 'Male'),
+(15, 'Poojan sanghavi', '8369756107', 'B-303,sarvodaya aangan ,pandurangwadi\r\nnear sai baba temple ,dombivali east', 'Male'),
+(16, 'Darshil sanghavi', '8369756170', 'B-303,sarvodaya aangan ,pandurangwadi\r\nnear sai baba temple ,dombivali east', 'Male'),
+(17, 'Ashish Sanghavi', '8451872523', 'B-303,sarvodaya aangan ,pandurangwadi\r\nnear sai baba temple ,dombivali east', 'Male');
 
 -- --------------------------------------------------------
 
@@ -244,13 +275,13 @@ ALTER TABLE `positions`
 -- AUTO_INCREMENT for table `donor`
 --
 ALTER TABLE `donor`
-  MODIFY `D_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `D_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `Emp_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Emp_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `hospitals`
@@ -268,13 +299,13 @@ ALTER TABLE `inventory`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `Order_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Order_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `person`
 --
 ALTER TABLE `person`
-  MODIFY `P_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `P_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `positions`

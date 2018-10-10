@@ -9,7 +9,7 @@ include_once("connection.php");
 if(!isset($_SESSION['Emp_email'])){
     //send them to login page
     echo "<script>alert('You are not logged in')</script>";
-    header("location:index.php");
+    header("location:login.php");
 }
 
 ?>
@@ -149,6 +149,7 @@ if(!isset($_SESSION['Emp_email'])){
       <a href="#" class="tab">View Inventory</a>
       <a href="#" class="tab">View Orders</a>
       <a href="#" class="tab">View Employee Details</a>
+      <a href="#" class="tab">View Hospitals</a>
       <a href="signup.php" class="tab">Employee Signup Form</a>
       <a href="logout.php" class="tab">Logout</a>
 
@@ -171,8 +172,8 @@ if(!isset($_SESSION['Emp_email'])){
         break;
         case 4:
       ?> 
-      <a href="#" class="tab">View Deliveries</a>
-      <a href="#" class="tab">Delivery Form</a>
+      <a href="ds.php" class="tab">View Deliveries</a>
+      <a href="Deliveryform.php" class="tab">Delivery Form</a>
       <a href="logout.php" class="tab">Logout</a>
 
       <?php 
@@ -180,7 +181,7 @@ if(!isset($_SESSION['Emp_email'])){
         case 5:
       ?> 
       <a href="#" class="tab">View Inventory</a>
-      <a href="#" class="tab">View orders</a>
+      <a href="order_hosp.php" class="tab">View orders</a>
       <a href="Requestblood.php" class="tab">Order form</a>
       <a href="logout.php" class="tab">Logout</a>
 

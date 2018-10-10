@@ -9,12 +9,22 @@ include_once("connection.php");
 if(!isset($_SESSION['Emp_email'])){
     //send them to login page
     echo "<script>alert('You are not logged in')</script>";
-    header("location:index.php");
+    header("location:login.php");
 }
 
 ?>
 
 <?php
+  if($_SESSION['post'] != 5)
+  {
+    // echo "<script>alert('Sign Up successful')</script>";
+    die("Not authorized to access this page! \n Please go back to previous page");
+  }
+?> 
+
+<?php
+
+$success = 0;
 
 date_default_timezone_set("Asia/Kolkata");
 
@@ -40,6 +50,12 @@ if(isset($_POST['submit']))
       if(mysqli_query($conn,$query))
       {
         echo "<script>alert('Order request sent successfully')</script>";
+        $success = 1;
+      }
+
+      if($success == 1)
+      {
+        header("location: order_hosp.php?alert=success");
       }
     }
 }

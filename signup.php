@@ -9,15 +9,10 @@ include_once("connection.php");
 if(!isset($_SESSION['Emp_email'])){
     //send them to login page
     echo "<script>alert('You are not logged in')</script>";
-    header("location:index.php");
+    header("location:login.php");
 }
 
 ?>
-
-
-
-<!-- <?php $link = $_SERVER['REQUEST_URI']; ?> -->
-
 
 <?php
   if($_SESSION['post'] != 1)

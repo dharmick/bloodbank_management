@@ -6,13 +6,46 @@ include_once("connection.php");
 
 <?php
 
-if(!isset($_SESSION['Emp_email'])){
+if(!isset($_SESSION['Emp_email']))
+{
     //send them to login page
     echo "<script>alert('You are not logged in')</script>";
-    header("location:index.php");
+    header("location:login.php");
 }
 
 ?>
+
+ <?php
+  if($_SESSION['post'] != 3)
+  {
+    // echo "<script>alert('Sign Up successful')</script>";
+    die("Not authorized to access this page! Please go back to previous page");
+  }
+?> 
+
+<?php 
+
+$query = "SELECT * FROM donor inner join person where donor.P_id = person.P_id ";
+$result = mysqli_query($conn,$query);
+
+$successMessage="";
+if(isset($_GET['alert']))
+{
+    if($_GET['alert']=="success")
+    {
+        $successMessage='<div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
+            </button>
+        <strong>Registration successful</strong>
+        </div>';  
+
+    }
+}
+?>
+
+
+
+
 
 
 
@@ -46,13 +79,20 @@ if(!isset($_SESSION['Emp_email'])){
     padding-top: 10px;
     padding-bottom: 10px;
     } */
+    .alert-success {
+    color: #ad1457;
+    background-color: #e8dae1;
+    border-color: #e8dae1;
+    margin: 60px 15px 0px 15px;
+    }
+
     .box {
       box-shadow: 0 0 10px 0 rgba(0,0,0,0.3);
       margin-top: 0px;
       padding: 15px;
       border-radius: 5px;
 			margin: 20px;
-      margin-top: 68px;
+      margin-top: 62px;
     }
     table {
     	border: 2px solid #ad1457 !important;
@@ -83,163 +123,56 @@ if(!isset($_SESSION['Emp_email'])){
 <?php include('./sidenav.php')?>
   <div id="main" class="shrink">
     <?php include('./horizontal-nav.php')?>
+    <?php 
+        echo $successMessage;
+    ?> 
     <div class="box">
       <div class="table-responsive">
         <table class="table table-bordered ">
-        <tr>
-          <th>Name <i class="glyphicon glyphicon-sort"></i></th>
-          <th>Contact <i class="glyphicon glyphicon-sort"></i></th>
-          <th>Gender <i class="glyphicon glyphicon-sort"></i></th>
-          <th>Email Id <i class="glyphicon glyphicon-sort"></i></th>
-          <th>Age <i class="glyphicon glyphicon-sort"></i></th>
-          <th>Weight <i class="glyphicon glyphicon-sort"></i></th>
-          <th>Blood Group <i class="glyphicon glyphicon-sort"></i></th>
-          <th>Date <i class="glyphicon glyphicon-sort"></i></th>
-          <th>Status <i class="glyphicon glyphicon-sort"></i></th>
-        </tr>
-         <tr>
-          <td>Parth</td>
-          <td>7977263730</td>
-          <td>Male</td>
-          <td>parth.js@somaiya.edu</td>
-          <td>20</td>
-          <td>65</td>
-          <td>O+</td>
-          <td>15/08/2018</td>
-          <td>Accepted</td>
-        </tr>
-         <tr>
-          <td>Parth</td>
-          <td>7977263730</td>
-          <td>Male</td>
-          <td>parth.js@somaiya.edu</td>
-          <td>20</td>
-          <td>65</td>
-          <td>O+</td>
-          <td>15/08/2018</td>
-          <td>Accepted</td>
-        </tr>
-         <tr>
-          <td>Parth</td>
-          <td>7977263730</td>
-          <td>Male</td>
-          <td>parth.js@somaiya.edu</td>
-          <td>20</td>
-          <td>65</td>
-          <td>O+</td>
-          <td>15/08/2018</td>
-          <td>Accepted</td>
-        </tr>
-         <tr>
-          <td>Parth</td>
-          <td>7977263730</td>
-          <td>Male</td>
-          <td>parth.js@somaiya.edu</td>
-          <td>20</td>
-          <td>65</td>
-          <td>O+</td>
-          <td>15/08/2018</td>
-          <td>Accepted</td>
-        </tr>
-         <tr>
-          <td>Parth</td>
-          <td>7977263730</td>
-          <td>Male</td>
-          <td>parth.js@somaiya.edu</td>
-          <td>20</td>
-          <td>65</td>
-          <td>O+</td>
-          <td>15/08/2018</td>
-          <td>Accepted</td>
-        </tr>
-         <tr>
-          <td>Parth</td>
-          <td>7977263730</td>
-          <td>Male</td>
-          <td>parth.js@somaiya.edu</td>
-          <td>20</td>
-          <td>65</td>
-          <td>O+</td>
-          <td>15/08/2018</td>
-          <td>Accepted</td>
-        </tr>
-        <tr>
-          <td>Parth</td>
-          <td>7977263730</td>
-          <td>Male</td>
-          <td>parth.js@somaiya.edu</td>
-          <td>20</td>
-          <td>65</td>
-          <td>O+</td>
-          <td>15/08/2018</td>
-          <td>Accepted</td>
-        </tr>
-        <tr>
-          <td>Parth</td>
-          <td>7977263730</td>
-          <td>Male</td>
-          <td>parth.js@somaiya.edu</td>
-          <td>20</td>
-          <td>65</td>
-          <td>O+</td>
-          <td>15/08/2018</td>
-          <td>Accepted</td>
-        </tr>
-        <tr>
-          <td>Parth</td>
-          <td>7977263730</td>
-          <td>Male</td>
-          <td>parth.js@somaiya.edu</td>
-          <td>20</td>
-          <td>65</td>
-          <td>O+</td>
-          <td>15/08/2018</td>
-          <td>Accepted</td>
-        </tr>
-        <tr>
-          <td>Parth</td>
-          <td>7977263730</td>
-          <td>Male</td>
-          <td>parth.js@somaiya.edu</td>
-          <td>20</td>
-          <td>65</td>
-          <td>O+</td>
-          <td>15/08/2018</td>
-          <td>Accepted</td>
-        </tr>
+          <thead>
             <tr>
-          <td>Parth</td>
-          <td>7977263730</td>
-          <td>Male</td>
-          <td>parth.js@somaiya.edu</td>
-          <td>20</td>
-          <td>65</td>
-          <td>O+</td>
-          <td>15/08/2018</td>
-          <td>Accepted</td>
-        </tr>
-            <tr>
-          <td>Parth</td>
-          <td>7977263730</td>
-          <td>Male</td>
-          <td>parth.js@somaiya.edu</td>
-          <td>20</td>
-          <td>65</td>
-          <td>O+</td>
-          <td>15/08/2018</td>
-          <td>Accepted</td>
-        </tr>
-            <tr>
-          <td>Parth</td>
-          <td>7977263730</td>
-          <td>Male</td>
-          <td>parth.js@somaiya.edu</td>
-          <td>20</td>
-          <td>65</td>
-          <td>O+</td>
-          <td>15/08/2018</td>
-          <td>Accepted</td>
-        </tr>
+              <th>Name</th>
+              <th>Contact</th>
+              <th>Gender</th>
+              <th>Email Id</th>
+              <th>Age</th>
+              <th>Weight</th>
+              <th>Blood Group</th>
+              <th>Date & Time</th>
+              <th>Status</th>
+             </tr> 
+          </thead>
+
+          <?php 
+
+          if(mysqli_num_rows($result)>0)
+          {
+            //we have data to display 
+            while($row =mysqli_fetch_assoc($result))
+            {
+
+              echo "<tr>";
+              echo "<td>".$row['Name']."</td>";
+              echo "<td>".$row['Contact']."</td>";
+              echo "<td>".$row['Gender']."</td>";
+              echo "<td>".$row['Email']."</td>";
+              echo "<td>".$row['Age']."</td>";
+              echo "<td>".$row['Weight']."</td>";
+              echo "<td>".$row['Blood_group']."</td>";
+              echo "<td>".$row['Date']."</td>";
+              echo "<td>".$row['Status']."</td>";
+              echo"</tr>";
+            }
+          }
+          else
+          {
+            //if ther are no entries
+            echo "<div class='alert alert-warning'>No data to display for donors</div>";
+          }
+
+          ?>
+        
+      
         </table>
       </div>
     </div>
