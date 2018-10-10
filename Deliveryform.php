@@ -6,22 +6,57 @@ include_once("connection.php");
 
 <?php
 
+$flag = 0;
+
 date_default_timezone_set("Asia/Kolkata");
 
 if(isset($_POST['submit']))
 {
   $hname = $_POST['hname'];
-  $mob = $_POST['contact'];
-  $address = $_POST['address'];
-  $email = $_POST['email'];
-  $file = addslashes(file_get_contents($_FILES["certi"]["tmp_name"]));
-  // echo "<script>alert('$file')</script>";
+  $oid = $_POST['orderid'];
+  $token = $_POST['token'];
 
-  $query = "INSERT INTO hospitals(Post_id,Hospital_name,Hosp_email,address,Contact,Hosp_certi) values (5,'$hname','$email','$address','$mob','$file')";
-  if(mysqli_query($conn,$query))
+  $query = "SELECT Hospital_id from hospitals WHERE Hospital_name = '$hname'";
+  $result = mysqli_query($conn,$query);
+  if(mysqli_num_rows($result) == 1)
   {
-    echo "<script>alert('Registration successful')</script>";
+    $row=mysqli_fetch_assoc($result);
+    $hid = $row['Hospital_id'];
+    $flag = 1;
+    // echo "<script>alert('Registration successful')</script>";
   }
+  else
+  {
+        echo "<script>alert('Hospital not registered with bloodbank')</script>";
+  }
+
+  if($flag == 1)
+  {
+    $query = "SELECT * from orders WHERE Order_id = '$oid'";
+    $result = mysqli_query($conn,$query);
+    if(mysqli_num_rows($result) == 1)
+    {
+      $row=mysqli_fetch_assoc($result);
+      $hospid = $row['Hospital_id'];
+      $tokenver = $row['Token'];
+      $status = $row['status'];
+
+      if(($hospid == $hid) && ($tokenver == $token) && ($status == 'accepted'))
+      {
+        echo "<script>alert('Delivery successful')</script>";
+      }
+      else
+      {
+        echo "<script>alert('Delivery Unsuccessful')</script>";
+      }
+    }
+    else
+    {
+      echo "<script>alert('Order is not placed with bloodbank')</script>";
+    }
+  }
+
+
 }
 
 ?>
@@ -156,13 +191,13 @@ if(isset($_POST['submit']))
 
             <div class="form-group has-feedback">
             <label for="OrderId">Order ID:</label>
-            <input type="text" class="form-control" id= "OrderId" name="OrderId" placeholder="Order ID">
+            <input type="text" class="form-control" id= "OrderId" name="orderid" placeholder="Order ID">
             <div class="alert alert-danger"></div>
             </div>
 
             <div class="form-group has-feedback">
             <label for="Token">Token No:</label>
-            <input type="text" class="form-control" id= "Token" name="Token" placeholder="Token No">
+            <input type="text" class="form-control" id= "Token" name="token" placeholder="Token No">
             <div class="alert alert-danger"></div>
             </div>
 

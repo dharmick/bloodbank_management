@@ -266,7 +266,7 @@ if(isset($_POST['login']))
 <body>
 	<section class="login">
 		<div class="hover-scale">
-			<span class="glyphicon glyphicon-arrow-left"></span>
+			<a style="text-decoration: none;" href="index.php" class="glyphicon glyphicon-arrow-left"></a>
 		</div>
 		
 		<form action="" role="form" method="POST">

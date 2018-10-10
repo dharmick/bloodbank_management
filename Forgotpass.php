@@ -4,117 +4,7 @@ session_start();
 include_once("connection.php");
 ?>
 
-<?php 
 
-$loginsuccess = 0;
-$flag = 0;
-
-if(isset($_POST['login']))
-{
-	$Username=$_POST['email'];	
-	$Password=$_POST['password'];
-
-	$query="SELECT * from employees where Emp_email='$Username'";
-	$result=mysqli_query($conn,$query);
-
-	if(mysqli_num_rows($result) == 1)
-	{
-		$row=mysqli_fetch_assoc($result);
-		$pid = $row['P_id'];
-		$pass=$row['Password'];
-		$postid = $row['Post_id'];
-
-		if($pass == $Password)
-		{
-			$loginsuccess = 1;
-		}
-
-		$flag = 1;
-	}
-
-	if($flag != 1)
-	{
-		$query="SELECT * from hospitals where Hosp_email='$Username'";
-		$result=mysqli_query($conn,$query);
-		
-		if(mysqli_num_rows($result) == 1)
-		{
-			$row=mysqli_fetch_assoc($result);
-			$hid = $row['Hospital_id'];
-			$pass=$row['Hosp_passwd'];
-			$postid = $row['Post_id'];
-
-			if($pass == $Password)
-			{
-				$loginsuccess = 1;
-			}
-
-			$flag = 0;
-		}
-	}
-
-	if($loginsuccess == 1 && $flag == 1)
-	{
-		$_SESSION['Emp_email']  = $row['Emp_email'];
-		$_SESSION['passwordchanged'] = $row['password_changed'];
-		$_SESSION['post'] = $row['Post_id'];
-		$_SESSION['Pid']  = $row['P_id'];
-
-		$sql = "SELECT Name from person where P_id = $pid";
-		$result=mysqli_query($conn,$sql);
-		if(mysqli_num_rows($result) == 1)
-		{
-			$row=mysqli_fetch_assoc($result);
-			$_SESSION['Ename']  = $row['Name'];
-			$loginsuccess = 1;
-		}
-
-			switch ($postid) {
-
-				case 1:
-					header("location:rp.php");
-					break;
-
-				case 2:
-					header("location:lt.php");
-					break;
-
-				case 3:
-					header("location:rp.php");
-					break;
-
-				case 4:
-					header("location:rp.php");
-					break;
-				
-				default:
-					break;
-			}
-			
-		}
-		elseif ($loginsuccess == 1 && $flag != 1) 
-		{
-			$_SESSION['Emp_email']  = $row['Hosp_email'];
-			$_SESSION['passwordchanged'] = $row['passwd_change'];
-			$_SESSION['post'] = $row['Post_id'];
-			$_SESSION['Ename'] = $row['Hospital_name'];
-
-			header("location:rp.php");
-
-		}
-		else 
-		{
-			echo "<script>alert('Password incorrect')</script>";
-		}
-
-		
-
-	
-
-}
-
-
-?>
 
 
 
@@ -266,7 +156,7 @@ if(isset($_POST['login']))
 <body>
 	<section class="login">
 		<div class="hover-scale">
-			<span class="glyphicon glyphicon-arrow-left"></span>
+			<a style="text-decoration: none;" href="index.php" class="glyphicon glyphicon-arrow-left"></a>
 		</div>
 		
 		<form action="" role="form" method="POST">
