@@ -15,7 +15,7 @@ if(!isset($_SESSION['Emp_email'])){
 ?>
 
  <?php
-  if($_SESSION['post'] != 5)
+  if($_SESSION['post'] != 1)
   {
     // echo "<script>alert('Sign Up successful')</script>";
     die("Not authorized to access this page! Please go back to previous page");

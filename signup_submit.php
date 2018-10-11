@@ -9,7 +9,7 @@ include_once("connection.php");
 if(!isset($_SESSION['Emp_email'])){
     //send them to login page
     echo "<script>alert('You are not logged in')</script>";
-    header("location:index.php");
+    header("location:login.php");
 }
 
 ?>
@@ -69,7 +69,7 @@ if(isset($_POST['sign']))
 				$_SESSION['success'] = $success;
         		include 'Email/signup_mail.php';
 
-        	//header("location: signup.php");
+        	 	header("location: view_emp.php?alert=success");
 			}
 	}
 }

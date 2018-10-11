@@ -15,7 +15,7 @@ if(!isset($_SESSION['Emp_email'])){
 ?>
 
  <?php
-  if($_SESSION['post'] != 5)
+  if($_SESSION['post'] != 1)
   {
     // echo "<script>alert('Sign Up successful')</script>";
     die("Not authorized to access this page! Please go back to previous page");
@@ -24,7 +24,7 @@ if(!isset($_SESSION['Emp_email'])){
 
 <?php 
 
-$query = "SELECT * FROM inventory where Units != 0";
+$query = "SELECT * FROM hospitals";
 $result = mysqli_query($conn,$query);
 
 ?>
@@ -107,14 +107,12 @@ $result = mysqli_query($conn,$query);
         <table class="table table-bordered ">
           <thead>
           <tr>
-            <th>Blood ID</th>
-            <th>Blood Group</th>
-            <th>WBC</th>
-            <th>RBC</th>
-            <th>Haemoglobin</th>
-            <th>Units</th>
-            <th>Details</th>
-            <th>Date</th>
+            <th>Hospital Name</th>
+            <th>Email ID</th>
+            <th>Contact</th>
+            <th>Address</th>
+            <th>Certificate</th>
+            <th>Status</th>
           </tr>
           </thead>
           
@@ -127,14 +125,12 @@ $result = mysqli_query($conn,$query);
             {
 
               echo "<tr>";
-              echo "<td>".$row['Inv_id']."</td>";
-              echo "<td>".$row['Blood_group']."</td>";
-              echo "<td>".$row['Wbc']."</td>";
-              echo "<td>".$row['Rbc']."</td>";
-              echo "<td>".$row['Haemoglobin']."</td>";
-              echo "<td>".$row['Units']."</td>";
-              echo "<td>".$row['Comments']."</td>";
-              echo "<td>".$row['Date']."</td>";
+              echo "<td>".$row['Hospital_name']."</td>";
+              echo "<td>".$row['Hosp_email']."</td>";
+              echo "<td>".$row['Contact']."</td>";
+              echo "<td>".$row['address']."</td>";
+              echo "<td>".'<img src="data:image/jpeg;base64,'.base64_encode( $row['Hosp_certi'] ).'" width=60 height=60/>'."</td>";
+              echo "<td>".$row['Status']."</td>";
               echo"</tr>";
             }
           }

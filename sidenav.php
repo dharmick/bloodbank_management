@@ -146,10 +146,10 @@ if(!isset($_SESSION['Emp_email'])){
         {
         case 1:
       ?>
-      <a href="#" class="tab">View Inventory</a>
-      <a href="#" class="tab">View Orders</a>
-      <a href="#" class="tab">View Employee Details</a>
-      <a href="#" class="tab">View Hospitals</a>
+      <a href="inventory_admin.php" class="tab">View Inventory</a>
+      <a href="view_order.php" class="tab">View Orders</a>
+      <a href="view_emp.php" class="tab">View Employee Details</a>
+      <a href="view_hosp.php" class="tab">View Hospitals</a>
       <a href="signup.php" class="tab">Employee Signup Form</a>
       <a href="logout.php" class="tab">Logout</a>
 

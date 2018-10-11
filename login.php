@@ -73,7 +73,7 @@ if(isset($_POST['login']))
 			switch ($postid) {
 
 				case 1:
-					header("location:rp.php");
+					header("location:inventory_admin.php");
 					break;
 
 				case 2:

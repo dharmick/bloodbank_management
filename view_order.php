@@ -14,17 +14,17 @@ if(!isset($_SESSION['Emp_email'])){
 
 ?>
 
- <?php
-  if($_SESSION['post'] != 5)
+<?php
+  if($_SESSION['post'] != 1)
   {
     // echo "<script>alert('Sign Up successful')</script>";
-    die("Not authorized to access this page! Please go back to previous page");
+    die("Not authorized to access this page! \n Please go back to previous page");
   }
-?>
+?> 
 
 <?php 
 
-$query = "SELECT * FROM inventory where Units != 0";
+$query = "SELECT * FROM orders";
 $result = mysqli_query($conn,$query);
 
 ?>
@@ -33,7 +33,7 @@ $result = mysqli_query($conn,$query);
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Blood Bank</title>
+  <title>Blood Bank</title>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -58,7 +58,7 @@ $result = mysqli_query($conn,$query);
       padding: 15px;
       border-radius: 5px;
       margin: 20px;
-      margin-top: 68px;
+      margin-top: 62px;
     }
     table {
       border: 2px solid #ad1457 !important;
@@ -67,7 +67,7 @@ $result = mysqli_query($conn,$query);
     }
     .table-bordered>thead>tr>th {
     border: 1px solid #ddd !important;
-	}
+  }
     th {
       background-color: #ad1457;
       color: white;
@@ -95,6 +95,13 @@ $result = mysqli_query($conn,$query);
       background-color: #93134b !important;
       border-color: #93134b !important;
     }
+
+     .alert-success {
+    color: #ad1457;
+    background-color: #e8dae1;
+    border-color: #e8dae1;
+    margin: 60px 15px 0px 15px;
+    }
   </style>
 </head>
 <body>
@@ -107,17 +114,22 @@ $result = mysqli_query($conn,$query);
         <table class="table table-bordered ">
           <thead>
           <tr>
-            <th>Blood ID</th>
+            <th>OrderID</th>
+            <th>Hospital Name</th>
+            <th>Hospital Address</th>
             <th>Blood Group</th>
-            <th>WBC</th>
-            <th>RBC</th>
-            <th>Haemoglobin</th>
             <th>Units</th>
-            <th>Details</th>
-            <th>Date</th>
+            <th>Comments</th>
+            <th>Order Date & Time</th>
+            <th>Status</th>
+            <th>Token</th>
+            <th>Delivery Status</th>
+            <th>Delivered Date & Time</th>
+            <th>Accept</th>
+            <th>Reject</th>
           </tr>
           </thead>
-          
+         
           <?php 
 
           if(mysqli_num_rows($result)>0)
@@ -125,18 +137,49 @@ $result = mysqli_query($conn,$query);
             //we have data to display 
             while($row =mysqli_fetch_assoc($result))
             {
+              $hid = $row['Hospital_id'];
 
-              echo "<tr>";
-              echo "<td>".$row['Inv_id']."</td>";
-              echo "<td>".$row['Blood_group']."</td>";
-              echo "<td>".$row['Wbc']."</td>";
-              echo "<td>".$row['Rbc']."</td>";
-              echo "<td>".$row['Haemoglobin']."</td>";
-              echo "<td>".$row['Units']."</td>";
-              echo "<td>".$row['Comments']."</td>";
-              echo "<td>".$row['Date']."</td>";
-              echo"</tr>";
-            }
+              $sql = "SELECT * from hospitals where Hospital_id = '$hid'";
+              $result1 = mysqli_query($conn,$sql);
+              if(mysqli_num_rows($result1) == 1)
+              {
+                  $row1 = mysqli_fetch_assoc($result1);
+                  echo "<tr>";
+                  echo "<td>".$row['Order_id']."</td>";
+                  echo "<td>".$row1['Hospital_name']."</td>";
+                  echo "<td>".$row1['address']."</td>";
+                  echo "<td>".$row['Blood_group']."</td>";
+                  echo "<td>".$row['Units']."</td>";
+                  echo "<td>".$row['Comments']."</td>";
+                  echo "<td>".$row['Order_date']."</td>";
+                  echo "<td>".$row['status']."</td>";
+
+                  if(($row['status']) == "accepted")
+                  {
+                      echo "<td>".$row['Token']."</td>";
+                  }
+                  else
+                  {
+                    echo "<td>Not Available</td>";
+                  }
+                  echo "<td>".$row['Delivery_status']."</td>";
+                  if(($row['Delivery_date']) != "0000-00-00 00:00:00")
+                  {
+                      echo "<td>".$row['Delivery_date']."</td>";
+                  }
+                  else
+                  {
+                    echo "<td>Not Available</td>";
+                  }
+                  echo "<td><button type = 'submit' class = 'btn btn-primary btn-sm'>
+                        <span class='glyphicon glyphicon-ok'></span>
+                        </button></td>";
+                  echo "<td><button type = 'submit' class = 'btn btn-primary btn-sm'>
+                        <span class='glyphicon glyphicon-remove'></span>
+                        </button></td>";
+                  echo"</tr>";
+             }
+           }
           }
           else
           {
