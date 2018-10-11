@@ -111,6 +111,22 @@
 	<br><img class="bullet" src="./images/download.jpeg">If all your screening meets requirements, you will be directed for further process.
 	<br><img class="bullet" src="./images/download.jpeg">On our website you will find Blood Centre branch or mobile blood drive near you and the operating hours. 
 	<br><img class="bullet" src="./images/download.jpeg">Call us on xxxxxxxxxx for any queries.
+
+  <br><br><br><strong id="donate" style="font-size:20px;">HOW HOSPITALS CAN REQUEST BLOOD</strong>
+  <br><img class="bullet" src="./images/download.jpeg">Initially Hospital needs to register itself.
+
+    <br><img class="bullet" src="./images/download.jpeg">Fill the sign up form <a href="http://localhost/bloodbank_management/Hospitalsignup.php" target="_blank">Here.</a>
+
+  <br><img class="bullet" src="./images/download.jpeg">After login  there will be a Request Blood Form
+
+  <br><img class="bullet" src="./images/download.jpeg">Fill the form with required blood details.
+
+    <br><img class="bullet" src="./images/download.jpeg">You will receive a confirmation mail regarding whether your request is accepted or rejected.
+
+
+  <br><img class="bullet" src="./images/download.jpeg">Hospitals shall be provided with a token number if request is accepted.
+
+  <br><img class="bullet" src="./images/download.jpeg">On delivery of blood, confirm token number with the delivery staff.
 	
 
     <br><br><br><strong style="font-size:20px;">WHO CAN DONATE BLOOD?</strong>

@@ -26,16 +26,6 @@ if(isset($_POST['submit']))
 
 ?>
 
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -137,9 +127,7 @@ if(isset($_POST['submit']))
 
 <body>
 
-<?php include('./sidenav.php')?>
 <div id="main" class="shrink">
-  <?php include('./horizontal-nav.php')?>  
  <div class="">   
  <div class= "col-md-8 col-md-offset-2" style="margin-top: 50px;">
     <div class="panel panel-primary">
