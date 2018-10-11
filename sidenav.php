@@ -180,7 +180,7 @@ if(!isset($_SESSION['Emp_email'])){
         break;
         case 5:
       ?> 
-      <a href="#" class="tab">View Inventory</a>
+      <a href="inventory_hosp.php" class="tab">View Inventory</a>
       <a href="order_hosp.php" class="tab">View orders</a>
       <a href="Requestblood.php" class="tab">Order form</a>
       <a href="logout.php" class="tab">Logout</a>
