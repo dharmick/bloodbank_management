@@ -122,62 +122,63 @@ if(isset($_GET['alert']))
     ?> 
     <div class="box">
       <div class="table-responsive">
-        <table class="table table-bordered ">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Contact</th>
-              <th>Gender</th>
-              <th>Address</th>
-              <th>Email Id</th>
-              <th>Post</th>
-             </tr> 
-          </thead>
+      	<div class="scroll">
+	        <table class="table table-bordered " id="example1">
+	          <thead>
+	            <tr>
+	              <th>Name</th>
+	              <th>Contact</th>
+	              <th>Gender</th>
+	              <th>Address</th>
+	              <th>Email Id</th>
+	              <th>Post</th>
+	             </tr> 
+	          </thead>
 
-          <?php 
+	          <?php 
 
-          if(mysqli_num_rows($result)>0)
-          {
-            //we have data to display 
-            while($row =mysqli_fetch_assoc($result))
-            {
+	          if(mysqli_num_rows($result)>0)
+	          {
+	            //we have data to display 
+	            while($row =mysqli_fetch_assoc($result))
+	            {
 
-              echo "<tr>";
-              echo "<td>".$row['Name']."</td>";
-              echo "<td>".$row['Contact']."</td>";
-              echo "<td>".$row['Gender']."</td>";
-              echo "<td>".$row['Address']."</td>";
-              echo "<td>".$row['Emp_email']."</td>";
+	              echo "<tr>";
+	              echo "<td>".$row['Name']."</td>";
+	              echo "<td>".$row['Contact']."</td>";
+	              echo "<td>".$row['Gender']."</td>";
+	              echo "<td>".$row['Address']."</td>";
+	              echo "<td>".$row['Emp_email']."</td>";
 
-              switch ($row['Post_id']) {
-              	case 2:
-              		echo "<td>Lab Technician</td>";
-              		break;
+	              switch ($row['Post_id']) {
+	              	case 2:
+	              		echo "<td>Lab Technician</td>";
+	              		break;
 
-              	case 3:
-              		echo "<td>Receptionist</td>";
-              		break;
+	              	case 3:
+	              		echo "<td>Receptionist</td>";
+	              		break;
 
-              	case 4:
-              		echo "<td>Delivery Staff</td>";
-              		break;
-              	
-              	default:
-              		break;
-              }
-              echo"</tr>";
-            }
-          }
-          else
-          {
-            //if ther are no entries
-            echo "<div class='alert alert-warning'>No data to display for donors</div>";
-          }
+	              	case 4:
+	              		echo "<td>Delivery Staff</td>";
+	              		break;
+	              	
+	              	default:
+	              		break;
+	              }
+	              echo"</tr>";
+	            }
+	          }
+	          else
+	          {
+	            //if ther are no entries
+	            echo "<div class='alert alert-warning'>No data to display for donors</div>";
+	          }
 
-          ?>
-        
-      
-        </table>
+	          ?>
+	      
+	        </table>
+    	</div>
       </div>
     </div>
 		<!--footer-->
