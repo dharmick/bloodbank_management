@@ -42,6 +42,7 @@ if(isset($_POST['sign']))
 	$gender = $_POST['gender'];
 	$position = $_POST['post'];
 	$email = $_POST['email'];
+	$pass =  bin2hex(openssl_random_pseudo_bytes(4));
 
 	$query = "INSERT INTO person(Name,Contact,Address,Gender) values ('$fname','$mob','$address','$gender')";
 	if(mysqli_query($conn,$query))
@@ -60,13 +61,14 @@ if(isset($_POST['sign']))
 		$pid = $row['P_id'];
 		}
 
-			$query = "INSERT INTO employees(P_id,Emp_email,Post_id) values ('$pid','$email','$position')";
+			$query = "INSERT INTO employees(P_id,Emp_email,Post_id, Password) values ('$pid','$email','$position','$pass')";
 			if(mysqli_query($conn,$query))
 			{
 				echo "<script>alert('Sign Up successful')</script>";
 				$success=1;
 				$_SESSION['success'] = $success;
-        include 'Email/signup_mail.php';
+        		include 'Email/signup_mail.php';
+
         	//header("location: signup.php");
 			}
 	}

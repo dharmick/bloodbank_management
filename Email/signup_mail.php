@@ -1,52 +1,51 @@
 <?php
-require_once "Mail.php";
+// Import PHPMailer classes into the global namespace
+// These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-$template = file_get_contents('Email/templates/signup_template.html');
-// ob_start(); //Start output buffer
-// echo $template;
-// $output = ob_get_contents(); //Grab output
-// ob_end_clean(); //Discard output buffer
+//Load Composer's autoloader
+require 'vendor/autoload.php';
+
+$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+try {
+    //Server settings
+    $mail->SMTPDebug = 0;                                 // Enable verbose debug output
+    $mail->isSMTP();                                      // Set mailer to use SMTP
+    $mail->Host = 'ssl://smtp.gmail.com';  // Specify main and backup SMTP servers
+    $mail->SMTPAuth = true;                               // Enable SMTP authentication
+    $mail->Username = 'hopedropsbloodbank@gmail.com';                 // SMTP username
+    $mail->Password = 'hopedrops123';                           // SMTP password
+    $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+    $mail->Port = 465;                                    // TCP port to connect to
+
+    //Recipients
+    $mail->setFrom('hopedropsbloodbank@gmail.com', 'Hope Drops');
+    $mail->addAddress($email, $fname);     // Add a recipient
+    $mail->addReplyTo('hopedropsbloodbank@gmail.com', 'Hope Drops');
 
 
+    //Content
+    $mail->isHTML(true);                                  // Set email format to HTML
+    $mail->Subject = 'Welcome, reset your password for Hope Drops.';
+   
+    $variables = array();
 
+    $variables['name'] = $fname;
+    $variables['password'] = $pass;
+    $variables['email'] = $email;
 
-/*foreach($variables as $key => $value)
-{
-    $template = str_replace('{{ '.$key.' }}', $value, $template);
-}*/
+    $template = file_get_contents("Email/templates/signup_template.html");
 
-$from = 'dharmikjoshi98@gmail.com';
-$to = $email;
-$subject = 'Reset password immediately';
-$body = $template;
+    foreach($variables as $key => $value)
+    {
+        $template = str_replace('{{ '.$key.' }}', $value, $template);
+    }
 
-$headers = array(
-    'From' => $from,
-    'To' => $to,
-    'Subject' => $subject,
-    'Content-Type' => 'text/html'
-);
+    $mail->Body  = $template;
 
-$smtp = Mail::factory('smtp', array(
-        'host' => 'ssl://smtp.gmail.com',
-        'port' => '465',
-        'auth' => true,
-        'username' => 'parth.js@somaiya.edu',
-        'password' => 'hhuwhjdpuxsbocmo'
-    ));
-
-if (PEAR::isError($smtp)) {
-    echo $smtp->getMessage() . "\n" . $smtp->getUserInfo() . "\n";
-    die();
+    $mail->send();
+    echo 'Message has been sent';
+} catch (Exception $e) {
+    echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
 }
-
-$mail = $smtp->send($to, $headers, $body);
-
-if (PEAR::isError($mail)) {
-    echo('<p>' . $mail->getMessage() . '</p>');
- } 
-//  else {
-//     echo('<p>Message successfully sent!</p>');
-//  }
-
-?>
