@@ -28,7 +28,7 @@ try {
     //Content
     $mail->isHTML(true);                                  // Set email format to HTML
     $mail->Subject = 'Welcome, reset your password for Hope Drops.';
-   
+
     $variables = array();
 
     $variables['name'] = $fname;
@@ -45,7 +45,7 @@ try {
     $mail->Body  = $template;
 
     $mail->send();
-    //echo 'Message has been sent';
+    $_SESSION['message'] = "signup successful";
 } catch (Exception $e) {
-    echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+    $_SESSION['message'] = 'Email could not be sent. '. $mail->ErrorInfo;
 }

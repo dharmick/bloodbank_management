@@ -68,9 +68,12 @@ if(isset($_POST['sign']))
 				$success=1;
 				$_SESSION['success'] = $success;
         		include 'Email/signup_mail.php';
-
-        	 	header("location: view_emp.php?alert=success");
+        	 	header("location: view_emp.php");
 			}
+      else {
+        $_SESSION['message'] = "Something went wrong. please try again";
+        header("location: view_emp.php");
+      }
 	}
 }
 ?>

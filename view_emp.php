@@ -1,6 +1,6 @@
 <?php
 ob_start();
-session_start(); 
+session_start();
 include_once("connection.php");
 ?>
 
@@ -22,24 +22,11 @@ if(!isset($_SESSION['Emp_email'])){
   }
 ?>
 
-<?php 
+<?php
 
 $query = "SELECT * FROM employees inner join person where employees.P_id = person.P_id and Post_id != 1";
 $result = mysqli_query($conn,$query);
 
-$successMessage="";
-if(isset($_GET['alert']))
-{
-    if($_GET['alert']=="success")
-    {
-        $successMessage='<div class="alert alert-success">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
-            </button>
-        <strong>Signup successful</strong>
-        </div>';  
-
-    }
-}
 ?>
 
 
@@ -58,6 +45,8 @@ if(isset($_GET['alert']))
 
   <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script src="js/main.js"></script>
 
   <link rel="stylesheet" type="text/css" href="./css/navbar_style.css">
   <link rel="stylesheet" type="text/css" href="./css/main.css">
@@ -113,13 +102,19 @@ if(isset($_GET['alert']))
   </style>
 </head>
 <body>
-
-<?php include('./sidenav.php')?>
+<div class="alert-box"></div>
+<?php include('./sidenav.php');
+if(isset($_SESSION['message']))
+{
+  echo "<script>showAlert('".$_SESSION['message']."')</script>";
+  unset($_SESSION['message']);
+}
+?>
   <div id="main" class="shrink">
     <?php include('./horizontal-nav.php')?>
-    <?php 
-        echo $successMessage;
-    ?> 
+    <?php
+        // echo $successMessage;
+    ?>
     <div class="box">
       <div class="table-responsive">
       	<div class="scroll">
@@ -132,14 +127,14 @@ if(isset($_GET['alert']))
 	              <th>Address</th>
 	              <th>Email Id</th>
 	              <th>Post</th>
-	             </tr> 
+	             </tr>
 	          </thead>
 
-	          <?php 
+	          <?php
 
 	          if(mysqli_num_rows($result)>0)
 	          {
-	            //we have data to display 
+	            //we have data to display
 	            while($row =mysqli_fetch_assoc($result))
 	            {
 
@@ -162,7 +157,7 @@ if(isset($_GET['alert']))
 	              	case 4:
 	              		echo "<td>Delivery Staff</td>";
 	              		break;
-	              	
+
 	              	default:
 	              		break;
 	              }
@@ -176,7 +171,7 @@ if(isset($_GET['alert']))
 	          }
 
 	          ?>
-	      
+
 	        </table>
     	</div>
       </div>
