@@ -231,7 +231,7 @@ if(isset($_POST['login']))
     .hover-scale{
       position: absolute;
       top: 35px;
-      left: 35px;
+      left: 25px;
       font-size: 20px;
       color: #ad1457;
       

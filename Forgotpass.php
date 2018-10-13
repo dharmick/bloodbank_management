@@ -121,7 +121,7 @@ include_once("connection.php");
 		.hover-scale{
 			position: absolute;
 			top: 35px;
-			left: 35px;
+			left: 25px;
 			font-size: 20px;
 			color: #ad1457;
 			

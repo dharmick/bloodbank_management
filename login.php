@@ -241,7 +241,7 @@ if(isset($_POST['login']))
 		.hover-scale{
 			position: absolute;
 			top: 35px;
-			left: 35px;
+			left: 25px;
 			font-size: 20px;
 			color: #ad1457;
 			
@@ -289,7 +289,7 @@ if(isset($_POST['login']))
     		<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
     		<div class="alert alert-danger"></div>
     		</div>
-    		<a href="#">Forgot Password</a>
+    		<a href="forgotpass.php">Forgot Password</a>
     		<button type="submit" class="btn" name="login">Login</button>
 		</form>
 	</section>
