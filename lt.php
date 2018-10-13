@@ -68,6 +68,8 @@ if(isset($_GET['alert']))
   <link rel="stylesheet" type="text/css" href="./css/navbar_style.css">
   <link rel="stylesheet" type="text/css" href="./css/main.css">
 
+  <script type="text/javascript" src="./js/main.js"></script>
+
   <link rel="shortcut icon" href="./images/favicon.png">
 
   <style type="text/css">
@@ -129,13 +131,16 @@ if(isset($_GET['alert']))
   </style>
 </head>
 <body>
-
-<?php include('./sidenav.php')?>
+<div class="alert-box"></div>
+<?php include('./sidenav.php');
+if(isset($_SESSION['message']))
+  {
+    echo "<script>showAlert('".$_SESSION['message']."')</script>";
+    unset($_SESSION['message']);
+  }
+?>
   <div id="main" class="shrink">
     <?php include('./horizontal-nav.php')?>
-    <?php 
-        echo $successMessage;
-    ?> 
     <div class="box">
       <div class="table-responsive">
         <table class="table table-bordered ">
@@ -172,10 +177,31 @@ if(isset($_GET['alert']))
               echo "<td>".$row['Blood_group']."</td>";
               echo "<td>".$row['Date']."</td>";
               echo "<td>".$row['Status']."</td>";
-              echo "<td><button type = 'submit' class = 'btn btn-primary btn-sm'>
-                <span class='glyphicon glyphicon-edit'></span>
-                </button></td>";
-              echo"</tr>";
+
+              if($row['Status'] == "Pending")
+              {
+                echo "<td>
+                        <form action='labtechform.php' method='POST'>
+                            <input type = 'hidden' name = 'id' value = '".$row['D_id']."'>
+                            <button type = 'submit' class = 'btn btn-primary btn-sm'>
+                                <span class='glyphicon glyphicon-edit'></span>
+                            </button>
+                        </form>
+                      </td>";
+                echo"</tr>";
+              }
+              else
+              {
+                echo "<td>
+                        <form action='labtechform.php' method='POST'>
+                            <input type = 'hidden' name = 'id' value = '".$row['D_id']."'>
+                            <button type = 'submit' class = 'btn btn-primary btn-sm' disabled>
+                                <span class='glyphicon glyphicon-edit'></span>
+                            </button>
+                        </form>
+                      </td>";
+                echo"</tr>";
+              }
             }
           }
           else

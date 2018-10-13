@@ -63,7 +63,8 @@ if(isset($_POST['submit']))
 
       if($success == 1)
       {
-        header("location: rp.php?alert=success");
+        $_SESSION['message'] = "Donor Registration Successful";
+        header("location: rp.php");
       }
 
   }

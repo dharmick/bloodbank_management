@@ -67,6 +67,7 @@ if(isset($_GET['alert']))
 
   <link rel="stylesheet" type="text/css" href="./css/navbar_style.css">
   <link rel="stylesheet" type="text/css" href="./css/main.css">
+  <script type="text/javascript" src="./js/main.js"></script>
 
   <link rel="shortcut icon" href="./images/favicon.png">
 
@@ -119,13 +120,17 @@ if(isset($_GET['alert']))
   </style>
 </head>
 <body>
-
-<?php include('./sidenav.php')?>
+<div class="alert-box"></div>
+<?php include('./sidenav.php');
+  if(isset($_SESSION['message']))
+  {
+    echo "<script>showAlert('".$_SESSION['message']."')</script>";
+    unset($_SESSION['message']);
+  }
+?> 
   <div id="main" class="shrink">
     <?php include('./horizontal-nav.php')?>
-    <?php 
-        echo $successMessage;
-    ?> 
+    
     <div class="box">
       <div class="table-responsive">
         <table class="table table-bordered ">

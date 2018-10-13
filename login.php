@@ -8,6 +8,7 @@ include_once("connection.php");
 
 $loginsuccess = 0;
 $flag = 0;
+$f = "";
 
 if(isset($_POST['login']))
 {
@@ -34,7 +35,7 @@ if(isset($_POST['login']))
 
 	if($flag != 1)
 	{
-		$query="SELECT * from hospitals where Hosp_email='$Username'";
+		$query="SELECT * from hospitals where Hosp_email='$Username' and Status = 'Registered' ";
 		$result=mysqli_query($conn,$query);
 		
 		if(mysqli_num_rows($result) == 1)
@@ -50,6 +51,12 @@ if(isset($_POST['login']))
 			}
 
 			$flag = 0;
+		}
+		else
+		{
+			echo "<script>alert('Error!')</script>";
+			$f = 0;
+
 		}
 	}
 
@@ -106,6 +113,7 @@ if(isset($_POST['login']))
 		}
 		else 
 		{
+			if($f!=0)
 			echo "<script>alert('Password incorrect')</script>";
 		}
 

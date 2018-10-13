@@ -165,7 +165,7 @@ if(!isset($_SESSION['Emp_email'])){
         case 3:
       ?> 
       <a href="rp.php" class="tab">View Donor Status</a>
-      <a href="registrationform.php" class="tab">Donation Form</a>
+      <a href="registrationform.php" class="tab">Donor Registration Form</a>
       <a href="logout.php" class="tab">Logout</a>
 
       <?php 
