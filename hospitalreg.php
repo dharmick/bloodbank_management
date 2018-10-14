@@ -52,7 +52,7 @@ if(isset($_POST['id']))
 				$result = mysqli_query($conn,$sql);
 				if($result)
 				{
-					$_SESSION['message'] = "Hospital Rejected";
+					$_SESSION['message'] = "Hospital Registration cancelled";
 					header("location: view_hosp.php");
 				}
 			}

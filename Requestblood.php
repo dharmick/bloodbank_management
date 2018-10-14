@@ -55,7 +55,8 @@ if(isset($_POST['submit']))
 
       if($success == 1)
       {
-        header("location: order_hosp.php?alert=success");
+        $_SESSION['message'] = "Order request sent successfully";
+        header("location: order_hosp.php");
       }
     }
 }

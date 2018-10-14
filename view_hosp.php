@@ -154,34 +154,64 @@ $result = mysqli_query($conn,$query);
                         </form>
                       </td>";
 
-                echo "<td>
-                        <form action='hospitalreg.php?alert=remove' method='POST'>
-                            <input type = 'hidden' name = 'id' value = '".$row['Hospital_id']."'>
-                            <button type = 'submit' class = 'btn btn-primary btn-sm'>
-                                <span class='glyphicon glyphicon-remove'></span>
-                            </button>
-                        </form>
-                      </td>";
+                        echo "<td>
+                                <form action='hospitalreg.php?alert=remove' method='POST'>
+                                    <input type = 'hidden' name = 'id' value = '".$row['Hospital_id']."'>
+                                    <button type = 'submit' class = 'btn btn-primary btn-sm'>
+                                        <span class='glyphicon glyphicon-trash'></span>
+                                    </button>
+                                </form>
+                              </td>";
               }
               else
               {
-               echo "<td>
-                    <form action='hospitalreg.php' method='POST'>
-                        <input type = 'hidden' name = 'id' value = '".$row['Hospital_id']."'>
-                        <button type = 'submit' class = 'btn btn-primary btn-sm' disabled>
-                            <span class='glyphicon glyphicon-ok'></span>
-                        </button>
-                    </form>
-                  </td>";
 
-                echo "<td>
+                if($row['Status'] == "Registered")
+                {
+                   echo "<td>
                         <form action='hospitalreg.php' method='POST'>
                             <input type = 'hidden' name = 'id' value = '".$row['Hospital_id']."'>
                             <button type = 'submit' class = 'btn btn-primary btn-sm' disabled>
-                                <span class='glyphicon glyphicon-remove'></span>
+                                <span class='glyphicon glyphicon-ok'></span>
                             </button>
                         </form>
                       </td>";
+                }
+                else
+                {
+                  echo "<td>
+                        <form action='hospitalreg.php?alert=ok' method='POST'>
+                            <input type = 'hidden' name = 'id' value = '".$row['Hospital_id']."'>
+                            <button type = 'submit' class = 'btn btn-primary btn-sm'>
+                                <span class='glyphicon glyphicon-ok'></span>
+                            </button>
+                        </form>
+                      </td>";
+                }
+
+                  if($row['Status'] == "Registered")
+                  {
+
+                    echo "<td>
+                        <form action='hospitalreg.php?alert=remove' method='POST'>
+                            <input type = 'hidden' name = 'id' value = '".$row['Hospital_id']."'>
+                            <button type = 'submit' class = 'btn btn-primary btn-sm'>
+                                <span class='glyphicon glyphicon-trash'></span>
+                            </button>
+                        </form>
+                      </td>";
+                  }
+                  else
+                  {
+                       echo "<td>
+                              <form action='hospitalreg.php' method='POST'>
+                                  <input type = 'hidden' name = 'id' value = '".$row['Hospital_id']."'>
+                                  <button type = 'submit' class = 'btn btn-primary btn-sm' disabled>
+                                      <span class='glyphicon glyphicon-trash'></span>
+                                  </button>
+                              </form>
+                            </td>";
+                  }
               }
               
               // echo "<td>

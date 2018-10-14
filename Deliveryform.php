@@ -80,7 +80,7 @@ if(isset($_POST['submit']))
       $tokenver = $row['Token'];
       $status = $row['status'];
 
-      if(($hospid == $hid) && ($tokenver == $token) && ($status == 'accepted'))
+      if(($hospid == $hid) && ($tokenver == $token) && ($status == 'Accepted'))
       {
         echo "<script>alert('Delivery successful')</script>";
         $_SESSION['oid'] = $oid;

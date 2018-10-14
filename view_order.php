@@ -49,6 +49,8 @@ $result = mysqli_query($conn,$query);
   <link rel="stylesheet" type="text/css" href="./css/navbar_style.css">
   <link rel="stylesheet" type="text/css" href="./css/main.css">
 
+  <script type="text/javascript" src="./js/main.js"></script>
+
   <link rel="shortcut icon" href="./images/favicon.png">
 
   <style type="text/css">
@@ -105,8 +107,14 @@ $result = mysqli_query($conn,$query);
   </style>
 </head>
 <body>
-  
-  <?php include('./sidenav.php')?>
+  <div class="alert-box"></div>
+  <?php include('./sidenav.php');
+  if(isset($_SESSION['message']))
+  {
+    echo "<script>showAlert('".$_SESSION['message']."')</script>";
+    unset($_SESSION['message']);
+  }
+  ?>
   <div id="main" class="shrink">
     <?php include('./horizontal-nav.php')?>
     <div class="box">
@@ -154,7 +162,7 @@ $result = mysqli_query($conn,$query);
                   echo "<td>".$row['Order_date']."</td>";
                   echo "<td>".$row['status']."</td>";
 
-                  if(($row['status']) == "accepted")
+                  if(($row['status']) == "Accepted")
                   {
                       echo "<td>".$row['Token']."</td>";
                   }
@@ -171,13 +179,47 @@ $result = mysqli_query($conn,$query);
                   {
                     echo "<td>Not Available</td>";
                   }
-                  echo "<td><button type = 'submit' class = 'btn btn-primary btn-sm'>
-                        <span class='glyphicon glyphicon-ok'></span>
-                        </button></td>";
-                  echo "<td><button type = 'submit' class = 'btn btn-primary btn-sm'>
-                        <span class='glyphicon glyphicon-remove'></span>
-                        </button></td>";
-                  echo"</tr>";
+                  if($row['status'] == "Pending")
+	              {
+	                echo "<td>
+	                        <form action='order.php?alert=ok' method='POST'>
+	                            <input type = 'hidden' name = 'id' value = '".$row['Order_id']."'>
+	                            <button type = 'submit' class = 'btn btn-primary btn-sm'>
+	                                <span class='glyphicon glyphicon-ok'></span>
+	                            </button>
+	                        </form>
+	                      </td>";
+
+	                echo "<td>
+	                        <form action='order.php?alert=remove' method='POST'>
+	                            <input type = 'hidden' name = 'id' value = '".$row['Order_id']."'>
+	                            <button type = 'submit' class = 'btn btn-primary btn-sm'>
+	                                <span class='glyphicon glyphicon-remove'></span>
+	                            </button>
+	                        </form>
+	                      </td>";
+	              }
+	              else
+	              {
+	              	 echo "<td>
+			                    <form action='order.php' method='POST'>
+			                        <input type = 'hidden' name = 'id' value = '".$row['Order_id']."'>
+			                        <button type = 'submit' class = 'btn btn-primary btn-sm' disabled>
+			                            <span class='glyphicon glyphicon-ok'></span>
+			                        </button>
+			                    </form>
+                  		  </td>";
+
+	                echo "<td>
+	                        <form action='order.php' method='POST'>
+	                            <input type = 'hidden' name = 'id' value = '".$row['Order_id']."'>
+	                            <button type = 'submit' class = 'btn btn-primary btn-sm' disabled>
+	                                <span class='glyphicon glyphicon-remove'></span>
+	                            </button>
+	                        </form>
+	                      </td>";
+	              }
+	              echo"</tr>";
              }
            }
           }
