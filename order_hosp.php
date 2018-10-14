@@ -1,6 +1,6 @@
 <?php
 ob_start();
-session_start(); 
+session_start();
 include_once("connection.php");
 ?>
 
@@ -20,9 +20,14 @@ if(!isset($_SESSION['Emp_email'])){
     // echo "<script>alert('Sign Up successful')</script>";
     die("Not authorized to access this page! \n Please go back to previous page");
   }
-?> 
+?>
 
-<?php 
+<?php
+if($_SESSION['passwordchanged']==0){
+  $_SESSION['message'] = "Reset your password to proceed";
+  header("location: ./reset.php");
+  exit();
+}
 
 $query = "SELECT * FROM orders where Hospital_id =  '".$_SESSION['hid']."' ;";
 $result = mysqli_query($conn,$query);
@@ -36,7 +41,7 @@ if(isset($_GET['alert']))
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
             </button>
         <strong>Order request sent successfully</strong>
-        </div>';  
+        </div>';
 
     }
 }
@@ -118,13 +123,13 @@ if(isset($_GET['alert']))
   </style>
 </head>
 <body>
-  
+
   <?php include('./sidenav.php')?>
   <div id="main" class="shrink">
     <?php include('./horizontal-nav.php')?>
-    <?php 
+    <?php
         echo $successMessage;
-    ?> 
+    ?>
     <div class="box">
       <div class="table-responsive">
         <table class="table table-bordered ">
@@ -141,12 +146,12 @@ if(isset($_GET['alert']))
             <th>Delivered Date & Time</th>
           </tr>
           </thead>
-         
-          <?php 
+
+          <?php
 
           if(mysqli_num_rows($result)>0)
           {
-            //we have data to display 
+            //we have data to display
             while($row =mysqli_fetch_assoc($result))
             {
 

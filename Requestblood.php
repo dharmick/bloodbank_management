@@ -1,6 +1,6 @@
 <?php
 ob_start();
-session_start(); 
+session_start();
 include_once("connection.php");
 ?>
 
@@ -20,9 +20,15 @@ if(!isset($_SESSION['Emp_email'])){
     // echo "<script>alert('Sign Up successful')</script>";
     die("Not authorized to access this page! \n Please go back to previous page");
   }
-?> 
+?>
 
 <?php
+if($_SESSION['passwordchanged']==0){
+  $_SESSION['message'] = "Reset your password to proceed";
+  header("location: ./reset.php");
+  exit();
+}
+
 
 $success = 0;
 
@@ -93,7 +99,7 @@ if(isset($_POST['submit']))
 
 
   <style type="text/css">
-  
+
     .panel-primary>.panel-heading {
       background-color: #ad1457;
       color: white;
@@ -136,13 +142,13 @@ if(isset($_POST['submit']))
       outline: 0 none !important;
       box-shadow: 0 0px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(173, 20, 87,0.6);
       border-color:  rgba(173, 20, 87,0.6);
-    } 
+    }
 
      .dform textarea:focus{
       outline: 0 none !important;
       box-shadow: 0 0px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(173, 20, 87,0.6);
       border-color:  rgba(173, 20, 87,0.6);
-    } 
+    }
      .dform select:focus{
       outline: 0 none !important;
       box-shadow: 0 0px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(173, 20, 87,0.6);
@@ -174,8 +180,8 @@ if(isset($_POST['submit']))
 
 <?php include('./sidenav.php')?>
 <div id="main" class="shrink">
-  <?php include('./horizontal-nav.php')?>  
- <div class="">   
+  <?php include('./horizontal-nav.php')?>
+ <div class="">
  <div class= "col-md-8 col-md-offset-2" style="margin-top: 50px;">
     <div class="panel panel-primary">
       <div class="panel-heading" style="font-family: Lato;"><b>Request Blood</b></div>
@@ -184,16 +190,16 @@ if(isset($_POST['submit']))
           <form id="form1" role="" action="" method="POST">
             <div class="form-group has-feedback">
             <label for="HospitalName">Hospital Name:</label>
-            <input type="text" class="form-control" id= "HospitalName" placeholder="Name" name="hname" value = '<?php echo 
+            <input type="text" class="form-control" id= "HospitalName" placeholder="Name" name="hname" value = '<?php echo
             $_SESSION['Ename']; ?>' readonly>
             </div>
-          
+
             <div class="form-group has-feedback">
             <label for="Unitsrequired">No of units required:</label>
             <input type="text" class="form-control" id= "Unitsrequired" placeholder="Enter required number of units in liter" name="units">
             <div class="alert alert-danger"></div>
             </div>
-            
+
             <div class="form-group has-feedback">
             <label for="Blood Group">Blood Group:</label>
              <select class="form-control" name="bg" >

@@ -24,6 +24,12 @@ if(!isset($_SESSION['Emp_email'])){
 
 <?php
 
+if($_SESSION['passwordchanged']==0){
+  $_SESSION['message'] = "Reset your password to proceed";
+  header("location: ./reset.php");
+  exit();
+}
+
 $query = "SELECT * FROM employees inner join person where employees.P_id = person.P_id and Post_id != 1";
 $result = mysqli_query($conn,$query);
 

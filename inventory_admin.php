@@ -1,6 +1,6 @@
 <?php
 ob_start();
-session_start(); 
+session_start();
 include_once("connection.php");
 ?>
 
@@ -22,7 +22,13 @@ if(!isset($_SESSION['Emp_email'])){
   }
 ?>
 
-<?php 
+<?php
+
+if($_SESSION['passwordchanged']==0){
+  $_SESSION['message'] = "Reset your password to proceed";
+  header("location: ./reset.php");
+  exit();
+}
 
 $query = "SELECT * FROM inventory where Units != 0";
 $result = mysqli_query($conn,$query);
@@ -98,7 +104,7 @@ $result = mysqli_query($conn,$query);
   </style>
 </head>
 <body>
-  
+
   <?php include('./sidenav.php')?>
   <div id="main" class="shrink">
     <?php include('./horizontal-nav.php')?>
@@ -117,12 +123,12 @@ $result = mysqli_query($conn,$query);
             <th>Date</th>
           </tr>
           </thead>
-          
-          <?php 
+
+          <?php
 
           if(mysqli_num_rows($result)>0)
           {
-            //we have data to display 
+            //we have data to display
             while($row =mysqli_fetch_assoc($result))
             {
 

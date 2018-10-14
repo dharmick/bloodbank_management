@@ -1,6 +1,6 @@
 <?php
 ob_start();
-session_start(); 
+session_start();
 include_once("connection.php");
 ?>
 
@@ -20,9 +20,15 @@ if(!isset($_SESSION['Emp_email'])){
     // echo "<script>alert('Sign Up successful')</script>";
     die("Not authorized to access this page! \n Please go back to previous page");
   }
-?> 
+?>
 
-<?php 
+<?php
+
+if($_SESSION['passwordchanged']==0){
+  $_SESSION['message'] = "Reset your password to proceed";
+  header("location: ./reset.php");
+  exit();
+}
 
 $query = "SELECT * FROM orders";
 $result = mysqli_query($conn,$query);
@@ -105,7 +111,7 @@ $result = mysqli_query($conn,$query);
   </style>
 </head>
 <body>
-  
+
   <?php include('./sidenav.php')?>
   <div id="main" class="shrink">
     <?php include('./horizontal-nav.php')?>
@@ -129,12 +135,12 @@ $result = mysqli_query($conn,$query);
             <th>Reject</th>
           </tr>
           </thead>
-         
-          <?php 
+
+          <?php
 
           if(mysqli_num_rows($result)>0)
           {
-            //we have data to display 
+            //we have data to display
             while($row =mysqli_fetch_assoc($result))
             {
               $hid = $row['Hospital_id'];

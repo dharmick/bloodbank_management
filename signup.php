@@ -23,6 +23,13 @@ if(!isset($_SESSION['Emp_email'])){
     // echo "<script>alert('$link')</script>";
     die("Not authorized to access this page! \n Please go back to previous page");
   }
+
+  if($_SESSION['passwordchanged']==0){
+    $_SESSION['message'] = "Reset your password to proceed";
+    header("location: ./reset.php");
+    exit();
+  }
+
 ?>
 
 

@@ -1,17 +1,17 @@
 <?php
 ob_start();
-session_start(); 
+session_start();
 include_once("connection.php");
 ?>
 
-<?php 
+<?php
 
 $loginsuccess = 0;
 $flag = 0;
 
 if(isset($_POST['login']))
 {
-	$Username=$_POST['email'];	
+	$Username=$_POST['email'];
 	$Password=$_POST['password'];
 
 	$query="SELECT * from employees where Emp_email='$Username'";
@@ -36,7 +36,7 @@ if(isset($_POST['login']))
 	{
 		$query="SELECT * from hospitals where Hosp_email='$Username'";
 		$result=mysqli_query($conn,$query);
-		
+
 		if(mysqli_num_rows($result) == 1)
 		{
 			$row=mysqli_fetch_assoc($result);
@@ -87,13 +87,13 @@ if(isset($_POST['login']))
 				case 4:
 					header("location:ds.php");
 					break;
-				
+
 				default:
 					break;
 			}
-			
+
 		}
-		elseif ($loginsuccess == 1 && $flag != 1) 
+		elseif ($loginsuccess == 1 && $flag != 1)
 		{
 			$_SESSION['Emp_email']  = $row['Hosp_email'];
 			$_SESSION['hid'] = $row['Hospital_id'];
@@ -104,14 +104,14 @@ if(isset($_POST['login']))
 			header("location:order_hosp.php");
 
 		}
-		else 
+		else
 		{
 			echo "<script>alert('Password incorrect')</script>";
 		}
 
-		
 
-	
+
+
 
 }
 
@@ -169,7 +169,7 @@ if(isset($_POST['login']))
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			
+
 		}
 		.login:before {
 			content: "";
@@ -229,14 +229,14 @@ if(isset($_POST['login']))
 			outline: 0 none !important;
 			box-shadow: 0 0px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(173, 20, 87,0.6);
 			border-color:  rgba(173, 20, 87,0.6);
-		} 
+		}
 		.hover-scale{
 			position: absolute;
 			top: 35px;
 			left: 35px;
 			font-size: 20px;
 			color: #ad1457;
-			
+
 		}
 		.hover-scale:before {
 			width: 40px;
@@ -270,7 +270,7 @@ if(isset($_POST['login']))
 		<div class="hover-scale">
 			<a style="text-decoration: none;" href="index.php" class="glyphicon glyphicon-arrow-left"></a>
 		</div>
-		
+
 		<form action="" role="form" method="POST">
 			<h2>Login</h2>
 			<div class="form-group">
@@ -281,7 +281,7 @@ if(isset($_POST['login']))
     		<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
     		<div class="alert alert-danger"></div>
     		</div>
-    		<a href="#">Forgot Password</a>
+    		<a href="forgotpass.php">Forgot Password</a>
     		<button type="submit" class="btn" name="login">Login</button>
 		</form>
 	</section>

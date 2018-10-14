@@ -1,6 +1,6 @@
 <?php
 ob_start();
-session_start(); 
+session_start();
 include_once("connection.php");
 ?>
 
@@ -11,6 +11,7 @@ if(!isset($_SESSION['Emp_email'])){
     echo "<script>alert('You are not logged in')</script>";
     header("location:index.php");
 }
+
 
 ?>
 
@@ -36,6 +37,8 @@ if(!isset($_SESSION['Emp_email'])){
 
   <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script src="js/main.js" charset="utf-8"></script>
 
   <link href="https://fonts.googleapis.com/css?family=Lato:900" rel="stylesheet">
 
@@ -119,8 +122,13 @@ if(!isset($_SESSION['Emp_email'])){
 </head>
 
 <body>
-
-<?php include('./sidenav.php')?>
+<div class="alert-box"></div>
+<?php include('./sidenav.php');
+if(isset($_SESSION['message'])) {
+  echo "<script>showAlert('".$_SESSION['message']."')</script>";
+  unset($_SESSION['message']);
+}
+?>
 <div id="main" class="shrink">
   <?php include('./horizontal-nav.php')?>
  <div class="">
@@ -129,14 +137,14 @@ if(!isset($_SESSION['Emp_email'])){
       <div class="panel-heading" style="font-family: Lato;"><b>Reset Password</b></div>
         <div class="panel-body log">
           <div class="dform">
-          <form id="form1" role="form" action="" method="POST">
+          <form id="form1" role="form" action="reset_submit.php" method="POST">
 
             <div class="form-group has-feedback">
 	            <label for="Oldpass">Current Password:</label>
 	            <input type="Password" class="form-control" id= "Oldpass" name="Oldpass" placeholder="Current Password" required>
 							<div class="alert alert-danger"></div>
             </div>
-            
+
             <div class="form-group has-feedback">
               <label for="Newpass">New Password:</label>
               <input type="Password" class="form-control" id= "Newpass" name="Newpass" placeholder="New Password" required>
@@ -149,9 +157,9 @@ if(!isset($_SESSION['Emp_email'])){
               <div class="alert alert-danger"></div>
             </div>
 
-            
-            
-            
+
+
+
             <button type="submit" class="btn" style="margin-bottom: 15px;" name="submit">Submit</button>
           </form>
         </div>
@@ -161,5 +169,6 @@ if(!isset($_SESSION['Emp_email'])){
 </div>
 </div>
 <script src="js/validations.js"></script>
+
 </body>
 </html>

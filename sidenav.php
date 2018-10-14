@@ -1,6 +1,6 @@
 <?php
 ob_start();
-// session_start(); 
+// session_start();
 include_once("connection.php");
 ?>
 
@@ -141,8 +141,8 @@ if(!isset($_SESSION['Emp_email'])){
       </div>
       <div class="">
 
-      <?php 
-        switch ($_SESSION['post']) 
+      <?php
+        switch ($_SESSION['post'])
         {
         case 1:
       ?>
@@ -151,41 +151,46 @@ if(!isset($_SESSION['Emp_email'])){
       <a href="view_emp.php" class="tab">View Employee Details</a>
       <a href="view_hosp.php" class="tab">View Hospitals</a>
       <a href="signup.php" class="tab">Employee Signup Form</a>
+      <a href="reset.php" class="tab">Reset Password</a>
       <a href="logout.php" class="tab">Logout</a>
 
-      <?php 
+      <?php
         break;
         case 2:
-      ?>      
+      ?>
       <a href="lt.php" class="tab">View Donors</a>
+      <a href="reset.php" class="tab">Reset Password</a>
       <a href="logout.php" class="tab">Logout</a>
 
-      <?php 
+      <?php
         break;
         case 3:
-      ?> 
+      ?>
       <a href="rp.php" class="tab">View Donor Status</a>
       <a href="registrationform.php" class="tab">Donation Form</a>
+      <a href="reset.php" class="tab">Reset Password</a>
       <a href="logout.php" class="tab">Logout</a>
 
-      <?php 
+      <?php
         break;
         case 4:
-      ?> 
+      ?>
       <a href="ds.php" class="tab">View Deliveries</a>
       <a href="Deliveryform.php" class="tab">Delivery Form</a>
+      <a href="reset.php" class="tab">Reset Password</a>
       <a href="logout.php" class="tab">Logout</a>
 
-      <?php 
+      <?php
         break;
         case 5:
-      ?> 
+      ?>
       <a href="inventory_hosp.php" class="tab">View Inventory</a>
       <a href="order_hosp.php" class="tab">View orders</a>
       <a href="Requestblood.php" class="tab">Order form</a>
+      <a href="reset.php" class="tab">Reset Password</a>
       <a href="logout.php" class="tab">Logout</a>
 
-      <?php 
+      <?php
         break;
         default:
           break;
@@ -195,7 +200,7 @@ if(!isset($_SESSION['Emp_email'])){
 
 
 
-    </div>   
+    </div>
   </div>
 </div>
 
