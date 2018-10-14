@@ -123,7 +123,7 @@ $result = mysqli_query($conn,$query);
             <th>Status</th>
             <th>Register</th>
             <th>Reject</th>
-            <th>Delete</th>
+            <!-- <th>Delete</th> -->
           </tr>
           </thead>
           
@@ -184,9 +184,14 @@ $result = mysqli_query($conn,$query);
                       </td>";
               }
               
-              echo "<td><button type = 'submit' class = 'btn btn-primary btn-sm'>
-                        <span class='glyphicon glyphicon-trash'></span>
-                        </button></td>";
+              // echo "<td>
+              // 		 	<form action='hospitalreg.php?alert=delete' method='POST'>
+              // 		 		<input type = 'hidden' name = 'id' value = '".$row['Hospital_id']."'>	
+		            //   		<button type = 'submit' class = 'btn btn-primary btn-sm'>
+		            //             <span class='glyphicon glyphicon-trash'></span>
+		            //         </button>
+		            //     </form>    	
+		            // </td>";
               echo"</tr>";
             }
           }

@@ -173,9 +173,14 @@ if(isset($_SESSION['message']))
 	              	default:
 	              		break;
 	              }
-                echo "<td><button type = 'submit' class = 'btn btn-primary btn-sm'>
-                        <span class='glyphicon glyphicon-trash'></span>
-                        </button></td>";
+                echo "<td>
+                   <form action='empdel.php?alert=delete' method='POST'>
+                     <input type = 'hidden' name = 'id' value = '".$row['Emp_id']."'> 
+                     <button type = 'submit' class = 'btn btn-primary btn-sm'>
+                            <span class='glyphicon glyphicon-trash'></span>
+                        </button>
+                    </form>      
+                </td>";
 	              echo"</tr>";
 	            }
 	          }

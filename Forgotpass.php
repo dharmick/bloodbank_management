@@ -156,7 +156,7 @@ include_once("connection.php");
 <body>
 	<section class="login">
 		<div class="hover-scale">
-			<a style="text-decoration: none;" href="index.php" class="glyphicon glyphicon-arrow-left"></a>
+			<a style="text-decoration: none;" href="login.php" class="glyphicon glyphicon-arrow-left"></a>
 		</div>
 		
 		<form action="" role="form" method="POST">

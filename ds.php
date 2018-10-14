@@ -31,11 +31,11 @@ if(isset($_GET['alert']))
     if($_GET['alert']=="success")
     {
       //echo "<script>alert('".$_SESSION['oid']."')</script>";
-        $successMessage='<div class="alert alert-success">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
-            </button>
-        <strong>Order Delivered Successfully</strong>
-        </div>';
+        // $successMessage='<div class="alert alert-success">
+        //     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
+        //     </button>
+        // <strong>Order Delivered Successfully</strong>
+        // </div>';
 
         $query1 = "SELECT * from orders where Order_id = '".$_SESSION['oid']."' ;"; 
         $result2 = mysqli_query($conn,$query1);
@@ -51,7 +51,7 @@ if(isset($_GET['alert']))
 
 $query = "SELECT * FROM orders where Delivered_by =  '".$_SESSION['Eid']."' ;";
 $result = mysqli_query($conn,$query);
-
+$_SESSION['rows'] = mysqli_num_rows($result);
 ?>
 
 
@@ -77,6 +77,8 @@ $result = mysqli_query($conn,$query);
 
   <link rel="stylesheet" type="text/css" href="./css/navbar_style.css">
   <link rel="stylesheet" type="text/css" href="./css/main.css">
+
+  <script type="text/javascript" src="./js/main.js"></script>
 
   <link rel="shortcut icon" href="./images/favicon.png">
 
@@ -134,13 +136,16 @@ $result = mysqli_query($conn,$query);
   </style>
 </head>
 <body>
-  
-  <?php include('./sidenav.php')?>
+ <div class="alert-box"></div> 
+  <?php include('./sidenav.php');
+  if(isset($_SESSION['message']))
+  {
+    echo "<script>showAlert('".$_SESSION['message']."')</script>";
+    unset($_SESSION['message']);
+  }
+  ?>
   <div id="main" class="shrink">
     <?php include('./horizontal-nav.php')?>
-     <?php 
-        echo $successMessage;
-    ?> 
     <div class="box">
       <div class="table-responsive">
         <table class="table table-bordered ">
@@ -160,6 +165,7 @@ $result = mysqli_query($conn,$query);
 
           if(mysqli_num_rows($result)>0)
           {
+          	$_SESSION['delstat'] = 0;
             //we have data to display 
             while($row = mysqli_fetch_assoc($result))
             {
@@ -180,6 +186,10 @@ $result = mysqli_query($conn,$query);
                 echo "<td>".$row['Blood_group']."</td>";
                 echo "<td>".$row['Units']."</td>";
                 echo "<td>".$row['Delivery_status']."</td>";
+                if($row['Delivery_status'] != "Delivered")
+                {
+                  $_SESSION['delstat'] = 1;
+                }
                 echo"</tr>";
               }
             }

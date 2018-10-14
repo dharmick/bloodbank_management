@@ -24,6 +24,26 @@ if(!isset($_SESSION['Emp_email'])){
 
 <?php
 
+if(isset($_SESSION['rows'])){
+    if($_SESSION['rows'] == 0)
+    {
+        $_SESSION['message'] = "There are no deliveries!";
+        header("location: ds.php");
+    }
+}
+
+if(isset($_SESSION['delstat'])){
+    if($_SESSION['delstat'] == 0)
+    {
+        $_SESSION['message'] = "There are no Pending deliveries!";
+        header("location: ds.php");
+    }
+}
+
+?>
+
+<?php
+
 $flag = 0;
 
 date_default_timezone_set("Asia/Kolkata");
@@ -65,6 +85,7 @@ if(isset($_POST['submit']))
         echo "<script>alert('Delivery successful')</script>";
         $_SESSION['oid'] = $oid;
         $_SESSION['ddate'] = $ddate;
+        $_SESSION['message'] = "Delivery Successful";
         header("location: ds.php?alert=success");
       }
       else

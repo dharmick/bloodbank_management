@@ -26,13 +26,16 @@ if(!isset($_SESSION['Emp_email'])){
 
 if(isset($_POST['id']))
 {
+	//echo "<script>alert('Sign Up successful')</script>";
 	$id = $_POST['id'];
 	$query = "SELECT * FROM hospitals where Hospital_id = $id";
 	$result = mysqli_query($conn,$query);
 	if(mysqli_num_rows($result) == 1)
 	{
+		//echo "<script>alert('Sign Up successful')</script>";
 		if(isset($_GET['alert']))
 		{
+			//echo "<script>alert('Sign Up successful')</script>";
 			if($_GET['alert']=="ok")
 			{
 				$sql = "update hospitals set Status = 'Registered' WHERE Hospital_id = $id";
@@ -43,7 +46,7 @@ if(isset($_POST['id']))
 					header("location: view_hosp.php");
 				}
 			}
-			else
+			elseif($_GET['alert']=="remove")
 			{
 				$sql = "update hospitals set Status = 'Rejected' WHERE Hospital_id = $id";
 				$result = mysqli_query($conn,$sql);
@@ -53,10 +56,29 @@ if(isset($_POST['id']))
 					header("location: view_hosp.php");
 				}
 			}
+			// else
+			// {
+			// 	echo "<script>alert('Sign Up successful')</script>";
+			// 	$sql = "delete from hospitals WHERE Hospital_id = $id";
+			// 	// $result = mysqli_query($conn,$sql);
+			// 	echo "<script>alert('$id')</script>";
+			// 	if($conn->query($sql) === TRUE)
+			// 	{
+			// 		echo "<script>alert('Sign Up successful')</script>";
+			// 		$_SESSION['message'] = "Hospital Record Deleted";
+			// 		header("location: view_hosp.php");
+			// 	}
+			// 	else
+			// 	{
+			// 		$error = mysqli_error($conn);
+			// 		echo "<script>alert('$error')</script>";
+			// 	}
+			// }
 		}
 		else
 		{
-			echo "<script>alert('Sign Up successful')</script>";
+			$error = mysqli_error($conn);
+			echo "<script>alert('$error')</script>";
 		}
 	}
 }
