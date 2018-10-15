@@ -1,13 +1,13 @@
 
 <?php
 
-if(!isset($_SESSION['Emp_email'])){
-    //send them to login page
-    echo "<script>alert('You are not logged in')</script>";
-    header("location:login.php");
-}
-else
-{
+// if(!isset($_SESSION['Emp_email'])){
+//     //send them to login page
+//     echo "<script>alert('You are not logged in')</script>";
+//     header("location:login.php");
+// }
+// else
+// {
 	// Inialize session
 	session_start();
 
@@ -18,7 +18,7 @@ else
 
 	// Jump to login page
 	header('Location: index.php');
-}
+// }
 
 ?>
 
