@@ -96,7 +96,7 @@
 
  	<br>
  	<h4><b>Email Id</b></h4>
- 	<p>somaiya-bloodbank@somaiya.edu</p>
+ 	<p>hopedropsbloodbank@gmail.com</p>
 
  	<br>
  	<h4><b>License Number</b></h4>

@@ -105,6 +105,17 @@ $result = mysqli_query($conn,$query);
     	background-color: #efe8dc;
     	color: #ad1457;
     }
+    .btn-primary {
+      color: #fff !important;
+      background-color: #ad1457 !important;
+      border-color: #ad1457 !important;
+    }
+     .btn-primary:hover {
+      color: #fff !important;
+      background-color: #93134b !important;
+      border-color: #93134b !important;
+    }
+
   </style>
 </head>
 <body>
@@ -133,6 +144,7 @@ if(isset($_SESSION['message']))
 	              <th>Address</th>
 	              <th>Email Id</th>
 	              <th>Post</th>
+                <th>Delete</th>
 	             </tr>
 	          </thead>
 
@@ -167,6 +179,14 @@ if(isset($_SESSION['message']))
 	              	default:
 	              		break;
 	              }
+                echo "<td>
+                   <form action='empdel.php?alert=delete' method='POST'>
+                     <input type = 'hidden' name = 'id' value = '".$row['Emp_id']."'> 
+                     <button type = 'submit' class = 'btn btn-primary btn-sm'>
+                            <span class='glyphicon glyphicon-trash'></span>
+                        </button>
+                    </form>      
+                </td>";
 	              echo"</tr>";
 	            }
 	          }

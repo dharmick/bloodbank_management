@@ -114,6 +114,7 @@ $result = mysqli_query($conn,$query);
           <thead>
           <tr>
             <th>Blood ID</th>
+            <th>Donor ID</th>
             <th>Blood Group</th>
             <th>WBC</th>
             <th>RBC</th>
@@ -121,6 +122,7 @@ $result = mysqli_query($conn,$query);
             <th>Units</th>
             <th>Details</th>
             <th>Date</th>
+            <th>Updated on</th>
           </tr>
           </thead>
 
@@ -134,6 +136,7 @@ $result = mysqli_query($conn,$query);
 
               echo "<tr>";
               echo "<td>".$row['Inv_id']."</td>";
+              echo "<td>".$row['D_id']."</td>";
               echo "<td>".$row['Blood_group']."</td>";
               echo "<td>".$row['Wbc']."</td>";
               echo "<td>".$row['Rbc']."</td>";
@@ -141,6 +144,7 @@ $result = mysqli_query($conn,$query);
               echo "<td>".$row['Units']."</td>";
               echo "<td>".$row['Comments']."</td>";
               echo "<td>".$row['Date']."</td>";
+              echo "<td>".$row['Udate']."</td>";
               echo"</tr>";
             }
           }

@@ -9,16 +9,128 @@ include_once("connection.php");
 if(!isset($_SESSION['Emp_email'])){
     //send them to login page
     echo "<script>alert('You are not logged in')</script>";
-    header("location:index.php");
+    header("location:login.php");
 }
 
 ?>
 
+ <?php
+  if($_SESSION['post'] != 2)
+  {
+    // echo "<script>alert('Sign Up successful')</script>";
+    die("Not authorized to access this page! Please go back to previous page");
+  }
+?> 
+
 <?php
 
+$status = "";
+$flag = "";
 date_default_timezone_set("Asia/Kolkata");
 
+if(isset($_POST['id']))
+{
+  $id = $_POST['id'];
+  $query = "SELECT * from donor inner join person where donor.D_id = $id and donor.P_id = person.P_id ";
+  $result = mysqli_query($conn,$query);
+  $row = mysqli_fetch_assoc($result);
+  $name = $row['Name'];
+  $contact = $row['Contact'];
+  $address = $row['Address'];
+  $gender = $row['Gender'];
+  $email = $row['Email'];
+  $age = $row['Age'];
+  $weight = $row['Weight'];
+  $bg = $row['Blood_group'];
+  $date = $row['Date'];
+  $status = $row['Status'];
+}
+//echo "<script>alert('Registration successful')</script>";
+$did = $_POST['id'];
+//echo "<script>alert('Registration successful')</script>";
+if(isset($_POST['submit']))
+{
+  
+  $status = $_POST['status'];
+  if($status == "Accepted")
+  {
+    $bg1 = $_POST['bg'];
+    $rbc = $_POST['rbc'];
+    $wbc = $_POST['wbc'];
+    $hb = $_POST['hb'];
+    $units = $_POST['units'];
+    $comment = $_POST['comment'];
 
+    $sql = "INSERT INTO inventory(D_id,Wbc,Rbc,Haemoglobin,Blood_group,Units,Comments) values ($did,'$wbc','$rbc','hb','$bg1','$units','$comment')";
+
+    if(mysqli_query($conn,$sql))
+    {
+      //echo "<script>alert('Registration successful')</script>";
+      $flag = 1;
+    } 
+    else
+    {
+      echo "<script>alert('Error')</script>";
+    }
+
+    if($flag == 1)
+    {
+      //echo "<script>alert('Registration successful')</script>";
+      $sql = "SELECT * from donor where D_id = $did";
+      if(mysqli_query($conn,$sql))
+      {
+        //echo "<script>alert('Registration successful')</script>";
+        if($bg == $bg1)
+        {
+          $sql = "update donor set Status = '$status' 
+                  WHERE D_id = $did";
+        }
+        else
+        {
+          $sql = "update donor set Status = '$status', Blood_group = '$bg1' 
+                  WHERE D_id = $did";
+        }
+
+        if(mysqli_query($conn,$sql))
+        {
+          //echo "<script>alert('Registration successful')</script>";
+          $_SESSION['message'] = "Blood Added into Inventory Successfully";
+          $success = 1;
+          header("location: lt.php");
+        }
+      }
+    }
+  }
+  elseif ($status == "Rejected") 
+  {
+    $bg1 = $_POST['bg'];
+    $sql = "SELECT * from donor where D_id = $did";
+    if(mysqli_query($conn,$sql))
+    {
+      if($bg == $bg1)
+      {
+        $sql = "update donor set Status = '$status' 
+                WHERE D_id = $did";
+      }
+      else
+      {
+        $sql = "update donor set Status = '$status', Blood_group = '$bg1' 
+                WHERE D_id = $did";
+      }
+
+      if(mysqli_query($conn,$sql))
+      {
+        //echo "<script>alert('Registration successful')</script>";
+        $_SESSION['message'] = "Blood Rejected After Testing";
+        header("location: lt.php");
+      }
+    }
+  }
+  else
+  {
+    echo "<script>alert('Please Change Status from Pending!')</script>";
+  }
+}
 
 ?>
 
@@ -135,57 +247,60 @@ date_default_timezone_set("Asia/Kolkata");
         <div class="panel-body log">
           <div class="dform">
           <form id="form1" role="" action="" method="POST">
+            <input type = 'hidden' name ='id' value = '<?php echo $id; ?>'>
             <div class="form-group has-feedback">
             <label for="Name">Name:</label>
-            <input type="text" class="form-control" id= "Name" name="name" placeholder="Name">
+            <input type="text" class="form-control" id= "Name" name="name" placeholder="Name" value = '<?php echo $name;?>'readonly>
             </div>
             <div class="form-group has-feedback">
             <label for="Contact">Contact No:</label>
-            <input type="text" class="form-control" id= "Contact" placeholder="Contact No." name="contact">
+            <input type="text" class="form-control" id= "Contact" placeholder="Contact No." name="contact" value = '<?php echo $contact; ?>'readonly>
             </div>
             <div class="form-group has-feedback">
             <label for="Address">Address:</label>
-            <textarea style="width: 95%;" type="text" class="form-control" id= "Address" placeholder="Address" name="address"></textarea>
+            <textarea style="width: 95%;" type="text" class="form-control" id= "Address" placeholder="Address" name="address" readonly><?php echo $address; ?></textarea>
             </div>
             <div class="form-group has-feedback">
             <label for="Gender">Gender:</label>
             &nbsp; <label>
-                <input type="radio" name="gender" id="optionsRadios1" value="Male" checked> Male
+                <input type="radio" name="gender" id="optionsRadios1" value="Male" <?php echo ($gender=='Male')?'checked':'' 
+                ?> disabled> Male
             </label>
             &nbsp; <label>
-                <input type="radio" name="gender" id="optionsRadios1" value="Female"> Female
+                <input type="radio" name="gender" id="optionsRadios1" value="Female" <?php echo ($gender=='Female')?'checked':'' ?> disabled> Female
             </label>
             </div>
             <div class="form-group has-feedback">
             <label for="Age">Age:</label>
-            <input type="text" class="form-control" id= "Age" placeholder="Age" name="age">
+            <input type="text" class="form-control" id= "Age" placeholder="Age" name="age" value = '<?php echo $age;?>'readonly>
             </div>
             <div class="form-group has-feedback">
             <label for="Email">Email:</label>
-            <input type="email" class="form-control" id= "Email" placeholder="Email" name="email">
+            <input type="email" class="form-control" id= "Email" placeholder="Email" name="email" value = '<?php echo $email;?>'readonly>
             </div>
             <div class="form-group has-feedback">
             <label for="Weight">Weight:</label>
-            <input type="text" class="form-control" id= "Weight" placeholder="Weight" name="weight">
+            <input type="text" class="form-control" id= "Weight" placeholder="Weight" name="weight" value = '<?php 
+            echo $weight;?>'readonly>
             </div>
             <div class="form-group has-feedback">
             <label for="Blood Group">Blood Group:</label>
              <select class="form-control" name="bg" style="width: 95%;">
-                <option value="A+">A+</option>
-                <option value="B+">B+</option>
-                <option value="AB+">AB+</option>
-                <option value="A-">A-</option>
-                <option value="B-">B-</option>
-                <option value="AB-">AB-</option>
-                <option value="O+">O+</option>
-                <option value="O-">O-</option>
+                <option <?php if($bg == "A+") echo "selected = 'selected'" ?> value="A+">A+</option>
+                <option <?php if($bg == "B+") echo "selected = 'selected'" ?> value="B+">B+</option>
+                <option <?php if($bg == "AB+") echo "selected = 'selected'" ?> value="AB+">AB+</option>
+                <option <?php if($bg == "A-") echo "selected = 'selected'" ?> value="A-">A-</option>
+                <option <?php if($bg == "B-") echo "selected = 'selected'" ?> value="B-">B-</option>
+                <option <?php if($bg == "AB-") echo "selected = 'selected'" ?> value="AB-">AB-</option>
+                <option <?php if($bg == "O+") echo "selected = 'selected'" ?> value="O+">O+</option>
+                <option <?php if($bg == "O-") echo "selected = 'selected'" ?> value="O-">O-</option>
               </select>
             </div>
 
             <div class="form-group has-feedback">
             <label for="status">Status:</label>
-             <select class="form-control" name="status" style="width: 95%;">
-                <option value="Pending" disabled selected="Pending">Pending</option>
+             <select class="form-control" name="status" style="width: 95%;" id="b-status">
+                <option value="Pending" selected="Pending" disabled>Pending</option>
                 <option value="Accepted">Accepted</option>
                 <option value="Rejected">Rejected</option>
               </select>
@@ -214,8 +329,34 @@ date_default_timezone_set("Asia/Kolkata");
 
             <div class="form-group has-feedback">
             <label for="Comments">Comments:</label>
-            <input type="text" class="form-control" id= "Comments" placeholder="Any comments about Donor" name="comment">
+            <input type="text" class="form-control" id= "Comments" placeholder="Any comments about blood" name="comment">
             </div>
+
+            <script>
+           
+            $('.b-status').each(function(){
+            $('.b-status').on('change',myfunction);
+           });
+           
+           
+           
+            function myfunction(){
+            var x = this.value;
+            console.log(x);
+            if(x=='Accepted')
+            {
+        
+              //document.getElementById("demo").innerHTML = "You selected:" +x;
+              //$(this).parent().next()[0].style.display = "block";
+              $(this).parent().next().next()[0].style.display = "block";
+            }
+            else
+            {
+              //$(this).parent().next()[0].style.display = "none";
+              $(this).parent().next().next()[0].style.display = "none";
+            }
+            }
+           </script>    
 
             <button type="submit" class="btn" style="margin-bottom: 15px;" name="submit">Submit</button>
           </form>

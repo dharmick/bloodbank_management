@@ -121,7 +121,7 @@ include_once("connection.php");
 		.hover-scale{
 			position: absolute;
 			top: 35px;
-			left: 35px;
+			left: 25px;
 			font-size: 20px;
 			color: #ad1457;
 			
@@ -156,7 +156,7 @@ include_once("connection.php");
 <body>
 	<section class="login">
 		<div class="hover-scale">
-			<a style="text-decoration: none;" href="index.php" class="glyphicon glyphicon-arrow-left"></a>
+			<a style="text-decoration: none;" href="login.php" class="glyphicon glyphicon-arrow-left"></a>
 		</div>
 		
 		<form action="" role="form" method="POST">
