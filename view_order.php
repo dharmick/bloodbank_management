@@ -138,6 +138,7 @@ $result = mysqli_query($conn,$query);
             <th>Status</th>
             <th>Token</th>
             <th>Delivery Status</th>
+            <th>Delivery Boy</th>
             <th>Delivered Date & Time</th>
             <th>Accept</th>
             <th>Reject</th>
@@ -177,6 +178,14 @@ $result = mysqli_query($conn,$query);
                     echo "<td>Not Available</td>";
                   }
                   echo "<td>".$row['Delivery_status']."</td>";
+                  if($row['Delivered_by'] == 0)
+                  {
+                    echo "<td>Not Available</td>";
+                  }
+                  else
+                  {
+                    echo "<td>".$row['Delivered_by']."</td>";
+                  }
                   if(($row['Delivery_date']) != "0000-00-00 00:00:00")
                   {
                       echo "<td>".$row['Delivery_date']."</td>";

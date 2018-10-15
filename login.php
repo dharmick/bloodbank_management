@@ -8,7 +8,7 @@ include_once("connection.php");
 
 $loginsuccess = 0;
 $flag = 0;
-$f = "";
+$f = 1;
 
 if(isset($_POST['login']))
 {

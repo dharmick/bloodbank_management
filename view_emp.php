@@ -138,6 +138,7 @@ if(isset($_SESSION['message']))
 	        <table class="table table-bordered " id="example1">
 	          <thead>
 	            <tr>
+                <th>Empl. ID</th>
 	              <th>Name</th>
 	              <th>Contact</th>
 	              <th>Gender</th>
@@ -157,6 +158,7 @@ if(isset($_SESSION['message']))
 	            {
 
 	              echo "<tr>";
+                echo "<td>".$row['Emp_id']."</td>";
 	              echo "<td>".$row['Name']."</td>";
 	              echo "<td>".$row['Contact']."</td>";
 	              echo "<td>".$row['Gender']."</td>";
