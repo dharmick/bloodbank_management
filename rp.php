@@ -56,14 +56,25 @@ if(isset($_GET['alert']))
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css"> -->
 
   <!-- jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
   <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!-- <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css"> -->
+
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
+
+  <!-- <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script> -->
+
+  <!-- <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script> -->
 
   <link rel="stylesheet" type="text/css" href="./css/navbar_style.css">
   <link rel="stylesheet" type="text/css" href="./css/main.css">
@@ -133,7 +144,7 @@ if(isset($_GET['alert']))
     
     <div class="box">
       <div class="table-responsive">
-        <table class="table table-bordered ">
+        <table id="example1" class="table table-bordered">
           <thead>
             <tr>
               <th>Name</th>
@@ -192,13 +203,19 @@ if(isset($_GET['alert']))
     var header = document.getElementById("nav-main");
     var btns = header.getElementsByClassName("tab");
     console.log(btns);
-    for (var i = 0; i < btns.length; i++) {
+    for (var i = 0; i < btns.length; i++) 
+    {
     btns[i].addEventListener("click", function() {
     var current = document.getElementsByClassName("current");
     current[0].className = current[0].className.replace("current", "");
     this.className += " current";
     });
-  }
+    }
+
+     $(document).ready(function() 
+     {
+        $('#example').DataTable();
+      } );
   </script>
 </body>
 </html>
