@@ -61,6 +61,14 @@
     background-color: transparent;
   	}
 	</style>
+
+	<style>
+       /* Set the size of the div element that contains the map */
+      #map {
+        height: 400px;  /* The height is 400 pixels */
+        width: 100%;  /* The width is the width of the web page */
+       }
+    </style>
 </head>
 <body>
   <div id="nav-main">
@@ -101,6 +109,9 @@
  	<br>
  	<h4><b>License Number</b></h4>
  	<p>MH004755</p>
+
+ 	<p>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.761803069597!2d72.89753296437671!3d19.0742076569867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c627923df00d%3A0x4c2b4fb28923f63d!2sSomaiya+Vidyavihar%2C+Group+of+Somaiya+Institutions%2C+Vidyanagar%2C+Vidya+Vihar+East%2C+Vidyavihar%2C+Mumbai%2C+Maharashtra+400077!5e0!3m2!1sen!2sin!4v1539718734649" width="600" height="450"  frameborder="0" style="border:0" allowfullscreen></iframe></p>
   </section>
 
 
@@ -117,6 +128,8 @@
     this.className += " current";
     });
   }
+
+  
   </script>
 </body>
 </html>
