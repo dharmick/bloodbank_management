@@ -96,8 +96,8 @@
   <section class="container col-md-4">
   	<h3><strong>CONTACT Us</strong></h3>
   	<br><h4><b>Address</b></h4>
-  	<p>Hope Drops Blood Bank,<br>3rd Floor, Somaiya Satsang Bhavan,<br>Western Express Highway,
-  		<br>Dr. R P Road, Andheri(East),<br>Mumbai-400069(INDIA)
+  	<p>Hope Drops Blood Bank,<br>3rd Floor, Somaiya Bhavan,
+  		<br>Dr. R P Road, Vidyavihar(East),<br>Mumbai-400077(INDIA)
   	</p>
   	<br>
   	<h4><b>Contact No.</b></h4>

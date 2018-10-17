@@ -43,54 +43,39 @@ if(isset($_GET['alert']))
 }
 ?>
 
-
-
-
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Blood Bank</title>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blood Bank</title>
 
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css"> -->
+      <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-  <!-- jQuery library -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-  <!-- Latest compiled JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
-  <!-- <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css"> -->
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
-  <!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
 
-  <!-- <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script> -->
+       <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-  <!-- <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
 
-  <link rel="stylesheet" type="text/css" href="./css/navbar_style.css">
-  <link rel="stylesheet" type="text/css" href="./css/main.css">
-  <script type="text/javascript" src="./js/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/navbar_style.css">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <script type="text/javascript" src="./js/main.js"></script>
 
-  <link rel="shortcut icon" href="./images/favicon.png">
+    <link rel="shortcut icon" href="./images/favicon.png">
 
-  <style type="text/css">
-  	/* #nav-main {
-    background-color: transparent;
-    width: 100%;
-    display: block;
-    margin: 0px auto;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    } */
+    <style type="text/css">
     .alert-success {
     color: #ad1457;
     background-color: #e8dae1;
@@ -103,63 +88,60 @@ if(isset($_GET['alert']))
       margin-top: 0px;
       padding: 15px;
       border-radius: 5px;
-			margin: 20px;
+            margin: 20px;
       margin-top: 62px;
     }
-    table {
-    	border: 2px solid #ad1457 !important;
-    	font-family: 'Verdana', sans-serif;
-      margin-bottom: 0px !important;
-    }
-    th {
-    	background-color: #ad1457;
-    	color: white;
-      cursor: pointer;
-    }
-    th, td {
+	
+	table.dataTable {
+		border-color: #ad1457 !important;
+	}
+	
+	.table-bordered {
+		border: 2px solid #ad1457 !important;
+	}
+	
+	.table>caption+thead>tr:first-child>td, .table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>td, .table>thead:first-child>tr:first-child>th{
+		background-color: #ad1457;
+		color: white;
+	}
+	.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover{
+		background-color: #ad1457;
+		border-color: #ad1457;
+	}
+    </style>
 
-    	padding: 12px !important;
-    }
-    tr:nth-child(even) {
-    	background-color: #f2f2f2;
-    }
-    tr:hover
-    {
-    	background-color: #efe8dc;
-    	color: #ad1457;
-    }
-  </style>
 </head>
 <body>
-<div class="alert-box"></div>
-<?php include('./sidenav.php');
-  if(isset($_SESSION['message']))
-  {
-    echo "<script>showAlert('".$_SESSION['message']."')</script>";
-    unset($_SESSION['message']);
-  }
-?> 
-  <div id="main" class="shrink">
+
+    <div class="alert-box"></div>
+    <?php include('./sidenav.php');
+      if(isset($_SESSION['message']))
+      {
+        echo "<script>showAlert('".$_SESSION['message']."')</script>";
+        unset($_SESSION['message']);
+      }
+    ?> 
+    <div id="main" class="shrink">
     <?php include('./horizontal-nav.php')?>
     
     <div class="box">
       <div class="table-responsive">
-        <table id="example1" class="table table-bordered">
-          <thead>
+        <table id="example" class="table table-striped table-bordered table-hover" style="width:100%">
+        <thead>
             <tr>
-              <th>Name</th>
-              <th>Contact</th>
-              <th>Gender</th>
-              <th>Email Id</th>
-              <th>Age</th>
-              <th>Weight</th>
-              <th>Blood Group</th>
-              <th>Date & Time</th>
-              <th>Status</th>
-             </tr> 
-          </thead>
-
-          <?php 
+                <th>Name</th>
+                  <th>Contact</th>
+                  <th>Gender</th>
+                  <th>Email Id</th>
+                  <th>Age</th>
+                  <th>Weight</th>
+                  <th>Blood Group</th>
+                  <th>Date & Time</th>
+                  <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+           <?php 
 
           if(mysqli_num_rows($result)>0)
           {
@@ -186,36 +168,23 @@ if(isset($_GET['alert']))
             echo "<div class='alert alert-warning'>No data to display for donors</div>";
           }
 
-          ?>
-        
-      
-        </table>
+          ?> 
+        </tbody>
+    </table>
       </div>
     </div>
-		<!--footer-->
-	 <?php include_once("footer.php") ?>
-	  <!--footer ends-->
+        <!--footer-->
+     <?php include_once("footer.php") ?>
+      <!--footer ends-->
   </div>
 
-
-
-  <script type="text/javascript">
-    var header = document.getElementById("nav-main");
-    var btns = header.getElementsByClassName("tab");
-    console.log(btns);
-    for (var i = 0; i < btns.length; i++) 
-    {
-    btns[i].addEventListener("click", function() {
-    var current = document.getElementsByClassName("current");
-    current[0].className = current[0].className.replace("current", "");
-    this.className += " current";
-    });
-    }
-
-     $(document).ready(function() 
-     {
-        $('#example').DataTable();
-      } );
-  </script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+    $('#example').DataTable();
+} );
+    </script>
 </body>
 </html>
+
+
+
