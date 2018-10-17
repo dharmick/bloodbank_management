@@ -161,7 +161,7 @@ if(isset($_POST['submit']))
 
             <div class="form-group has-feedback">
               <label class="control-label">Upload &nbsp;Registration &nbsp;certificate</label>
-              <input type="file" name="certi"  class="filestyle" data-buttonText="Select a File">
+              <input type="file" name="certi"  class="filestyle" accept="image/x-png,image/gif,image/jpeg" data-buttonText="Select a File">
             </div>
             
             <button type="submit" class="btn" style="margin-bottom: 15px;" name="submit">Submit</button>

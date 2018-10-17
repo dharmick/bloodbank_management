@@ -20,10 +20,18 @@ if(!isset($_SESSION['Emp_email'])){
     // echo "<script>alert('Sign Up successful')</script>";
     die("Not authorized to access this page! Please go back to previous page");
   }
+
+  if($_SESSION['passwordchanged']==0)
+  {
+	  $_SESSION['message'] = "Reset your password to proceed";
+	  header("location: ./reset.php");
+	  exit();
+ }
 ?> 
 
 <?php
 
+$f = 0;
 date_default_timezone_set("Asia/Kolkata");
 
 if(isset($_POST['submit']))
@@ -37,24 +45,15 @@ if(isset($_POST['submit']))
   $weight = $_POST['weight'];
   $bloodgroup = $_POST['bg'];
 
-  $query = "INSERT INTO person(Name,Contact,Address,Gender) values ('$fname','$mob','$address','$gender')";
-  if(mysqli_query($conn,$query))
+  $sql = "SELECT * from donor where Email = '$email'";
+  $res = mysqli_query($conn,$sql);
+  if(mysqli_num_rows($res)>0)
   {
-    $flag = 1;
-  }
-
-  if($flag == 1)
-  {
-
-    $query = "SELECT P_id from person where Contact = '$mob'";
-    $result = mysqli_query($conn,$query);
-    if($result);
-    {
-    $row =mysqli_fetch_assoc($result);
-    $pid = $row['P_id'];
-    }
-
-      $query = "INSERT INTO donor(P_id,Email,Weight,Blood_group,Age) values ('$pid','$email','$weight','$bloodgroup','$age')";
+  	$row = mysqli_fetch_assoc($res);
+  	$pid = $row['P_id'];
+  	$bg = $row['Blood_group'];
+  	$f = 1;
+  	$query = "INSERT INTO donor(P_id,Email,Weight,Blood_group,Age) values ('$pid','$email','$weight','$bg','$age')";
       if(mysqli_query($conn,$query))
       {
         echo "<script>alert('Registration successful')</script>";
@@ -68,6 +67,64 @@ if(isset($_POST['submit']))
       }
 
   }
+  else
+  {
+  	 $sql = "SELECT * from employees where Emp_email = '$email'";
+  	 $res = mysqli_query($conn,$sql);
+  	 if(mysqli_num_rows($res) == 1)
+  	 {
+  	 	$row = mysqli_fetch_assoc($res);
+  		$pid = $row['P_id'];
+  		$f = 1;
+  		$query = "INSERT INTO donor(P_id,Email,Weight,Blood_group,Age) values ('$pid','$email','$weight','$bloodgroup','$age')";
+	      if(mysqli_query($conn,$query))
+	      {
+	        echo "<script>alert('Registration successful')</script>";
+	        $success=1;
+	      }
+
+	      if($success == 1)
+	      {
+	        $_SESSION['message'] = "Donor Registration Successful";
+	        header("location: rp.php");
+	      }
+  	 }
+  }
+
+  if($f == 0)
+  {
+	  $query = "INSERT INTO person(Name,Contact,Address,Gender) values ('$fname','$mob','$address','$gender')";
+	  if(mysqli_query($conn,$query))
+	  {
+	    $flag = 1;
+	  }
+
+	  if($flag == 1)
+	  {
+
+	    $query = "SELECT P_id from person where Contact = '$mob'";
+	    $result = mysqli_query($conn,$query);
+	    if($result);
+	    {
+	    $row =mysqli_fetch_assoc($result);
+	    $pid = $row['P_id'];
+	    }
+
+	      $query = "INSERT INTO donor(P_id,Email,Weight,Blood_group,Age) values ('$pid','$email','$weight','$bloodgroup','$age')";
+	      if(mysqli_query($conn,$query))
+	      {
+	        echo "<script>alert('Registration successful')</script>";
+	        $success=1;
+	      }
+
+	      if($success == 1)
+	      {
+	        $_SESSION['message'] = "Donor Registration Successful";
+	        header("location: rp.php");
+	      }
+
+	  }
+	}
 }
 ?>
 

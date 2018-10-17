@@ -44,6 +44,9 @@ if(isset($_POST['sign']))
 	$email = $_POST['email'];
 	$pass =  bin2hex(openssl_random_pseudo_bytes(4));
 
+	$options = array("cost"=>4);
+	$hashPassword = password_hash($pass,PASSWORD_BCRYPT,$options);
+
 	$query = "INSERT INTO person(Name,Contact,Address,Gender) values ('$fname','$mob','$address','$gender')";
 	if(mysqli_query($conn,$query))
 	{
@@ -61,7 +64,8 @@ if(isset($_POST['sign']))
 		$pid = $row['P_id'];
 		}
 
-			$query = "INSERT INTO employees(P_id,Emp_email,Post_id, Password) values ('$pid','$email','$position','$pass')";
+			$query = "INSERT INTO employees(P_id,Emp_email,Post_id, Password) values ('$pid','$email','$position',
+			'$hashPassword')";
 			if(mysqli_query($conn,$query))
 			{
 				echo "<script>alert('Sign Up successful')</script>";

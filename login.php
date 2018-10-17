@@ -25,7 +25,7 @@ if(isset($_POST['login']))
 		$pass=$row['Password'];
 		$postid = $row['Post_id'];
 
-		if($pass == $Password)
+		if(password_verify($Password,$pass))
 		{
 			$loginsuccess = 1;
 		}
@@ -45,7 +45,7 @@ if(isset($_POST['login']))
 			$pass=$row['Hosp_passwd'];
 			$postid = $row['Post_id'];
 
-			if($pass == $Password)
+			if(password_verify($Password,$pass))
 			{
 				$loginsuccess = 1;
 			}
@@ -271,6 +271,14 @@ if(isset($_POST['login']))
     .alert p {
       padding: 5px;
     }
+
+    .field-icon {
+  float: right;
+  margin-left: -25px;
+  margin-top: -25px;
+  position: relative;
+  z-index: 2;
+}
 	</style>
 </head>
 <body>
@@ -286,13 +294,37 @@ if(isset($_POST['login']))
   			 <div class="alert alert-danger"></div>
   			</div>
  			 <div class="form-group">
-    		<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+    		<input type="password" id="pwinput" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
     		<div class="alert alert-danger"></div>
+    		</div>
+    		<div class="form-group">
+    			<input type="checkbox" name="" id="pwcheck"> Show Password
     		</div>
     		<a href="forgotpass.php">Forgot Password</a>
     		<button type="submit" class="btn" name="login">Login</button>
 		</form>
 	</section>
 	<script src="js/validations.js"></script>
+	<script type="text/javascript">
+
+	$(document).ready(function(){
+
+    $("#pwinput").focus();
+
+    $("#pwcheck").click(function(){
+        var pw = $("#pwinput").val();
+        if ($("#pwcheck").is(":checked"))
+        {
+            $("#pwinput").prop('type','text');
+        }
+        else
+        {
+            $("#pwinput").prop('type','password');
+        }
+
+    });
+});
+	</script>
+	
 </body>
 </html>
