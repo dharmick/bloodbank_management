@@ -96,7 +96,7 @@ if(isset($_POST['submit']))
       		{
       			$row = mysqli_fetch_assoc($result);
       			$units = $row['Units'];
-      			$date = date("Y-m-d h:i:s");
+      			$date = date("Y-m-d H:i:s");
       			$sql1 = "update inventory set Units = ($units - $buar[$i]),
       									  Udate = '$date'
       									  WHERE Inv_id = $bidar[$i]";
