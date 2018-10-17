@@ -45,6 +45,7 @@ if(isset($_SESSION['delstat'])){
 <?php
 
 $flag = 0;
+$f = 0;
 
 date_default_timezone_set("Asia/Kolkata");
 
@@ -71,7 +72,7 @@ if(isset($_POST['submit']))
 
   if($flag == 1)
   {
-    $query = "SELECT * from orders WHERE Order_id = '$oid'";
+    $query = "SELECT * from orders WHERE Order_id = '$oid' ";
     $result = mysqli_query($conn,$query);
     if(mysqli_num_rows($result) == 1)
     {
@@ -79,14 +80,47 @@ if(isset($_POST['submit']))
       $hospid = $row['Hospital_id'];
       $tokenver = $row['Token'];
       $status = $row['status'];
+      $bid = $row['Blood_IDs'];
+      $bu = $row['Blood_Units'];
+      $bidar = explode (",", $bid);
+      $buar = explode (",", $bu);
+      $n = sizeof($bidar);
 
       if(($hospid == $hid) && ($tokenver == $token) && ($status == 'Accepted'))
       {
-        echo "<script>alert('Delivery successful')</script>";
-        $_SESSION['oid'] = $oid;
-        $_SESSION['ddate'] = $ddate;
-        $_SESSION['message'] = "Delivery Successful";
-        header("location: ds.php?alert=success");
+      	for($i=0; $i<$n; $i++)
+      	{
+      		$sql = "SELECT * from inventory WHERE Inv_id = $bidar[$i]";
+      		$result = mysqli_query($conn,$sql);
+      		if($result)
+      		{
+      			$row = mysqli_fetch_assoc($result);
+      			$units = $row['Units'];
+      			$date = date("Y-m-d h:i:s");
+      			$sql1 = "update inventory set Units = ($units - $buar[$i]),
+      									  Udate = '$date'
+      									  WHERE Inv_id = $bidar[$i]";
+      			$result1 = mysqli_query($conn,$sql1);
+      			if(!$result1)
+      			{
+      				$f = 1;
+      				break;
+      			}
+      		}
+      	}
+
+      	if($f == 0)
+      	{
+	        echo "<script>alert('Delivery successful')</script>";
+	        $_SESSION['oid'] = $oid;
+	        $_SESSION['ddate'] = $ddate;
+	        $_SESSION['message'] = "Delivery Successful";
+	        header("location: ds.php?alert=success");
+    	}
+    	else
+    	{
+    		echo "<script>alert('Delivery Unsuccessful')</script>";
+    	}
       }
       else
       {

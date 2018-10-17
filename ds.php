@@ -64,23 +64,31 @@ $_SESSION['rows'] = mysqli_num_rows($result);
 <head>
 	<title>Blood Bank</title>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- jQuery library -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-  <!-- Latest compiled JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-  <link rel="stylesheet" type="text/css" href="./css/navbar_style.css">
-  <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
-  <script type="text/javascript" src="./js/main.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
-  <link rel="shortcut icon" href="./images/favicon.png">
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+
+       <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="./css/navbar_style.css">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <script type="text/javascript" src="./js/main.js"></script>
+
+    <link rel="shortcut icon" href="./images/favicon.png">
 
   <style type="text/css">
      .box {
@@ -91,31 +99,7 @@ $_SESSION['rows'] = mysqli_num_rows($result);
       margin: 20px;
       margin-top: 62px;
     }
-    table {
-      border: 2px solid #ad1457 !important;
-      font-family: 'Verdana', sans-serif;
-      margin-bottom: 0px !important;
-    }
-    .table-bordered>thead>tr>th {
-    border: 1px solid #ddd !important;
-	}
-    th {
-      background-color: #ad1457;
-      color: white;
-      cursor: pointer;
-    }
-    th, td {
-
-      padding: 12px !important;
-    }
-    tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
-    tr:hover
-    {
-      background-color: #efe8dc;
-      color: #ad1457;
-    }
+   
     .btn-primary {
       color: #fff !important;
       background-color: #ad1457 !important;
@@ -133,6 +117,24 @@ $_SESSION['rows'] = mysqli_num_rows($result);
     border-color: #e8dae1;
     margin: 60px 15px 0px 15px;
     }
+
+
+    table.dataTable {
+    border-color: #ad1457 !important;
+  }
+  
+  .table-bordered {
+    border: 2px solid #ad1457 !important;
+  }
+  
+  .table>caption+thead>tr:first-child>td, .table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>td, .table>thead:first-child>tr:first-child>th{
+    background-color: #ad1457;
+    color: white;
+  }
+  .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover{
+    background-color: #ad1457;
+    border-color: #ad1457;
+  }
   </style>
 </head>
 <body>
@@ -148,7 +150,7 @@ $_SESSION['rows'] = mysqli_num_rows($result);
     <?php include('./horizontal-nav.php')?>
     <div class="box">
       <div class="table-responsive">
-        <table class="table table-bordered ">
+        <table id="example" class="table table-striped table-bordered table-hover" style="width:100%">
           <thead>
           <tr>
             <th>OrderID</th>
@@ -209,4 +211,9 @@ $_SESSION['rows'] = mysqli_num_rows($result);
     <!--footer ends-->
   </div>
   </div>
+  <script type="text/javascript">
+    $(document).ready(function() {
+    $('#example').DataTable();
+    } );
+  </script>
 </body>

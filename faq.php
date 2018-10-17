@@ -75,12 +75,13 @@
 </head>
 <body>
   <div id="nav-main">
-    <img src="./images/logo.png" alt="Blood Bank" height="65" style="margin-left: 5px;">
+    <a href="index.php"><img src="./images/logo.png" alt="Blood Bank" height="65" style="margin-left: 5px;"></a>
     <ul>
       <li  class = "tab" ><a href="index.php">HOME</a></li>
       <li  class = "tab"><a href="#">ABOUT US</a></li>
       <li  class = "tab current"><a href="faq.php">FAQs</a></li>
       <li  class = "tab"><a href="contactus.php">CONTACT US</a></li>
+      <li  class = "tab"><a href="hospitalsignup.php">HOSPITAL SIGNUP</a></li>
       <li  class = "tab"><a href="login.php">LOGIN</a></li>
     </ul>
   </div>
@@ -104,15 +105,18 @@
 	<br><img class="bullet" src="./images/download.jpeg">1unit of blood can save up to 3 lives.
 	<br><img class="bullet" src="./images/download.jpeg">From natural disasters to chronic diseases, the demand for blood is constant.
 
-	<br><br><br><strong id="donate" style="font-size:20px;">I WANT TO DONATE BLOOD</strong>
+  <section id="donate">
+	<br><br><br><br><strong id="donate" style="font-size:20px;">I WANT TO DONATE BLOOD</strong>
 	<br><img class="bullet" src="./images/download.jpeg">We don't have any online registration facility, so you will need to visit our nearest branch.
     <br><img class="bullet" src="./images/download.jpeg">Make sure you carry your photo ID and other medical reports.
 	<br><img class="bullet" src="./images/download.jpeg">On your visit, head to receptionist who will fill out your Registration form.
 	<br><img class="bullet" src="./images/download.jpeg">If all your screening meets requirements, you will be directed for further process.
 	<br><img class="bullet" src="./images/download.jpeg">On our website you will find Blood Centre branch or mobile blood drive near you and the operating hours. 
 	<br><img class="bullet" src="./images/download.jpeg">Call us on xxxxxxxxxx for any queries.
+  </section>
 
-  <br><br><br><strong id="donate" style="font-size:20px;">HOW HOSPITALS CAN REQUEST BLOOD</strong>
+  <section id="request">
+  <br><br><br><br><strong id="donate" style="font-size:20px;">HOW HOSPITALS CAN REQUEST BLOOD</strong>
   <br><img class="bullet" src="./images/download.jpeg">Initially Hospital needs to register itself.
 
     <br><img class="bullet" src="./images/download.jpeg">Fill the sign up form <a href="http://localhost/bloodbank_management/Hospitalsignup.php" target="_blank">Here.</a>
@@ -123,10 +127,10 @@
 
     <br><img class="bullet" src="./images/download.jpeg">You will receive a confirmation mail regarding whether your request is accepted or rejected.
 
-
   <br><img class="bullet" src="./images/download.jpeg">Hospitals shall be provided with a token number if request is accepted.
 
   <br><img class="bullet" src="./images/download.jpeg">On delivery of blood, confirm token number with the delivery staff.
+  </section>
 	
 
     <br><br><br><strong style="font-size:20px;">WHO CAN DONATE BLOOD?</strong>
