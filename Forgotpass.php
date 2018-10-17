@@ -1,16 +1,8 @@
 <?php
 ob_start();
-session_start(); 
+session_start();
 include_once("connection.php");
 ?>
-
-
-
-
-
-
-
-
 
 
 
@@ -29,6 +21,7 @@ include_once("connection.php");
 
   <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="js/main.js"></script>
 
   <link href="https://fonts.googleapis.com/css?family=Lato:900" rel="stylesheet">
 
@@ -57,7 +50,7 @@ include_once("connection.php");
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			
+
 		}
 		.login:before {
 			content: "";
@@ -117,14 +110,14 @@ include_once("connection.php");
 			outline: 0 none !important;
 			box-shadow: 0 0px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(173, 20, 87,0.6);
 			border-color:  rgba(173, 20, 87,0.6);
-		} 
+		}
 		.hover-scale{
 			position: absolute;
 			top: 35px;
 			left: 25px;
 			font-size: 20px;
 			color: #ad1457;
-			
+
 		}
 		.hover-scale:before {
 			width: 40px;
@@ -154,12 +147,20 @@ include_once("connection.php");
 	</style>
 </head>
 <body>
+	<div class="alert-box"></div>
+	<?php
+	if(isset($_SESSION['message']))
+		{
+			echo "<script>showAlert('".$_SESSION['message']."')</script>";
+			unset($_SESSION['message']);
+		}
+	?>
 	<section class="login">
 		<div class="hover-scale">
 			<a style="text-decoration: none;" href="login.php" class="glyphicon glyphicon-arrow-left"></a>
 		</div>
-		
-		<form action="" role="form" method="POST">
+
+		<form action="forgotpass_submit.php" role="form" method="POST">
 			<h2>Forgot Password</h2>
 			<div class="form-group">
   			 <input type="text" class="form-control email" id="exampleInputEmail1" placeholder="Email" name="email" autocomplete="false">
@@ -174,5 +175,6 @@ include_once("connection.php");
 		</form>
 	</section>
 	<script src="js/validations.js"></script>
+
 </body>
 </html>

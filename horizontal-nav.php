@@ -9,7 +9,7 @@ include_once("connection.php");
 if(!isset($_SESSION['Emp_email'])){
     //send them to login page
     echo "<script>alert('You are not logged in')</script>";
-    header("location:login.php");
+    header("location:index.php");
 }
 
 ?>
@@ -22,7 +22,7 @@ if(!isset($_SESSION['Emp_email'])){
 <link href="https://fonts.googleapis.com/css?family=Lato:900" rel="stylesheet">
 
 <style media="screen">
-ul {
+ul#navbar {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -40,12 +40,12 @@ ul {
   /* box-shadow: 0 2px 4px 0 rgba(0,0,0,.1); */
 }
 
-li {
+#navbar li {
   float: right;
   cursor: pointer;
 }
 
-li a {
+#navbar li a {
   display: block;
   color: #ad1459;
   text-align: center;
@@ -55,7 +55,7 @@ li a {
 }
 
 /* Change the link color to #111 (black) on hover */
-li a:hover {
+#navbar li a:hover {
   background-color: #ad1457;
   text-decoration: none;
   color: #fff;

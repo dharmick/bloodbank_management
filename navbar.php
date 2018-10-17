@@ -15,12 +15,13 @@
     </head>
     <body>
   <div id="nav-main">
-    <img src="./images/logo.png" alt="Blood Bank" height="65" style="margin-left: 5px;">
+    <a href="index.php"><img src="./images/logo.png" alt="Blood Bank" height="65" style="margin-left: 5px;"></a>
     <ul>
       <li  class = "tab current" ><a href="index.php">HOME</a></li>
       <li  class = "tab"><a href="#">ABOUT US</a></li>
       <li  class = "tab"><a href="faq.php">FAQs</a></li>
       <li  class = "tab"><a href="contactus.php">CONTACT US</a></li>
+      <li  class = "tab"><a href="hospitalsignup.php">HOSPITAL SIGNUP</a></li>
       <li  class = "tab"><a href="login.php">LOGIN</a></li>
     </ul>
   </div>
