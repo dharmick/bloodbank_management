@@ -90,8 +90,8 @@ h<!DOCTYPE html>
 		<div class="col-sm-6">
 			<h1>Blood is meant to circulate.<br>Pass it around.</h1>
 			<br><br><p>Their are number of countries who don't have adequate number<br>of blood suppliers and face the challenge of blood supply.We are<br>trying to make available adequate blood to needy patients all<br>over the world.</p>
-			<a href="" class="btn">I want to Donate</a>
-			<a href="" class="btn">Request for Blood</a>
+			<a href="./faq.php#donate" class="btn">I want to Donate</a>
+			<a href="./faq.php#request" class="btn">Request for Blood</a>
 		</div>
 		<!--<div class="col-sm-6">
 			<img src="images/1111.png" class="banner-img">

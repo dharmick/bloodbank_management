@@ -135,7 +135,7 @@ $result = mysqli_query($conn,$query);
             <th>Blood Group</th>
             <th>Units</th>
             <th>Comments</th>
-            <th style="width: 200px;">Order Date & Time</th>
+            <th width="100px;">Order Date & Time</th>
             <th>Status</th>
             <th>Token</th>
             <th>Delivery Status</th>
