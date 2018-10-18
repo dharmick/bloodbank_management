@@ -126,12 +126,14 @@ if(isset($_POST['submit']))
     	}
     	else
     	{
-    		echo "<script>alert('Delivery Unsuccessful')</script>";
+    		$_SESSION['message'] = "Delivery Unsuccessful";
+	        header("location: ds.php");
     	}
       }
       else
       {
-        echo "<script>alert('Delivery Unsuccessful')</script>";
+       		$_SESSION['message'] = "Delivery Unsuccessful";
+	        header("location: ds.php");
       }
     }
     else
@@ -269,13 +271,56 @@ if(isset($_POST['submit']))
             <input type="hidden" name="ddate" value="<?php echo date('Y-m-d H:i:s'); ?>" />
             <div class="form-group has-feedback">
             <label for="HospitalName">Hospital Name:</label>
-            <input type="text" class="form-control" id= "HospitalName" name="hname" placeholder="Name">
+            <?php
+              //include("includes/connection.php");
+
+              $query = "SELECT * FROM orders where Delivery_status = 'Pending' and Delivered_by =  '".$_SESSION['Eid']."';";
+              $result=mysqli_query($conn,$query);
+              if($result)
+              {
+                echo "<select id= 'HospitalName' name='hname' class='form-control'>";
+                while ($row =mysqli_fetch_assoc($result))
+                {
+                  $hid = $row['Hospital_id'];
+                  $query = "SELECT * from hospitals where Hospital_id = $hid";
+                  $result1=mysqli_query($conn,$query);
+                  if($result1)
+                  {
+                    $row1 = mysqli_fetch_assoc($result1);
+                    echo "<option value='" . $row1['Hospital_name'] ."'>" . $row1['Hospital_name'] ."</option>";
+                  }
+                }
+                echo "</select>";
+              }
+              
+              
+            ?>
             <div class="alert alert-danger"></div>
             </div>
 
+
             <div class="form-group has-feedback">
             <label for="OrderId">Order ID:</label>
-            <input type="text" class="form-control" id= "OrderId" name="orderid" placeholder="Order ID">
+            <!-- <input type="text" class="form-control" id= "OrderId" name="orderid" placeholder="Order ID"> -->
+
+             <?php
+              //include("includes/connection.php");
+
+              $query = "SELECT * FROM orders where Delivery_status = 'Pending' and Delivered_by =  '".$_SESSION['Eid']."';";
+              $result=mysqli_query($conn,$query);
+              if($result)
+              {
+                echo "<select id= 'OrderId' name='orderid' class='form-control'>";
+                while ($row =mysqli_fetch_assoc($result))
+                {
+                  
+                  echo "<option value='" . $row['Order_id'] ."'>" . $row['Order_id'] ."</option>";
+                }
+                echo "</select>";
+              }
+              
+              
+            ?>
             <div class="alert alert-danger"></div>
             </div>
 

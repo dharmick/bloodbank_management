@@ -153,11 +153,15 @@ if(isset($_POST['login']))
 
   <link href="https://fonts.googleapis.com/css?family=Lato:900" rel="stylesheet">
 
+  <link href="https://fonts.googleapis.com/css?family=Lato:900" rel="stylesheet">
+
     <link rel="shortcut icon" href="./images/favicon.png">
 
 	<style>
 		body {
 			background: #f5f5f5;
+			font-family: Lato;
+			color: #d32370 !important;
 		}
 		.form-control-feedback {
 			top: 3px;
@@ -228,7 +232,7 @@ if(isset($_POST['login']))
 		}
 		.login h2 {
 			font-size: 45px;
-			margin-bottom: 30px;
+			margin-bottom: 25px;
 			font-weight: bold;
 			color: #797d7f;
 			text-transform: uppercase;
@@ -280,6 +284,10 @@ if(isset($_POST['login']))
   position: relative;
   z-index: 2;
 }
+
+	#pwcheck {
+
+	}
 	</style>
 </head>
 <body>
@@ -303,7 +311,7 @@ if(isset($_POST['login']))
     			<input type="checkbox" name="" id="pwcheck"> Show Password
     		</div>
     		<a href="forgotpass.php">Forgot Password</a>
-    		<button type="submit" class="btn" name="login">Login</button>
+    		<button type="submit" class="btn" name="login">LOGIN</button>
 		</form>
 	</section>
 	<script src="js/validations.js"></script>

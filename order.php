@@ -95,11 +95,12 @@ if(isset($_POST['id']))
 						{
 							$row2 = mysqli_fetch_assoc($result);
 							$empid = $row2['Emp_id'];
+							$token = bin2hex(openssl_random_pseudo_bytes(6));
 							//echo "<script>alert('$empid')</script>";
 							$sql = "update orders set Blood_IDs = '$s1', 
 											  Blood_Units = '$s2', 
 											  status = 'Accepted', 
-											  Token = '12345',
+											  Token = '$token',
 											  Delivered_by = '$empid' 
 											  WHERE Order_id = $id";
 							$result = mysqli_query($conn,$sql);
@@ -113,8 +114,8 @@ if(isset($_POST['id']))
 					}
 					else
 					{
-						$sql = "update orders set status = 'Rejected',
-										  Delivery_status = 'Rejected' 
+						$sql = "update orders set status = 'Pending',
+										  Delivery_status = 'Pending' 
 										  WHERE Order_id = $id";
 						$result = mysqli_query($conn,$sql);
 						if($result)
@@ -127,8 +128,8 @@ if(isset($_POST['id']))
 				else
 				{
 					
-					$sql = "update orders set status = 'Rejected',
-										  Delivery_status = 'Rejected' 
+					$sql = "update orders set status = 'Pending',
+										  Delivery_status = 'Pending' 
 										  WHERE Order_id = $id";
 					$result = mysqli_query($conn,$sql);
 					if($result)

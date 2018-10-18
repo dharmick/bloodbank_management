@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 18, 2018 at 11:37 AM
+-- Generation Time: Oct 18, 2018 at 01:41 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -52,7 +52,7 @@ INSERT INTO `donor` (`D_id`, `P_id`, `Email`, `Weight`, `Blood_group`, `Status`,
 (4, 8, 'parth.jss@somaiya.edu', 70, 'A+', 'Accepted', 20, '2018-10-10 14:22:57'),
 (5, 12, 'prithvi.kunder@somaiya.edu', 65, 'A+', 'Pending', 20, '2018-10-10 14:22:57'),
 (6, 13, 'kinjalsanghavi@gmail.com', 75, 'O+', 'Pending', 40, '2018-10-10 14:24:45'),
-(7, 14, 'jitu9@gmail.com', 70, 'AB+', 'Pending', 45, '2018-10-10 14:27:10'),
+(7, 14, 'jitu9@gmail.com', 70, 'AB-', 'Accepted', 45, '2018-10-10 14:27:10'),
 (9, 16, 'darshilsanghavi@gmail.com', 75, 'B+', 'Pending', 14, '2018-10-10 14:36:22'),
 (10, 17, 'as@gmail.com', 70, 'A+', 'Pending', 40, '2018-10-10 14:47:50'),
 (11, 18, 'harsh.palan@somaiya.edu', 60, 'AB+', 'Pending', 20, '2018-10-11 05:30:42'),
@@ -162,11 +162,12 @@ CREATE TABLE `inventory` (
 --
 
 INSERT INTO `inventory` (`Inv_id`, `D_id`, `Wbc`, `Rbc`, `Haemoglobin`, `Blood_group`, `Units`, `Comments`, `Date`, `Udate`) VALUES
-(31, 16, '20000', '10000', 'hb', 'B+', 23, 'none', '2018-10-13 16:49:37', '2018-10-13 16:49:37'),
-(32, 4, '20000', '10000', 'hb', 'A+', 0, 'none', '2018-10-13 16:57:26', '2018-10-15 06:15:10'),
-(33, 16, '1000', '2000', '5', 'A+', 5, 'none', '2018-10-14 14:06:53', '2018-10-15 06:15:11'),
+(31, 16, '20000', '10000', 'hb', 'B+', 1, 'none', '2018-10-13 16:49:37', '2018-10-18 11:12:45'),
+(32, 4, '20000', '10000', 'hb', 'A+', 25, 'none', '2018-10-13 16:57:26', '2018-10-18 11:25:39'),
+(33, 16, '1000', '2000', '5', 'A+', 15, 'none', '2018-10-14 14:06:53', '2018-10-18 11:25:39'),
 (34, 14, '1000', '2000', '5', 'A+', 15, 'none', '2018-10-14 14:19:15', '2018-10-14 14:19:15'),
-(35, 1, '20000', '10000', 'hb', 'O+', 9, 'none', '2018-10-16 15:16:51', '2018-10-16 15:25:02');
+(35, 1, '20000', '10000', 'hb', 'O+', 9, 'none', '2018-10-16 15:16:51', '2018-10-16 15:25:02'),
+(36, 7, '20000', '10000', 'hb', 'AB-', 7, 'none', '2018-10-18 11:09:08', '2018-10-18 11:26:12');
 
 -- --------------------------------------------------------
 
@@ -195,12 +196,12 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`Order_id`, `Hospital_id`, `Units`, `Blood_group`, `status`, `Blood_IDs`, `Blood_Units`, `Token`, `Comments`, `Delivered_by`, `Delivery_status`, `Delivery_date`, `Order_date`) VALUES
-(5, 10, 35, 'A+', 'Accepted', '32,33', '25,10', '12345', 'Nothing', 16, 'Delivered', '2018-10-15 18:15:00', '2018-10-10 16:24:14'),
-(6, 11, 5, 'AB-', 'Rejected', '', '', '', 'qswderthyjui', 0, 'Rejected', '2018-10-11 05:32:34', '2018-10-10 16:24:14'),
-(7, 10, 25, 'B+', 'Rejected', '', '', '', 'dfghjkl', 0, 'Rejected', '2018-10-10 18:46:45', '2018-10-10 16:28:01'),
-(8, 10, 15, 'O+', 'Accepted', '35', '15', '12345', 'tbqwertyui', 18, 'Delivered', '2018-10-16 15:23:10', '2018-10-10 16:28:55'),
+(5, 10, 35, 'A+', 'Accepted', '32,33', '25,10', '12345', 'Nothing', 16, 'Pending', '0000-00-00 00:00:00', '2018-10-10 16:24:14'),
+(6, 11, 5, 'AB-', 'Accepted', '36', '5', 'bf737293', 'qswderthyjui', 16, 'Pending', '0000-00-00 00:00:00', '2018-10-10 16:24:14'),
+(7, 10, 22, 'B+', 'Pending', '', '', '', 'dfghjkl', 0, 'Delivered', '2018-10-18 11:12:22', '2018-10-10 16:28:01'),
+(8, 10, 15, 'O+', 'Accepted', '35', '15', '12345', 'tbqwertyui', 18, 'Pending', '2018-10-16 15:23:10', '2018-10-10 16:28:55'),
 (9, 10, 26, 'O+', 'Accepted', '35', '26', '12345', 'wertyuio', 18, 'Delivered', '2018-10-16 15:24:56', '2018-10-10 16:37:15'),
-(12, 10, 23, 'AB+', 'Rejected', '', '', '', 'none', 0, 'Rejected', '0000-00-00 00:00:00', '2018-10-14 16:52:35');
+(12, 10, 23, 'AB+', 'Pending', '', '', '', 'none', 0, 'Pending', '0000-00-00 00:00:00', '2018-10-14 16:52:35');
 
 -- --------------------------------------------------------
 
@@ -344,7 +345,7 @@ ALTER TABLE `hospitals`
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `Inv_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `Inv_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `orders`

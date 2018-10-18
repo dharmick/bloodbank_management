@@ -39,7 +39,7 @@ $result = mysqli_query($conn,$query);
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Blood Bank</title>
+  <title>Hope Drops Blood Bank</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
