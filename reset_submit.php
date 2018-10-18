@@ -21,16 +21,24 @@ if(isset($_POST['submit'])) {
   $newpass = $_POST['Newpass'];
   $confirmpass = $_POST['Confirmpass'];
 
-  if(isset($_SESSION['Eid'])){
+  if(isset($_SESSION['Eid']))
+  {    
         // logged in as an employee
         $sql = "SELECT Password from employees where Emp_id = {$_SESSION['Eid']}";
         $result = mysqli_query($conn, $sql);
         if(mysqli_num_rows($result)==1){
           $row = mysqli_fetch_assoc($result);
-          if($oldpass==$row['Password']) {
+          if(password_verify($oldpass,$row['Password'])) {
+            
+             $options = array("cost"=>4);
+             $hashPassword = password_hash($newpass,PASSWORD_BCRYPT,$options);
+    
             // old password is CORRECT
-            $sql_update = "UPDATE employees SET Password = {$newpass}, password_changed = 1 where Emp_id = {$_SESSION['Eid']}";
-            if(mysqli_query($conn, $sql_update)) {
+            $sql_update = "UPDATE employees SET Password = '$hashPassword', password_changed = 1 where Emp_id = {$_SESSION['Eid']}";
+            $result = mysqli_query($conn, $sql_update);
+            $error = mysqli_error($conn);
+    
+            if($result) {
               $_SESSION['passwordchanged'] = 1;
               $_SESSION['message'] = "Password updated succesfully";
               header("location: ./reset.php");
@@ -44,15 +52,18 @@ if(isset($_POST['submit'])) {
           }
         }
 
-  } else {
+  } 
+  else {
         //  logged in as a hospital
         $sql = "SELECT Hosp_passwd from hospitals where Hospital_id = {$_SESSION['hid']}";
         $result = mysqli_query($conn, $sql);
         if(mysqli_num_rows($result)==1){
           $row = mysqli_fetch_assoc($result);
-          if($oldpass==$row['Hosp_passwd']) {
+          if(password_verify($oldpass,$row['Hosp_passwd'])) {
+             $options = array("cost"=>4);
+             $hashPassword = password_hash($newpass,PASSWORD_BCRYPT,$options);
             // old password is CORRECT
-            $sql_update = "UPDATE hospitals SET Hosp_passwd = {$newpass}, passwd_change = 1 where Hospital_id = {$_SESSION['hid']}";
+            $sql_update = "UPDATE hospitals SET Hosp_passwd = '$hashPassword', passwd_change = 1 where Hospital_id = {$_SESSION['hid']}";
             if(mysqli_query($conn, $sql_update)) {
               $_SESSION['passwordchanged'] = 1;
               $_SESSION['message'] = "Password updated succesfully";

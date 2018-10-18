@@ -25,6 +25,7 @@ if(isset($_POST['login']))
 		$pass=$row['Password'];
 		$postid = $row['Post_id'];
 
+		//password_verify($Password,$pass)
 		if(password_verify($Password,$pass))
 		{
 			$loginsuccess = 1;
@@ -295,6 +296,7 @@ if(isset($_POST['login']))
   			</div>
  			 <div class="form-group">
     		<input type="password" id="pwinput" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+    		<!-- <i class="glyphicon glyphicon-eye-close form-control-feedback toggle-password" ></i> -->
     		<div class="alert alert-danger"></div>
     		</div>
     		<div class="form-group">
@@ -312,6 +314,7 @@ if(isset($_POST['login']))
     $("#pwinput").focus();
 
     $("#pwcheck").click(function(){
+    	$(".toggle-password").toggleClass("glyphicon glyphicon-eye-open");
         var pw = $("#pwinput").val();
         if ($("#pwcheck").is(":checked"))
         {
@@ -324,6 +327,7 @@ if(isset($_POST['login']))
 
     });
 });
+
 	</script>
 	
 </body>
