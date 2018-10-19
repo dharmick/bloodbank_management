@@ -25,6 +25,16 @@ function changeIcon(element){
   }
 }
 
+ checkEmpty = () => {
+  
+  if(this.value == ''){
+    alert.html('<p>Cannot be empty.</p>');
+  }
+  else{
+    alert.html('');
+  }
+}
+
 // Listeners
 $('input, textarea').on('input', function(){
   alert = $(this).parent().find('.alert');
@@ -70,10 +80,10 @@ $('input.email').on('input', function(){
 $('input, textarea').on('input', function(){
   alert = $(this).parent().find('.alert');
   if($('.alert p').length > 0) {
-    $('button[type="submit"]').addClass('disabled');
+    $('button[type="submit"]').prop('disabled', true);;
   }
   else {
-    $('button[type="submit"]').removeClass('disabled');
+    $('button[type="submit"]').prop('disabled', false);;
   }
   changeIcon(alert);
 });
