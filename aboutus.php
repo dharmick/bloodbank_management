@@ -75,9 +75,9 @@
     <a href="index.php"><img src="./images/logo.png" alt="Blood Bank" height="65" style="margin-left: 5px;"></a>
     <ul>
       <li  class = "tab" ><a href="index.php">HOME</a></li>
-      <li  class = "tab"><a href="aboutus.php">ABOUT US</a></li>
+      <li  class = "tab current "><a href="#">ABOUT US</a></li>
       <li  class = "tab"><a href="faq.php">FAQs</a></li>
-      <li  class = "tab current"><a href="contactus.php">CONTACT US</a></li>
+      <li  class = "tab"><a href="contactus.php">CONTACT US</a></li>
       <li  class = "tab"><a href="hospitalsignup.php">HOSPITAL SIGNUP</a></li>
       <li  class = "tab"><a href="login.php">LOGIN</a></li>
     </ul>
@@ -88,35 +88,40 @@
   <div class="container" id="bradcrumb">
 	  <ol class="breadcrumb">
 	    <li><a href="index.php" id="home" style="color: black;">Home</a></li>
-	    <li class="active">CONTACT Us</li>
+	    <li class="active">ABOUT US</li>
 	  </ol>
   </div>
   <!--breadcrumb ends-->
     <div class="container">
     <div class="row">
   <section class="container col-md-4">
-  	<h3><strong>CONTACT Us</strong></h3>
-  	<br><h4><b>Address</b></h4>
-  	<p>Hope Drops Blood Bank,<br>3rd Floor, Somaiya Bhavan,
-  		<br>Dr. R P Road, Vidyavihar(East),<br>Mumbai-400077(INDIA)
+  	<h3><strong>ABOUT US</strong></h3>
+<!--   	<br><h4><b>Address</b></h4>
+ -->  	<p>"Hope Drops" is an organization that brings voluntary blood donors and those in need of blood on to a common platform.  Through this website, we seek donors who are willing to donate blood, as well as provide the timeliest support to those in frantic need of it.
   	</p>
   	<br>
-  	<h4><b>Contact No.</b></h4>
- 	<p>022-22881155 | 09988776655.</p>
+<!--   	<h4><b>Contact No.</b></h4>
+ --> 	<p>Started in the year 2018, with the zeal to serve our society, to inspire and spread the word, we dream to fulfill 100% blood need in India.</p>
 
  	<br>
- 	<h4><b>Email Id</b></h4>
- 	<p>hopedropsbloodbank@gmail.com</p>
-
- 	<br>
+ 	<!-- <h4><b>Email Id</b></h4> -->
+<!--  	<p>hopedropsbloodbank@gmail.com</p>
+ -->
+ 	<!-- <br>
  	<h4><b>License Number</b></h4>
- 	<p>MH004755</p>
+ 	<p>MH004755</p> -->
+  <h4><b>Our Mission</b></h4>
+  <p>To fulfill every blood request in the country with a promising web portal and motivated individuals who are willing to donate blood.</p>
+
+    <h4><b>BE A HERO-DONATE</b></h4>
+
+
+
 
   </section>
     <section class="col-md-8" style="
     padding: 35px 15px 15px 15px;">
-         	<p>
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.761803069597!2d72.89753296437671!3d19.0742076569867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c627923df00d%3A0x4c2b4fb28923f63d!2sSomaiya+Vidyavihar%2C+Group+of+Somaiya+Institutions%2C+Vidyanagar%2C+Vidya+Vihar+East%2C+Vidyavihar%2C+Mumbai%2C+Maharashtra+400077!5e0!3m2!1sen!2sin!4v1539718734649" width="600" height="450"  frameborder="0" style="border:0" allowfullscreen></iframe></p>
+         	
     </section>
     </div>
         </div>
