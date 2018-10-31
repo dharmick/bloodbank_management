@@ -4,125 +4,91 @@ session_start();
 include_once("connection.php");
 ?>
 
-<?php
-
-$loginsuccess = 0;
-$flag = 0;
-
-if(isset($_POST['login']))
+<?php 
+//$ty = $_GET['type'];
+//echo "<script>alert('$ty')</script>";
+if(isset($_GET['type']) && isset($_GET['token']))
 {
-  $Username=$_POST['email'];
-  $Password=$_POST['password'];
-
-  $query="SELECT * from employees where Emp_email='$Username'";
-  $result=mysqli_query($conn,$query);
-
-  if(mysqli_num_rows($result) == 1)
-  {
-    $row=mysqli_fetch_assoc($result);
-    $pid = $row['P_id'];
-    $pass=$row['Password'];
-    $postid = $row['Post_id'];
-
-    if($pass == $Password)
-    {
-      $loginsuccess = 1;
-    }
-
-    $flag = 1;
-  }
-
-  if($flag != 1)
-  {
-    $query="SELECT * from hospitals where Hosp_email='$Username'";
-    $result=mysqli_query($conn,$query);
-
+  //echo "<script>alert('Sign Up successful')</script>";  
+  $type = $_GET['type'];
+  $token = $_GET['token'];
+  $time = time();
+  $time = $time - (0.5*60*60) - 60;
+  
+    //echo "<script>alert('Sign Up successful')</script>";
+    $sql = "SELECT * FROM forgotpass WHERE token = '$token' ";
+    $result = mysqli_query($conn, $sql);
     if(mysqli_num_rows($result) == 1)
     {
-      $row=mysqli_fetch_assoc($result);
-      $hid = $row['Hospital_id'];
-      $pass=$row['Hosp_passwd'];
-      $postid = $row['Post_id'];
-
-      if($pass == $Password)
+      //echo "<script>alert('Sign Up successful')</script>";
+      $row = mysqli_fetch_assoc($result);
+      $otime = $row['recorded_time'];
+      $eid = $row['Emp_id'];
+      if($time > $otime)
       {
-        $loginsuccess = 1;
+        //echo "<script>alert('Time')</script>";
+        $_SESSION['message'] = "Time Limit Exceeded Please try again";
+        header("location: ./forgotpass.php");
+        exit();
       }
-
-      $flag = 0;
-    }
-  }
-
-  if($loginsuccess == 1 && $flag == 1)
-  {
-    $_SESSION['Emp_email']  = $row['Emp_email'];
-    $_SESSION['passwordchanged'] = $row['password_changed'];
-    $_SESSION['post'] = $row['Post_id'];
-    $_SESSION['Pid']  = $row['P_id'];
-
-    $sql = "SELECT Name from person where P_id = $pid";
-    $result=mysqli_query($conn,$sql);
-    if(mysqli_num_rows($result) == 1)
-    {
-      $row=mysqli_fetch_assoc($result);
-      $_SESSION['Ename']  = $row['Name'];
-      $loginsuccess = 1;
-    }
-
-      switch ($postid) {
-
-        case 1:
-          header("location:rp.php");
-          break;
-
-        case 2:
-          header("location:lt.php");
-          break;
-
-        case 3:
-          header("location:rp.php");
-          break;
-
-        case 4:
-          header("location:rp.php");
-          break;
-
-        default:
-          break;
+      else
+      {
+        //echo "<script>alert('Else')</script>";
+        if(isset($_POST['login']))
+        {
+          //echo "<script>alert('Else')</script>";
+          $newpass = $_POST['newpass'];
+          $confirmpass = $_POST['confirmpass'];
+          if($newpass == $confirmpass)
+          {
+              //echo "<script>alert('Else')</script>";
+              $options = array("cost"=>4);
+              $hashPassword = password_hash($newpass,PASSWORD_BCRYPT,$options);
+              if($type == 'employee')
+              {
+                $sql = "SELECT * FROM employees WHERE Emp_id = '$eid' ";
+              }
+              elseif($type == 'hospital')
+              {
+                $sql = "SELECT * FROM hospitals WHERE Hospital_id = '$eid' ";
+              }
+              $result = mysqli_query($conn, $sql);
+            if(mysqli_num_rows($result) == 1)
+            {
+              //echo "<script>alert('Else')</script>";
+              if($type == 'employee')
+              {
+                $query = "update employees set Password = '$hashPassword'
+                         WHERE Emp_id = '$eid' ";
+              }
+              else
+              {
+                 $query = "update hospitals set Hosp_passwd = '$hashPassword'
+                         WHERE Hospital_id = '$eid' ";
+              }
+              
+              $result = mysqli_query($conn, $query);
+              //echo "<script>alert('$eid')</script>";
+              if($result)
+              {
+                //echo "<script>alert('Else')</script>";
+                $_SESSION['message'] = "Password updated Successfully";
+                header("location: ./login.php");
+                exit();
+              } 
+            }
+          }
+        }
       }
-
     }
-    elseif ($loginsuccess == 1 && $flag != 1)
-    {
-      $_SESSION['Emp_email']  = $row['Hosp_email'];
-      $_SESSION['passwordchanged'] = $row['passwd_change'];
-      $_SESSION['post'] = $row['Post_id'];
-      $_SESSION['Ename'] = $row['Hospital_name'];
-
-      header("location:rp.php");
-
-    }
-    else
-    {
-      echo "<script>alert('Password incorrect')</script>";
-    }
-
-
-
-
-
 }
-
-
+else
+{
+   $_SESSION['message'] = "Kindly get link from Email!!";
+    header("location: ./forgotpass.php");
+    exit();
+}
 ?>
-
-
-
-
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -142,11 +108,17 @@ if(isset($_POST['login']))
 
   <link href="https://fonts.googleapis.com/css?family=Lato:900" rel="stylesheet">
 
+  <link href="https://fonts.googleapis.com/css?family=Lato:900" rel="stylesheet">
+
+  <script src="js/main.js"></script>
+
     <link rel="shortcut icon" href="./images/favicon.png">
 
   <style>
     body {
       background: #f5f5f5;
+      font-family: Lato;
+      color: #d32370 !important;
     }
     .form-control-feedback {
       top: 3px;
@@ -264,17 +236,28 @@ if(isset($_POST['login']))
   </style>
 </head>
 <body>
+  <div class="alert-box"></div>
+  <?php
+  if(isset($_SESSION['message']))
+    {
+      echo "<script>showAlert('".$_SESSION['message']."')</script>";
+      unset($_SESSION['message']);
+    }
+  ?>
   <section class="login">
     <div class="hover-scale">
-      <a style="text-decoration: none;" href="index.php" class="glyphicon glyphicon-arrow-left"></a>
+      <a style="text-decoration: none;" href="#" class="glyphicon glyphicon-arrow-left"></a>
     </div>
 
-    <form action="forgotlink_submit.php" role="form" method="POST">
+    <form action="" role="form" method="POST">
       <h2>Set New Password</h2>
 
       <div class="form-group">
-         <input type="Password" class="form-control" id="Newpass" placeholder="New Password" name="Newpass" autocomplete="false">
+         <input type="Password" class="form-control" id="pwinput" placeholder="New Password" name="newpass" autocomplete="false">
          <div class="alert alert-danger"></div>
+        </div>
+        <div class="form-group">
+          <input type="checkbox" name="" id="pwcheck"> Show Password
         </div>
        <div class="form-group">
         <input type="password" class="form-control" id="confirmpass" placeholder="Confirm Password" name="confirmpass">
@@ -285,5 +268,26 @@ if(isset($_POST['login']))
     </form>
   </section>
   <script src="js/validations.js"></script>
+  <script type="text/javascript">
+
+    $(document).ready(function(){
+
+    $("#pwinput").focus();
+
+    $("#pwcheck").click(function(){
+      $(".toggle-password").toggleClass("glyphicon glyphicon-eye-open");
+        var pw = $("#pwinput").val();
+        if ($("#pwcheck").is(":checked"))
+        {
+            $("#pwinput").prop('type','text');
+        }
+        else
+        {
+            $("#pwinput").prop('type','password');
+        }
+
+    });
+});
+  </script>
 </body>
 </html>

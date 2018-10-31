@@ -17,10 +17,7 @@ if(!isset($_SESSION['Emp_email'])){
 <?php
   if($_SESSION['post'] != 1)
   {
-    // echo "Hii";
-
-    // echo "<script>alert('Sign Up successful')</script>";
-    // echo "<script>alert('$link')</script>";
+  
     die("Not authorized to access this page! \n Please go back to previous page");
   }
 

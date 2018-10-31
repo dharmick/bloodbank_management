@@ -70,7 +70,7 @@ if(isset($_POST['submit']))
     } 
     else
     {
-      echo "<script>alert('Error')</script>";
+      $_SESSION['message'] = "Error!";
     }
 
     if($flag == 1)
@@ -128,7 +128,7 @@ if(isset($_POST['submit']))
   }
   else
   {
-    echo "<script>alert('Please Change Status from Pending!')</script>";
+    $_SESSION['message'] = "Please change status from Pending!";
   }
 }
 
@@ -162,6 +162,8 @@ if(isset($_POST['submit']))
   <link href="https://fonts.googleapis.com/css?family=Lato:900" rel="stylesheet">
 
   <link rel="stylesheet" type="text/css" href="./css/main.css">
+
+   <script src="js/main.js"></script>
 
   <link rel="shortcut icon" href="./images/favicon.png">
   <!-- <link rel="stylesheet" type="text/css" href="./css/main.css"> -->
@@ -236,6 +238,16 @@ if(isset($_POST['submit']))
 </head>
 
 <body>
+    <div class="alert-box"></div>
+    <?php
+    //echo "<script>alert('Else')</script>";
+    if(isset($_SESSION['message']))
+      {
+        //echo "<script>alert('Else')</script>";
+        echo "<script>showAlert('".$_SESSION['message']."')</script>";
+        unset($_SESSION['message']);
+      }
+    ?>
 
 <?php include('./sidenav.php')?>
 <div id="main" class="shrink">
@@ -299,7 +311,7 @@ if(isset($_POST['submit']))
 
             <div class="form-group has-feedback">
             <label for="status">Status:</label>
-             <select class="form-control" name="status" style="width: 95%;" id="b-status">
+             <select class="form-control" name="status" style="width: 95%;" id="b-status" required>
                 <option value="Pending" selected="Pending" disabled>Pending</option>
                 <option value="Accepted">Accepted</option>
                 <option value="Rejected">Rejected</option>
