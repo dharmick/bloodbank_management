@@ -4,16 +4,6 @@ session_start();
 include_once("connection.php");
 ?>
 
-<?php 
-
-if(isset($_SESSION['Emp_email'])){
-    //send them to login page
-    //echo "<script>alert('You are not logged in')</script>";
-    header("location:logout.php");
-}
-
-?>
-
 <?php
 
 $loginsuccess = 0;
