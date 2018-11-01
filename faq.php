@@ -119,7 +119,7 @@
   <br><br><br><br><strong id="donate" style="font-size:20px;">HOW HOSPITALS CAN REQUEST BLOOD</strong>
   <br><img class="bullet" src="./images/download.jpeg">Initially Hospital needs to register itself.
 
-    <br><img class="bullet" src="./images/download.jpeg">Fill the sign up form <a href="http://localhost/bloodbank_management/Hospitalsignup.php" target="_blank">Here.</a>
+    <br><img class="bullet" src="./images/download.jpeg">Fill the sign up form <a href="./Hospitalsignup.php" target="_blank">Here.</a>
 
   <br><img class="bullet" src="./images/download.jpeg">After login  there will be a Request Blood Form
 
