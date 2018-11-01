@@ -149,8 +149,10 @@ include_once("connection.php");
 <body>
 	<div class="alert-box"></div>
 	<?php
+	//echo "<script>alert('Sign Up successful')</script>";
 	if(isset($_SESSION['message']))
 		{
+			//echo "<script>alert('Sign Up successful')</script>";
 			echo "<script>showAlert('".$_SESSION['message']."')</script>";
 			unset($_SESSION['message']);
 		}

@@ -141,15 +141,23 @@ if(isset($_SESSION['message'])) {
 
             <div class="form-group has-feedback">
 	            <label for="Oldpass">Current Password:</label>
-	            <input type="Password" class="form-control" id= "Oldpass" name="Oldpass" placeholder="Current Password" required>
+	            <input type="Password" class="form-control" id= "pwinput" name="Oldpass" placeholder="Current Password" required>
 							<div class="alert alert-danger"></div>
+            </div>
+
+            <div class="form-group">
+              <input type="checkbox" name="" id="pwcheck"> Show Password
             </div>
 
             <div class="form-group has-feedback">
               <label for="Newpass">New Password:</label>
-              <input type="Password" class="form-control" id= "Newpass" name="Newpass" placeholder="New Password" required>
+              <input type="Password" class="form-control" id= "pwinput1" name="Newpass" placeholder="New Password" required>
               <div class="alert alert-danger"></div>
             </div>
+
+          <div class="form-group">
+            <input type="checkbox" name="" id="pwcheck1"> Show New Password
+          </div>
 
             <div class="form-group has-feedback">
               <label for="Confirmpass">Confirm New Password:</label>
@@ -169,6 +177,46 @@ if(isset($_SESSION['message'])) {
 </div>
 </div>
 <script src="js/validations.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+    $("#pwinput").focus();
+
+    $("#pwcheck").click(function(){
+      $(".toggle-password").toggleClass("glyphicon glyphicon-eye-open");
+        var pw = $("#pwinput").val();
+        if ($("#pwcheck").is(":checked"))
+        {
+            $("#pwinput").prop('type','text');
+        }
+        else
+        {
+            $("#pwinput").prop('type','password');
+        }
+
+    });
+});
+
+    $(document).ready(function(){
+
+    $("#pwinput1").focus();
+
+    $("#pwcheck1").click(function(){
+      $(".toggle-password").toggleClass("glyphicon glyphicon-eye-open");
+        var pw = $("#pwinput1").val();
+        if ($("#pwcheck1").is(":checked"))
+        {
+            $("#pwinput1").prop('type','text');
+        }
+        else
+        {
+            $("#pwinput1").prop('type','password');
+        }
+
+    });
+});
+  </script>
 
 </body>
 </html>

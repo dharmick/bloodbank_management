@@ -197,7 +197,7 @@ if(isset($_POST['submit']))
 
             <div class="form-group has-feedback">
             <label for="Unitsrequired">No of units required:</label>
-            <input type="text" class="form-control" id= "Unitsrequired" placeholder="Enter required number of units in liter" name="units">
+            <input type="text" class="form-control" id= "Unitsrequired" placeholder="Enter required number of units in liter" name="units" required>
             <div class="alert alert-danger"></div>
             </div>
 

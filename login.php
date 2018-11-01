@@ -4,10 +4,20 @@ session_start();
 include_once("connection.php");
 ?>
 
+<?php 
+
+if(isset($_SESSION['Emp_email'])){
+    //send them to login page
+    //echo "<script>alert('You are not logged in')</script>";
+    header("location:logout.php");
+}
+
+?>
+
 <?php
 
 $loginsuccess = 0;
-$flag = 0;
+$flag = 2;
 $f = 1;
 
 if(isset($_POST['login']))
@@ -55,7 +65,7 @@ if(isset($_POST['login']))
 		}
 		else
 		{
-			echo "<script>alert('Error!')</script>";
+			//echo "<script>alert('Error!')</script>";
 			$f = 0;
 
 		}
@@ -112,10 +122,14 @@ if(isset($_POST['login']))
 			header("location:order_hosp.php");
 
 		}
+		elseif($flag != 0 && $flag != 1)
+		{
+			$_SESSION['message'] = "User does not Exist";
+		}
 		else
 		{
 			if($f!=0)
-			echo "<script>alert('Password incorrect')</script>";
+			$_SESSION['message'] = "Password Incorrect";
 		}
 
 
@@ -153,7 +167,7 @@ if(isset($_POST['login']))
 
   <link href="https://fonts.googleapis.com/css?family=Lato:900" rel="stylesheet">
 
-  <link href="https://fonts.googleapis.com/css?family=Lato:900" rel="stylesheet">
+  <script src="js/main.js"></script>
 
     <link rel="shortcut icon" href="./images/favicon.png">
 
@@ -291,6 +305,16 @@ if(isset($_POST['login']))
 	</style>
 </head>
 <body>
+	  <div class="alert-box"></div>
+	  <?php
+	  //echo "<script>alert('Else')</script>";
+	  if(isset($_SESSION['message']))
+	    {
+	    	//echo "<script>alert('Else')</script>";
+	      echo "<script>showAlert('".$_SESSION['message']."')</script>";
+	      unset($_SESSION['message']);
+	    }
+	  ?>
 	<section class="login">
 		<div class="hover-scale">
 			<a style="text-decoration: none;" href="index.php" class="glyphicon glyphicon-arrow-left"></a>

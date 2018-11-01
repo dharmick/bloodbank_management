@@ -47,3 +47,9 @@ a, a:hover {
   opacity: 1;
   transform: translateY(0);
 }
+
+.alert-warning {
+    color: firebrick;
+    background-color: navajowhite;
+    border-color: #faebcc;
+}
