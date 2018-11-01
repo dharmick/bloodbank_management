@@ -78,7 +78,7 @@
       <li  class = "tab current "><a href="#">ABOUT US</a></li>
       <li  class = "tab"><a href="faq.php">FAQs</a></li>
       <li  class = "tab"><a href="contactus.php">CONTACT US</a></li>
-      <li  class = "tab"><a href="hospitalsignup.php">HOSPITAL SIGNUP</a></li>
+      <li  class = "tab"><a href="Hospitalsignup.php">HOSPITAL SIGNUP</a></li>
       <li  class = "tab"><a href="login.php">LOGIN</a></li>
     </ul>
   </div>
