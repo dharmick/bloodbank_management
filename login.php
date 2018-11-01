@@ -324,7 +324,7 @@ if(isset($_POST['login']))
     		<div class="form-group">
     			<input type="checkbox" name="" id="pwcheck"> Show Password
     		</div>
-    		<a href="forgotpass.php">Forgot Password</a>
+    		<a href="Forgotpass.php">Forgot Password</a>
     		<button type="submit" class="btn" name="login">LOGIN</button>
 		</form>
 	</section>
