@@ -31,6 +31,7 @@ $flag = "";
 
 if(isset($_POST['id']))
 {
+	echo "<script>alert('Sign Up successful')</script>";
 	
 	$id = $_POST['id'];
 
@@ -38,11 +39,14 @@ if(isset($_POST['id']))
 	$result = mysqli_query($conn,$query);
 	if(mysqli_num_rows($result) == 1)
 	{
+		// echo "<script>alert('Sign Up successful')</script>";
 		$row =mysqli_fetch_assoc($result);
 		if(isset($_GET['alert']))
 		{
+			// echo "<script>alert('Sign Up successful')</script>";
 			if($_GET['alert'] == 'ok')
 			{
+				echo "<script>alert('Sign Up successful')</script>";
 				$units = $row['Units'];
 				$bg = $row['Blood_group'];
 				$rem = $units;	
@@ -53,7 +57,8 @@ if(isset($_POST['id']))
 				//echo "<script>alert('$n')</script>";
 				if(mysqli_num_rows($result1)>0)
 				{
-					//echo "<script>alert('Sign Up successful')</script>";
+
+					echo "<script>alert('Sign Up successful')</script>";
 					while(($row1 =mysqli_fetch_assoc($result1)) && ($rem > 0))
 					{
 						//echo "<script>alert('Sign Up successful')</script>";
@@ -88,15 +93,16 @@ if(isset($_POST['id']))
 
 					if($flag == 1)
 					{
-						//echo "<script>alert('Sign Up successful')</script>";
+						echo "<script>alert('Sign Up successful')</script>";
 						$sql = "SELECT * FROM employees WHERE Post_id = 4 ORDER BY RAND() LIMIT 1";
 						$result = mysqli_query($conn,$sql);
 						if($result)
 						{
+							echo "<script>alert('Sign Up successful')</script>";
 							$row2 = mysqli_fetch_assoc($result);
 							$empid = $row2['Emp_id'];
 							$token = bin2hex(openssl_random_pseudo_bytes(6));
-							//echo "<script>alert('$empid')</script>";
+							echo "<script>alert('$id')</script>";
 							$sql = "update orders set Blood_IDs = '$s1', 
 											  Blood_Units = '$s2', 
 											  status = 'Accepted', 
@@ -104,11 +110,20 @@ if(isset($_POST['id']))
 											  Delivered_by = '$empid' 
 											  WHERE Order_id = $id";
 							$result = mysqli_query($conn,$sql);
+							echo "<script>alert('$result')</script>";
 							if($result)
 							{
-								//echo "<script>alert('Sign Up successful')</script>";
+								echo "<script>alert('Hello')</script>";
 								$_SESSION['message'] = "Order Accepted Successfully";
-								header("location: view_order.php");
+								$msg = $_SESSION['message'];
+								echo "<script>alert('$msg')</script>";
+								header("location: ./view_order.php");
+								//exit();
+							}
+							else
+							{
+								$msg = mysqli_error($conn);
+								echo "<script>alert('$msg')</script>";
 							}
 						}
 					}
